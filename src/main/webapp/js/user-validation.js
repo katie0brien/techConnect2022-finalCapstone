@@ -2,11 +2,33 @@ $(document).ready(function () {
     $.validator.addMethod('capitals', function(thing){
         return thing.match(/[A-Z]/);
     });
+    $.validator.addMethod('pattern', function(thing2){
+        return thing2.match(/^\(\d{3}\)\d{3}-\d{4}/);
+    });
+    $.validator.addMethod('emailPattern', function(thing3){
+        return thing3.match(/[a-z0-9]+@+[a-z0-9]+.com/);
+    });
+
     $("form").validate({
 
         rules : {
             userName : {
                 required : true
+            },
+            phoneNumber : {
+                required: true,
+                minlength:  13,
+                pattern: true,
+            },
+            email : {
+                emailPattern: true,
+                required: true
+            },
+            fname : {
+              required: true
+            },
+            lname : {
+                required: true
             },
             password : {
                 required : true,
@@ -22,6 +44,13 @@ $(document).ready(function () {
             password: {
                 minlength: "Password too short, make it at least 8 characters",
                 capitals: "Field must contain a capital letter",
+            },
+            phoneNumber:{
+                pattern: "Please enter a phone number in the format (###)###-####",
+                minlength: "Please enter a phone number in the format (###)###-####",
+            },
+            email : {
+                emailPattern: "Email must be entered in the format something@something.com",
             },
             confirmPassword : {
                 equalTo : "Passwords do not match"

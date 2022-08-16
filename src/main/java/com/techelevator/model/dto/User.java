@@ -28,6 +28,7 @@ public class User {
 	private String email;
 
 	@NotBlank
+	@Pattern(regexp ="^\\(\\d{3}\\)\\d{3}-\\d{4}", message = "Please enter a phone number in the format (###)###-####")
 	@Size(min=13, max = 13, message = "Please enter a phone number in the format (###)###-####")
 	private String phoneNumber;
 
