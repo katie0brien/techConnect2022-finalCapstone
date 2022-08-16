@@ -75,7 +75,7 @@ public class LandmarkTest  {
 
     @Test
     public void getZipcode_Should_return_correct_ZipCode() {
-        long expected = 43004;
+        int expected = 43004;
 
         landmark.setZipOrPostal(expected);
 
