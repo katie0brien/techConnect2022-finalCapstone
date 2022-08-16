@@ -14,7 +14,7 @@ CREATE TABLE app_user (
   fname varchar(32) NOT NULL,
   lname varchar(32) NOT NULL,
   email varchar(64) NOT NULL,
-  phone_number vrachar(13) NOT NULL,
+  phone_number varchar(13) NOT NULL,
   role varchar(32),
   salt varchar(255) NOT NULL
 );
