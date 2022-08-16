@@ -109,5 +109,16 @@ public class LandmarkTest  {
 
     }
 
+    @Test
+    public void getId_Should_return_correct_id() {
+        String expected = "123456";
+
+        landmark.setId(expected);
+
+        String actual = landmark.getId();
+        String message = "setID should return the correct value set for id";
+        assertEquals(message,expected, actual);
+
+    }
 
 }
