@@ -27,6 +27,7 @@ CREATE TABLE landmark (
   street_address varchar(100) UNIQUE,
   city varchar(25),
   state_or_region varchar(50),
+  zip_or_postal int,
   country varchar(50)
 );
 
