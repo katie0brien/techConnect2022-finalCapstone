@@ -5,6 +5,9 @@ $(document).ready(function () {
     $.validator.addMethod('pattern', function(thing2){
         return thing2.match(/^\(\d{3}\)\d{3}-\d{4}/);
     });
+    $.validator.addMethod('emailPattern', function(thing3){
+        return thing3.match(/[a-z0-9]+@+[a-z0-9]+.com/);
+    });
 
     $("form").validate({
 
@@ -16,6 +19,16 @@ $(document).ready(function () {
                 required: true,
                 minlength:  13,
                 pattern: true,
+            },
+            email : {
+                emailPattern: true,
+                required: true
+            },
+            fname : {
+              required: true
+            },
+            lname : {
+                required: true
             },
             password : {
                 required : true,
@@ -35,6 +48,9 @@ $(document).ready(function () {
             phoneNumber:{
                 pattern: "Please enter a phone number in the format (###)###-####",
                 minlength: "Please enter a phone number in the format (###)###-####",
+            },
+            email : {
+                emailPattern: "Email must be entered in the format something@something.com",
             },
             confirmPassword : {
                 equalTo : "Passwords do not match"
