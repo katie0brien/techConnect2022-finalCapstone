@@ -14,18 +14,18 @@ import java.util.List;
 @Component
 public class JDBCLandMarkDAO implements LandmarkDAO {
 
-    private final String BASE_SQL = "SELECT *\n" +
-            "FROM landmark";
-
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public JDBCLandMarkDAO(DataSource dataSource) {jdbcTemplate = new JdbcTemplate(dataSource);}
+    public JDBCLandMarkDAO(DataSource dataSource) {this.jdbcTemplate = new JdbcTemplate(dataSource);}
     @Override
     public List<Landmark> getAllLandmarks() {
         List<Landmark> landmarks = new ArrayList<>();
 
-        SqlRowSet row = jdbcTemplate.queryForRowSet(BASE_SQL + ";");
+        String sql = "SELECT *\n" +
+                "FROM landmark;";
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql);
 
         while (row.next()) {
             landmarks.add(mapToLandmark(row));
@@ -38,9 +38,10 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     public List<Landmark> getLandmarksByCity(String city) {
         List<Landmark> landmarks = new ArrayList<>();
 
-        String sql = BASE_SQL + "WHERE city = ?";
+        String sql = "SELECT *\n" +
+                "FROM landmark WHERE city = ?;";
 
-        SqlRowSet row = jdbcTemplate.queryForRowSet(BASE_SQL, city);
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, city);
 
         while (row.next()) {
             landmarks.add(mapToLandmark(row));
@@ -53,9 +54,10 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     public List<Landmark> getLandmarksByCountry(String country) {
         List<Landmark> landmarks = new ArrayList<>();
 
-        String sql = BASE_SQL + "WHERE country = ?";
+        String sql = "SELECT *\n" +
+                "FROM landmark WHERE country = ?;";;
 
-        SqlRowSet row = jdbcTemplate.queryForRowSet(BASE_SQL, country);
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, country);
 
         while (row.next()) {
             landmarks.add(mapToLandmark(row));
@@ -68,9 +70,10 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     public List<Landmark> getLandmarksByState(String stateOrRegion) {
         List<Landmark> landmarks = new ArrayList<>();
 
-        String sql = BASE_SQL + "WHERE state_or_region = ?";
+        String sql = "SELECT *\n" +
+                "FROM landmark WHERE state_or_region = ?;";
 
-        SqlRowSet row = jdbcTemplate.queryForRowSet(BASE_SQL, stateOrRegion);
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, stateOrRegion);
 
         while (row.next()) {
             landmarks.add(mapToLandmark(row));
@@ -89,7 +92,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
                 "             FROM user_landmark \n" +
                 "             WHERE user_id = ?);";
 
-        SqlRowSet row = jdbcTemplate.queryForRowSet(BASE_SQL, userID);
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, userID);
 
         while (row.next()) {
             landmarks.add(mapToLandmark(row));
@@ -101,9 +104,10 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     @Override
     public Landmark getLandmarkByID(String ID) {
 
-        String sql = BASE_SQL + "WHERE id = ?";
+        String sql = "SELECT *\n" +
+                "FROM landmark WHERE id = ?;";
 
-        SqlRowSet row = jdbcTemplate.queryForRowSet(BASE_SQL, ID);
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, ID);
 
         while (row.next()) {
            return mapToLandmark(row);
@@ -116,12 +120,12 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     public void editLandmark(Landmark landmark) {
         String sql = "UPDATE landmark\n" +
                 "SET latitude = ?, longitude = ?, name = ?, street_address = ?,\n" +
-                "    city = ?, state_or_region = ?, country = ?\n" +
+                "    city = ?, state_or_region = ?, zip_or_postal = ?, country = ?\n" +
                 "WHERE id = ?;";
 
         int num = jdbcTemplate.update(sql,landmark.getLatitude(),landmark.getLongitude(),landmark.getName(),
-                landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getStateOrRegion(),
-                landmark.getId());
+                landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getZipOrPostal(),
+                landmark.getCountry(), landmark.getId());
     }
 
     @Override
@@ -135,11 +139,11 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
 
     @Override
     public void addLandmark(Landmark landmark) {
-        String sql = "INSERT INTO landmark(ID, LATITUDE, LONGITUDE, NAME, STREET_ADDRESS, CITY, STATE_OR_REGION, COUNTRY)\n" +
-                "VALUES (?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO landmark(ID, LATITUDE, LONGITUDE, NAME, STREET_ADDRESS, CITY, STATE_OR_REGION, zip_or_postal, COUNTRY)\n" +
+                "VALUES (?,?,?,?,?,?,?,?,?);";
 
         int num = jdbcTemplate.update(sql,landmark.getId(),landmark.getLatitude(),landmark.getLongitude(),landmark.getName(),
-                                        landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getStateOrRegion());
+                                        landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getZipOrPostal(), landmark.getCountry());
     }
 
     public Landmark mapToLandmark(SqlRowSet row) {
@@ -152,6 +156,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
         landmark.setStreetAddress(row.getString("street_address"));
         landmark.setCity(row.getString("city"));
         landmark.setStateOrRegion(row.getString("state_or_region"));
+//        landmark.setZipOrPostal(row.getInt("zip_or_postal"));
         landmark.setCountry(row.getString("country"));
 
         return landmark;
