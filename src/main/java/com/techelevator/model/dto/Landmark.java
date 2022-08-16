@@ -10,11 +10,11 @@ public class Landmark {
     private String name;
     private String streetAddress;
     private String city;
-    private long zipOrPostal;
+    private int zipOrPostal;
     private String stateOrRegion;
     private String country;
 
-    public Landmark(String id, String latitude, String longitude, String name, String streetAddress, String city, long zipOrPostal, String stateOrRegion, String country) {
+    public Landmark(String id, String latitude, String longitude, String name, String streetAddress, String city, int zipOrPostal, String stateOrRegion, String country) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -68,11 +68,11 @@ public class Landmark {
         this.city = city;
     }
 
-    public long getZipOrPostal() {
+    public int getZipOrPostal() {
         return zipOrPostal;
     }
 
-    public void setZipOrPostal(long zipOrPostal) {
+    public void setZipOrPostal(int zipOrPostal) {
         this.zipOrPostal = zipOrPostal;
     }
 
