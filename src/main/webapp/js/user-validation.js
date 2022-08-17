@@ -31,6 +31,7 @@ $(document).ready(function () {
     $.validator.addMethod('capitals', function (thing) {
         return thing.match(/[A-Z]/);
     });
+
     $.validator.addMethod('pattern', function (thing2) {
         return thing2.match(/^\(\d{3}\)\d{3}-\d{4}/);
     });
@@ -39,6 +40,7 @@ $(document).ready(function () {
     });
     userNameAvailableError = $("#userNameAvailableError");
     userNameAvailableError.hide();
+
 
 
     $("form").validate({

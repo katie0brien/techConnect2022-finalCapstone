@@ -34,6 +34,23 @@
 				<label for="phoneNumber">Phone Number: </label>
 				<input type="text" id="phoneNumber" name="phoneNumber" placeHolder="Phone Number" class="form-control" />
 			</div>
+
+			<div class="form-group">
+				<label for="fname">First Name: </label>
+				<input type="text" id="fname" name="fname" placeHolder="First Name" class="form-control" />
+			</div>
+			<div class="form-group">
+			<label for="lname">Last Name: </label>
+			<input type="text" id="lname" name="lname" placeHolder="Last Name" class="form-control" />
+		</div>
+			<div class="form-group">
+				<label for="email">email: </label>
+				<input type="text" id="email" name="email" placeHolder="Email" class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="phoneNumber">Phone Number: </label>
+				<input type="text" id="phoneNumber" name="phoneNumber" placeHolder="Phone Number" class="form-control" />
+			</div>
 			<div class="form-group">
 				<label for="password">Password: </label>
 				<input type="password" id="password" name="password" placeHolder="Password" class="form-control" />
