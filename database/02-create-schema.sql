@@ -39,4 +39,25 @@ CREATE TABLE user_landmark (
   PRIMARY KEY (user_id, landmark_id)
 );
 
+CREATE TABLE itinerary (
+    id SERIAL PRIMARY KEY,
+    name varchar(56)
+);
+
+CREATE TABLE itinerary_landmark (
+    itinerary_id int,
+    landmark_id varchar(50),
+    FOREIGN KEY (itinerary_id) REFERENCES itinerary(id),
+    FOREIGN KEY (landmark_id) REFERENCES landmark(id),
+    PRIMARY KEY (itinerary_id, landmark_id)
+);
+
+CREATE TABLE user_itinerary (
+    itinerary_id int,
+    user_id int,
+    FOREIGN KEY (itinerary_id) REFERENCES itinerary(id),
+    FOREIGN KEY (user_id) REFERENCES app_user(id),
+    PRIMARY KEY (itinerary_id, user_id)
+);
+
 COMMIT;
