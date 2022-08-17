@@ -18,6 +18,7 @@ public class AuthenticationController {
 
 	@Autowired
 	public AuthenticationController(UserDAO userDAO) {
+
 		this.userDAO = userDAO;
 	}
 
