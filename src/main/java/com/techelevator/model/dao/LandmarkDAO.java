@@ -11,8 +11,10 @@ public interface LandmarkDAO {
     List<Landmark> getLandmarksByCountry(String country);
     List<Landmark> getLandmarksByState(String stateOrRegion);
     List<Landmark> getLandmarksByUser(int userID);
+    List<Landmark> getLandmarkByItineraryId(int itineraryId);
     Landmark getLandmarkByID(String id);
     void editLandmark(Landmark landmark);
     void deleteLandmark(long id);
     void addLandmark(Landmark landmark);
+    void addLandmarkToRelatorTable(String landmarkId, int itineraryId);
 }

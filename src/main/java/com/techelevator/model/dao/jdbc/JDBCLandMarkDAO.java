@@ -18,6 +18,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
 
     @Autowired
     public JDBCLandMarkDAO(DataSource dataSource) {this.jdbcTemplate = new JdbcTemplate(dataSource);}
+
     @Override
     public List<Landmark> getAllLandmarks() {
         List<Landmark> landmarks = new ArrayList<>();
@@ -102,6 +103,25 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     }
 
     @Override
+    public List<Landmark> getLandmarkByItineraryId(int itineraryId) {
+        List<Landmark> landmarks = new ArrayList<>();
+
+        String sql = "SELECT * " +
+                "FROM landmark AS l " +
+                "INNER JOIN itinerary_landmark AS il " +
+                "ON l.id = il.landmark_id " +
+                "WHERE il.itinerary_id = ?;";
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, itineraryId);
+
+        while (row.next()) {
+            landmarks.add(mapToLandmark(row));
+        }
+
+        return landmarks;
+    }
+
+    @Override
     public Landmark getLandmarkByID(String ID) {
 
         String sql = "SELECT *\n" +
@@ -145,6 +165,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
         int num = jdbcTemplate.update(sql,landmark.getId(),landmark.getLatitude(),landmark.getLongitude(),landmark.getName(),
                                         landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getZipOrPostal(), landmark.getCountry());
     }
+
 
     public Landmark mapToLandmark(SqlRowSet row) {
         Landmark landmark = new Landmark();
