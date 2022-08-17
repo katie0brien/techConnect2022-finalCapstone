@@ -1,0 +1,184 @@
+
+@media only screen and (min-width: 1600px) and (max-width: 2000px){
+    html{
+        height: 100vh;
+        background-color: #FCF8E8;
+        padding: 0px;
+    }
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus {
+        transition: background-color 600000s 0s, color 600000s 0s , border 600000s 0s;
+    }
+
+    html::-webkit-scrollbar {
+        width: 0px
+    }
+    body{
+        position: relative;
+        margin:0; padding:0;
+        width: 1920px;
+    }
+    .leftBox{
+        position: absolute;
+        left: 0px;
+        width: 50%;
+        height: 100vh;
+        background-color: #94B49F;
+    }
+    .rightBox{
+        width: 50%;
+        height: 100%;
+        background-color: #FCF8E8;
+        position: absolute;
+        right: 0px;
+    }
+    .destinationLogin{
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        position: relative;
+
+    }
+    .destinationLogin img{
+        width: 500px;
+
+
+    }
+    .greeting{
+        width: 100%;
+        text-align: center;
+        font-family: 'Dancing Script', cursive;
+        font-size: 90px;
+        line-height: 180px;
+        text-transform: capitalize;
+        letter-spacing: 30px;
+        color: #FCF8E8;
+        padding-top: 20px;
+
+    }
+    .existingUser{
+        width: 100%;
+
+    }
+    .company{
+        display:flex;
+        justify-content: center;
+        font-family: 'Raleway', sans-serif;
+        font-size: 37px;
+        font-weight: 700;
+        letter-spacing: 20px;
+        text-transform: uppercase;
+        padding-bottom:30px;
+        margin-top: 20px;
+    }
+    .logo{
+        display: flex;
+        justify-content: center;
+    }
+    .logo img{
+        width:180px;
+
+    }
+    .existingUser form{
+
+        text-align: center;
+        line-height: 75px;
+    }
+
+    .form-control{
+        width: 38%;
+        height: 40px;
+        border: 3px solid #94B49F; border-radius: 15px;
+        background-color:rgba(148, 180, 159, .3);
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+    }
+
+
+    .btn-submit{
+        width: 20%;
+        height: 40px;
+        border: none ; border-radius: 15px;
+        background-color:#94B49F;
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+        text-transform: uppercase;
+        font-weight: 500;
+    }
+
+    .form-control.error {
+        color: red;
+        margin: 0 auto;
+    }
+    .error{
+        margin: 0 auto;
+    }
+    .form-control.valid{
+        background-color:rgba(148, 180, 159, .3);
+    }
+    .divider{
+        margin: 25px auto;
+        height: 10px;
+        width:85%;
+        border-radius: 5px;
+        background-color: rgba(118, 84, 154, .3);
+
+    }
+    .newUser{
+        width: 100%;
+        font-family: 'Raleway', sans-serif;
+    }
+
+    .usersInARow{
+        display: flex;
+        justify-content: center;
+    }
+    .usersInARow img{
+        height: 80px;
+        margin: auto 10px auto 10px;
+    }
+    .grabber{
+        display:flex;
+        justify-content: center;
+        font-weight: 600;
+        font-size:30px;
+        margin: 15px auto auto auto;
+    }
+    .buttonCase{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 10px auto auto auto;
+    }
+    .joinButton{
+        width: 25%;
+        height: 40px;
+        border: none ; border-radius: 15px;
+        background-color:#76549A;
+        text-align: center;
+        font-family: 'Raleway', sans-serif;
+        text-transform: uppercase;
+        font-weight: 500;
+        letter-spacing: 8px;
+        margin: 20px auto;
+        color: #FCF8E8;
+
+    }
+    .finisher{
+        display:flex;
+        justify-content: center;
+        width:45%;
+        font-size: 28px;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+
+
+}
+@media only screen and (min-width: 1800px) and (max-width: 1899px) {
+
+    html {
+        background-color: black;
+    }
+}
