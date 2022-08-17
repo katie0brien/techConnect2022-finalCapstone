@@ -75,4 +75,10 @@ public class JDBCUserDAO implements UserDAO
 		return thisUser;
 	}
 
+	@Override
+	public boolean isUserNameAvailable(String userName) {
+
+		return getUserByUserName(userName) == null;
+	}
+
 }

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
@@ -14,6 +15,7 @@
 			<div class="form-group">
 				<label for="userName">User Name: </label>
 				<input type="text" id="userName" name="userName" placeHolder="User Name" class="form-control" />
+				<label id="userNameAvailableError" class="error">This user name is taken</label>
 			</div>
 
 			<div class="form-group">
@@ -40,7 +42,7 @@
 				<label for="confirmPassword">Confirm Password: </label>
 				<input type="password" id="confirmPassword" name="confirmPassword" placeHolder="Re-Type Password" class="form-control" />	
 			</div>
-			<button type="submit" class="btn btn-primary">Create User</button>
+			<button type="submit" id="newUserButton" class="btn btn-primary">Create User</button>
 		</div>
 		<div class="col-sm-4"></div>
 	</div>
