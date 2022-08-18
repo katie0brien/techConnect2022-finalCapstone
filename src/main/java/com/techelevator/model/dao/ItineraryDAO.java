@@ -10,6 +10,6 @@ public interface ItineraryDAO {
     void editItineraryName(String name);
     void deleteLandmarkFromItinerary(int itineraryId, String landmarkId);
     String createItinerary(String name);
-    // void addItineraryIdToRelatorTable(String itineraryId, String userId);
+    void addItineraryIdToRelatorTable(String itineraryId, String userId);
 
 }
