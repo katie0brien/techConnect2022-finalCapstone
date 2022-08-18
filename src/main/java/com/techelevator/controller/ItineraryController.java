@@ -52,9 +52,9 @@ public class ItineraryController {
         return "redirect:itinerary/list/" + id; //todo fill in appropriate page
     }
 
-    @RequestMapping(value = "/delete/{id}", method = RequestMethod.POST)
-    public String deleteItinerary(@PathVariable int id) {
-        itineraryDAO.deleteItinerary(id);
+    @RequestMapping(value = "/delete/{id}/{userId}", method = RequestMethod.POST)
+    public String deleteItinerary(@PathVariable int id, @PathVariable int userId) {
+        itineraryDAO.deleteItinerary(id, userId);
         return "redirect:itinerary/list/1";
     }
 

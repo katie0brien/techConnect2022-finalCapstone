@@ -13,5 +13,5 @@ public interface ItineraryDAO {
     void deleteLandmarkFromItinerary(int itineraryId, String landmarkId);
     void createItinerary(Itinerary itinerary, int userID);
     void addItineraryIdToRelatorTable(int itineraryId, int userId);
-    void deleteItinerary(int id);
+    void deleteItinerary(int id, int userId);
 }
