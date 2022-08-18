@@ -1,6 +1,7 @@
 package com.techelevator.model.dto;
 
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 public class Itinerary {
@@ -13,9 +14,11 @@ public class Itinerary {
 
     private String irineraryId;
 
-    private LocalDate fromDate;
+    private String fromDate;
 
-    private LocalDate toDate;
+    private String toDate;
+
+    private LocalDate tempDate;
     //constructor -- use default
 
     //what the class can do -- methods
@@ -45,23 +48,37 @@ public class Itinerary {
         this.irineraryId = irineraryId;
     }
 
-    public LocalDate getFromDate() {
+    public String getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(LocalDate fromDate) {
+    public void setFromDate(String fromDate) {
         this.fromDate = fromDate;
     }
 
-    public LocalDate getToDate() {
+    public String getToDate() {
         return toDate;
     }
 
-    public void setToDate(LocalDate toDate) {
+    public void setToDate(String toDate) {
         this.toDate = toDate;
     }
 
+    public LocalDate getTempDate() {
+        return tempDate;
+    }
+
+    public void setTempDate(LocalDate tempDate) {
+        this.tempDate = tempDate;
+    }
+
     public boolean isPast() {
-        return toDate.isBefore(LocalDate.now());
+        return tempDate.isBefore(LocalDate.now());
+    }
+
+    public String dateToString(LocalDate date) {
+        String[] splitDate = date.toString().split("-");
+        String newDate = splitDate[2] + "-" + splitDate[0] + "-" + splitDate[1];
+        return newDate;
     }
 }

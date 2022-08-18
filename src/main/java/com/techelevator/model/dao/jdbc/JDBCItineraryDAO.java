@@ -11,6 +11,7 @@ import com.techelevator.model.dto.Landmark;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +48,9 @@ public class JDBCItineraryDAO implements ItineraryDAO {
             Itinerary temp = new Itinerary();
             temp.setName(row.getString("name"));
             temp.setIrineraryId(row.getString("id"));
-            temp.setFromDate(row.getDate("from_date").toLocalDate());
-            temp.setToDate(row.getDate("to_date").toLocalDate());
+            temp.setFromDate(row.getString("from_date"));
+            temp.setToDate(row.getString("to_date"));
+            temp.setTempDate(row.getDate("to_date").toLocalDate());
 
 //            List<Landmark> landmarks = jdbcLandMarkDAO.getLandmarkByItineraryId(row.getInt("id"));
 
@@ -67,6 +69,8 @@ public class JDBCItineraryDAO implements ItineraryDAO {
         String sql = "UPDATE itinerary " +
                 "SET name = ?, from_date = ?, to_date = ?;";
 
+//        Date fromDate = Date.valueOf(itinerary.getFromDate());
+//        Date toDate = Date.valueOf(itinerary.getToDate());
         jdbcTemplate.update(sql, itinerary.getName(), itinerary.getFromDate(), itinerary.getToDate());
 
     }
@@ -86,7 +90,16 @@ public class JDBCItineraryDAO implements ItineraryDAO {
                 "VALUES(?,?,?) " +
                 "RETURNING id;";
 
-        int id = jdbcTemplate.update(sql, itinerary.getName(), itinerary.getFromDate(), itinerary.getToDate());
+//        Date fromDate = Date.valueOf(itinerary.getFromDate());
+//        Date toDate = Date.valueOf(itinerary.getToDate());
+
+        int id = jdbcTemplate.queryForObject(sql, Integer.class, itinerary.getName(),Date.valueOf(itinerary.getFromDate()), Date.valueOf(itinerary.getToDate()));
+
+        sql = "UPDATE itinerary " +
+                "SET name = ? " +
+                "WHERE id = ?;";
+
+        jdbcTemplate.update(sql,itinerary.getName(), id);
         addItineraryIdToRelatorTable(id, userId);
     }
 
@@ -96,5 +109,13 @@ public class JDBCItineraryDAO implements ItineraryDAO {
                 "VALUES(?, ?);";
 
         jdbcTemplate.update(sql, itineraryId, userId);
+    }
+
+    @Override
+    public void deleteItinerary(int id) {
+        String sql = "DELETE FROM itinerary " +
+                "WHERE id = ?;";
+
+        jdbcTemplate.update(sql, id);
     }
 }

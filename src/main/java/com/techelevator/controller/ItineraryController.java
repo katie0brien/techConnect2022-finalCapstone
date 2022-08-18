@@ -7,6 +7,7 @@ import com.techelevator.model.dto.Landmark;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,12 +42,24 @@ public class ItineraryController {
     }
 
     @RequestMapping(value = "/create/{id}", method = RequestMethod.POST)
-    public String addItinerary(Model model, @Valid @ModelAttribute Itinerary itinerary, @PathVariable String id) {
+    public String addItinerary(Model model, @Valid @ModelAttribute Itinerary itinerary, @PathVariable String id, BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "createItinerary";
+        }
+
         itineraryDAO.createItinerary(itinerary, Integer.parseInt(id));
 
         model.addAttribute("itinerary", itinerary);
 
         return "redirect:itinerary/list/" + id; //todo fill in appropriate page
+    }
+
+    @RequestMapping("/delete/{id}")
+    public String deleteItinerary(@PathVariable int id) {
+        itineraryDAO.deleteItinerary(id);
+
+        return "redirect:itinerary/list/";
     }
 
 }

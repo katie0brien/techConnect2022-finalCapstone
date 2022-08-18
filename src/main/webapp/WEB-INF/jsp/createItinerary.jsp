@@ -13,8 +13,8 @@
         <div class="col-sm-4"></div>
         <div class="col-sm-4">
             <div class="form-group">
-                <label for="tripName">Trip Name: </label>
-                <input type="text" id="tripName" name="tripName" placeHolder="Trip Name" class="form-control" />
+                <label for="name">Trip Name: </label>
+                <input type="text" id="name" name="name" placeHolder="Trip Name" class="form-control" />
 <%--                <label id="userNameAvailableError" class="error">This user name is taken</label>--%>
             </div>
 
