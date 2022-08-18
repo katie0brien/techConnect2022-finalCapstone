@@ -57,5 +57,5 @@
         <input class="createButton" type="submit" value="onwards" />
     </form>
 </div>
-<div class="bottom"> <p>designed by katie, sarah, & mohamed</p> </div>
+<div class="bottom"> <p>katie. sarah. mohamed.</p> </div>
 
