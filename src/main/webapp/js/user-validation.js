@@ -1,33 +1,27 @@
+let isUserNameAvailable = true;
 let userNameAvailableError;
 let newUserButton;
 
-    function checkUserName()
-    {
-        // get the username that was typed
-        const userName = $("#userName").val();
+async function checkUserName() {
+    // get the username that was typed
+    const userName = $("#userName").val();
 
-        // create the url to check if it's available
-        const url = "/users/checkusername?userName=" + userName;
+    // create the url to check if it's available
+    const url = "/users/checkusername?userName=" + userName;
 
-        // call the api
-        $.get(url, (data) => {
+    // call the api
+    return $.get(url, (data) => {
 
-            //display error message if username is taken
-            const isNotAvailable = !data;
-            newUserButton.prop("disabled", isNotAvailable)
-            if(isNotAvailable){
-                userNameAvailableError.show();
-            }
-            else {
-                userNameAvailableError.hide();
-            }
+        const userNameAvailable = $('#userNameAvailable')
+        userNameAvailable.val(data)
 
-        })
+    })
 
-    }
+
+}
 
 $(document).ready(function () {
-    newUserButton=$("#newUserButton")
+    //regex validator rules via jquery for our form fields
     $.validator.addMethod('capitals', function (thing) {
         return thing.match(/[A-Z]/);
     });
@@ -38,16 +32,26 @@ $(document).ready(function () {
     $.validator.addMethod('emailPattern', function (thing3) {
         return thing3.match(/[a-z0-9]+@+[a-z0-9]+.com/);
     });
+    $.validator.addMethod('userNameTaken', function(thing4) {
+        let isAvailable = thing4 === 'true';
+        return isAvailable;
+    });
+
+    $('#userName').keyup(checkUserName);
+    newUserButton=$("#newUserButton")
     userNameAvailableError = $("#userNameAvailableError");
     userNameAvailableError.hide();
 
-
-
+    //jquery form validator rules
     $("form").validate({
 
         rules : {
             userName : {
                 required : true
+            },
+            userNameAvailable: {
+                required: true,
+                userNameTaken: true
             },
             phoneNumber : {
                 required: true,
@@ -75,6 +79,9 @@ $(document).ready(function () {
             }
         },
         messages : {
+            userNameAvailable: {
+                userNameTaken: "This user name is taken by another user"
+            },
             password: {
                 minlength: "Password too short, make it at least 8 characters",
                 capitals: "Field must contain a capital letter",
@@ -94,7 +101,6 @@ $(document).ready(function () {
 
     });
 
-    $("#userName").blur(checkUserName);
 });
 
 

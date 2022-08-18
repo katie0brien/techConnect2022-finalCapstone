@@ -15,7 +15,8 @@
 			<div class="form-group">
 				<label for="userName">User Name: </label>
 				<input type="text" id="userName" name="userName" placeHolder="User Name" class="form-control" />
-				<label id="userNameAvailableError" class="error">This user name is taken</label>
+				<input type="text" id="userNameAvailable" name="userNameAvailable" value="true" class="hidden-validation" />
+<%--				<label id="userNameAvailableError" class="error">This user name is taken</label>--%>
 			</div>
 
 			<div class="form-group">
