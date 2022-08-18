@@ -11,6 +11,8 @@ import com.techelevator.model.dto.Landmark;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,30 +27,36 @@ public class JDBCItineraryDAO implements ItineraryDAO {
     private JDBCLandMarkDAO jdbcLandMarkDAO;
 
     @Override
-    public List<Itinerary> getItinerariesByUserName(String userName) {
+    public List<Itinerary> getItinerariesByUserName(int userID) {
         List<Itinerary> itineraries = new ArrayList<>();
 
-        String sql = "SELECT * " +
-                "FROM itinerary AS i " +
-                "INNER JOIN user_itinerary AS ui " +
-                "ON ui.itinerary_id = i.id " +
-                "INNER JOIN app_user AS au " +
-                "ON au.id = ui.user_id " +
-                "WHERE au.user_name = ?;";
+//        String sql = "SELECT * " +
+//                "FROM itinerary AS i " +
+//                "INNER JOIN user_itinerary AS ui " +
+//                "ON ui.itinerary_id = i.id " +
+//                "INNER JOIN app_user AS au " +
+//                "ON au.id = ui.user_id " +
+//                "WHERE au.user_name = ?;";
 
-        SqlRowSet row = jdbcTemplate.queryForRowSet(sql);
+        String sql = "SELECT *\n" +
+                "FROM itinerary\n" +
+                "WHERE id IN (SELECT itinerary_id FROM user_itinerary WHERE user_id = ?)";
 
-        Itinerary temp = new Itinerary();
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, userID);
 
         while(row.next()) {
+            Itinerary temp = new Itinerary();
             temp.setName(row.getString("name"));
             temp.setIrineraryId(row.getString("id"));
+            temp.setFromDate(row.getString("from_date"));
+            temp.setToDate(row.getString("to_date"));
+            temp.setTempDate(row.getDate("to_date").toLocalDate());
 
-            List<Landmark> landmarks = jdbcLandMarkDAO.getLandmarkByItineraryId(row.getInt("id"));
+//            List<Landmark> landmarks = jdbcLandMarkDAO.getLandmarkByItineraryId(row.getInt("id"));
 
-            for(Landmark land : landmarks) {
-                temp.addLandmarkId(land.getId());
-            }
+//            for(Landmark land : landmarks) {
+//                temp.addLandmarkId(land.getId());
+//            }
 
             itineraries.add(temp);
         }
@@ -57,11 +65,13 @@ public class JDBCItineraryDAO implements ItineraryDAO {
     }
 
     @Override
-    public void editItineraryName(String name) {
+    public void editItinerary(Itinerary itinerary) {
         String sql = "UPDATE itinerary " +
-                "SET name = ?;";
+                "SET name = ?, from_date = ?, to_date = ?;";
 
-        jdbcTemplate.update(sql, name);
+//        Date fromDate = Date.valueOf(itinerary.getFromDate());
+//        Date toDate = Date.valueOf(itinerary.getToDate());
+        jdbcTemplate.update(sql, itinerary.getName(), itinerary.getFromDate(), itinerary.getToDate());
 
     }
 
@@ -75,21 +85,37 @@ public class JDBCItineraryDAO implements ItineraryDAO {
     }
 
     @Override
-    public String createItinerary(String name) {
-        String sql = "INSERT INTO itinerary(name) " +
-                "VALUES(?) " +
+    public void createItinerary(Itinerary itinerary, int userId) {
+        String sql = "INSERT INTO itinerary(name, from_date, to_date) " +
+                "VALUES(?,?,?) " +
                 "RETURNING id;";
 
-        addItineraryIdToRelatorTable(name, Integer.toString(jdbcTemplate.update(sql, name)));
+//        Date fromDate = Date.valueOf(itinerary.getFromDate());
+//        Date toDate = Date.valueOf(itinerary.getToDate());
 
-        return Integer.toString(jdbcTemplate.update(sql, name));
+        int id = jdbcTemplate.queryForObject(sql, Integer.class, itinerary.getName(),Date.valueOf(itinerary.getFromDate()), Date.valueOf(itinerary.getToDate()));
+
+        sql = "UPDATE itinerary " +
+                "SET name = ? " +
+                "WHERE id = ?;";
+
+        jdbcTemplate.update(sql,itinerary.getName(), id);
+        addItineraryIdToRelatorTable(id, userId);
     }
 
     @Override
-    public void addItineraryIdToRelatorTable(String itineraryId, String userId) {
+    public void addItineraryIdToRelatorTable(int itineraryId, int userId) {
         String sql = "INSERT INTO user_itinerary(itinerary_id, user_id) " +
                 "VALUES(?, ?);";
 
         jdbcTemplate.update(sql, itineraryId, userId);
+    }
+
+    @Override
+    public void deleteItinerary(int id) {
+        String sql = "DELETE FROM itinerary " +
+                "WHERE id = ?;";
+
+        jdbcTemplate.update(sql, id);
     }
 }

@@ -5,7 +5,7 @@
 BEGIN;
 
 -- CREATE statements go here
-DROP TABLE IF EXISTS app_user, landmark, user_landmark;
+DROP TABLE IF EXISTS app_user, landmark, user_landmark, itinerary_landmark, itinerary, user_itinerary;
 
 CREATE TABLE app_user (
   id SERIAL PRIMARY KEY,
@@ -41,7 +41,9 @@ CREATE TABLE user_landmark (
 
 CREATE TABLE itinerary (
     id SERIAL PRIMARY KEY,
-    name varchar(56)
+    name varchar(56),
+    from_date date,
+    to_date date
 );
 
 CREATE TABLE itinerary_landmark (

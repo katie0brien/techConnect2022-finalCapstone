@@ -166,6 +166,14 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
                                         landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getZipOrPostal(), landmark.getCountry());
     }
 
+    @Override
+    public void addLandmarkToRelatorTable(String landmarkId, int itineraryId) {
+        String sql = "INSERT INTO itinerary_landmark(ITINERARY_ID, LANDMARK_ID)\n" +
+                "VALUES (?,?);";
+
+        jdbcTemplate.update(sql, itineraryId, landmarkId);
+    }
+
 
     public Landmark mapToLandmark(SqlRowSet row) {
         Landmark landmark = new Landmark();
