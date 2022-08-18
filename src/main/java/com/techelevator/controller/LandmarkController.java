@@ -42,4 +42,13 @@ public class LandmarkController {
 
         return "landmarkDetails";
     }
+
+    @RequestMapping("/itinerary/{id}")
+    public String viewItineraryLandmarks(@PathVariable int id, Model model) {
+        List<Landmark> landmarks = landmarkDAO.getLandmarkByItineraryId(id);
+
+        model.addAttribute("landmarks", landmarks);
+
+        return "landmarkList";
+    }
 }

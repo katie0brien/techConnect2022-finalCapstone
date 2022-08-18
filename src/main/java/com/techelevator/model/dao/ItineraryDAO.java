@@ -8,6 +8,7 @@ import java.util.List;
 public interface ItineraryDAO {
 
     List<Itinerary> getItinerariesByUserName(int userID);
+    Itinerary getItineraryBy(int id);
     void editItinerary(Itinerary itinerary);
     void deleteLandmarkFromItinerary(int itineraryId, String landmarkId);
     void createItinerary(Itinerary itinerary, int userID);
