@@ -23,7 +23,8 @@
                 <td>
                     <c:out value="${itinerary.toDate}"></c:out>
                 </td>
-                <td><a href="#">Delete</a></td>
+
+                <td><a href="/itinerary/delete/${itinerary.irineraryId}">Delete</a></td>
                 <td><a href="#">Edit</a></td>
 
             </tr>
@@ -55,9 +56,6 @@
                 <td>
                     <c:out value="${itinerary.toDate}"></c:out>
                 </td>
-
-                <td><a href="/itinerary/delete/${itinerary.irineraryId}">Delete</a></td>
-                <td><a href="#">Edit</a></td>
 
             </tr>
 
