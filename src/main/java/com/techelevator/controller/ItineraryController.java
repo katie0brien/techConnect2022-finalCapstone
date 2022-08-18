@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -26,21 +27,26 @@ public class ItineraryController {
     }
 
     @RequestMapping("/list/{id}")
-    public String listItineraries(Model model, @PathVariable String id) {
+    public String listItineraries(Model model, @PathVariable int id) {
         List<Itinerary> itineraries = itineraryDAO.getItinerariesByUserName(id);
 
         model.addAttribute("itineraries", itineraries);
 
-        return " "; //todo fill in appropriate page
+        return "itineraryList"; //todo fill in appropriate page
     }
 
-    @RequestMapping("/createItinerary/{id}")
-    public String createItinerary(Model model, @PathVariable String id, @Valid @ModelAttribute Itinerary itinerary) {
-        String newItineraryId = itineraryDAO.createItinerary(itinerary.getName());
+    @RequestMapping(value = "/create/{id}", method = RequestMethod.GET)
+    public String createItinerary(@PathVariable String id) {
+        return "createItinerary";
+    }
 
-//        model.addAttribute("itineraries", itineraries);
+    @RequestMapping(value = "/create/{id}", method = RequestMethod.POST)
+    public String addItinerary(Model model, @Valid @ModelAttribute Itinerary itinerary, @PathVariable String id) {
+        itineraryDAO.createItinerary(itinerary, Integer.parseInt(id));
 
-        return " "; //todo fill in appropriate page
+        model.addAttribute("itinerary", itinerary);
+
+        return "redirect:itinerary/list/" + id; //todo fill in appropriate page
     }
 
 }
