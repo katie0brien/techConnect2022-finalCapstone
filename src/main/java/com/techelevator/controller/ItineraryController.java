@@ -74,4 +74,9 @@ public class ItineraryController {
         return "redirect:itinerary/list/1";
     }
 
+//    @RequestMapping(value = "createPin", method = RequestMethod.GET)
+//    public String createPin() {
+//
+//    }
+
 }

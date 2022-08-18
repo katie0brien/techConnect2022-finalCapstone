@@ -1,0 +1,177 @@
+@media only screen and (min-width: 1600px) and (max-width: 2000px){
+    html{
+
+        height: 1750px;
+        background-color: #FCF8E8;
+        padding: 0px;
+        overflow-x:hidden;
+    }
+    html::-webkit-scrollbar {
+        width: 0px
+    }
+    body{
+        height: 100%;
+        position: relative;
+        margin:0; padding:0;
+        width: 1920px;
+    }
+    .topBox{
+        width: 100%; height: 70px;
+
+        background-color: #FCF8E8;
+        display: flex; justify-content: space-between;
+        font-family: 'Raleway', sans-serif;
+        z-index: -1;
+    }
+    .holder{
+        margin-left: 25px; margin-top: 10px;
+        width: 50px; height: 50px;
+        border-radius: 25px;
+        background-color: #94B49F;
+        color: #FCF8E8;
+        text-transform: uppercase;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .company{
+        text-transform: uppercase;
+        letter-spacing: 5px;
+        font-size: 45px;
+        font-weight: 700;
+        font-family: 'Raleway', sans-serif;
+        margin-top: 12px;
+        color: #94B49F;
+
+    }
+    .profile{
+        margin-right: 25px; margin-top: 10px;
+        width: 50px; height: 50px;
+        border-radius: 25px;
+        background-color: #94B49F;
+        color: #FCF8E8;
+        text-transform: uppercase;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .pillBox{
+        height: 700px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .home1{
+        margin-top:100px;
+        border-radius: 500px;
+        width: 18%; height:550px;
+        overflow: hidden;
+        display: flex;
+        align-items: center; justify-content: center;
+        margin-left: -150px; margin-top: -250px;
+    }
+    .home1 img{
+        width: 103%
+    }
+    .home2{
+        margin-top:10px;
+        border-radius: 300px;
+        width: 18%; height:550px;
+        overflow: hidden;
+        display: flex;
+        align-items: center; justify-content: center;
+    }
+    .home2 img{
+        width: 103%
+    }
+    .home3{
+        margin-top:90px;
+        border-radius: 350px;
+        width: 25%; height:830px;
+        overflow: hidden;
+        display: flex;
+        align-items: center; justify-content: center;
+    }
+    .home3 img{
+        height: 103%;
+    }
+    .home4{
+        margin-top:300px;
+        border-radius: 300px;
+        width: 18%; height:550px;
+        overflow: hidden;
+        display: flex;
+        align-items: center; justify-content: center;
+    }
+    .home4 img{
+        height: 103%
+    }
+    .home5{
+        margin-top:500px; margin-right: -190px;
+        border-radius: 500px;
+        width: 18%; height:550px;
+        overflow: hidden;
+        display: flex;
+        align-items: center; justify-content: center;
+    }
+    .home5 img{
+        width:120%;
+    }
+    .statement{
+        position: absolute;
+        left: 30px;
+        top: 820px;
+        color: #DF7861;
+        text-transform: uppercase;
+        letter-spacing: 60px;
+        width: 800px;
+        line-height: 175px;
+        font-size: 160px;
+        font-weight: 800;
+        font-family: 'Raleway', sans-serif;
+    }
+    .girl{
+        width: 200px;
+        position: absolute;
+        top: 1355px; right: 725px;
+    }
+    .girl img{
+        width: 300px;
+    }
+    .buttonBox{
+        position: absolute;
+        top: 1440px; right: 100px;
+        display: flex; justify-content: center;
+        align-items: center;
+    }
+    .createButton{
+        width: 450px; height: 150px;
+        border-radius: 200px; border: none;
+        background-color: rgba(223, 120, 97, .5);
+        letter-spacing: 15px;
+        font-size: 40px;
+        font-weight: 600;
+        font-family: 'Raleway', sans-serif;
+
+        color: #FCF8E8;
+    }
+    .createButton:hover{
+        cursor: pointer;
+    }
+    .bottom{
+        width: 100%; height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #94B49F;
+        color: #FCF8E8;
+        font-family: 'Raleway', sans-serif;
+        font-size: 17px;
+        position: absolute;
+        bottom: 0;
+        letter-spacing: 5px;;
+    }
+
+
+}

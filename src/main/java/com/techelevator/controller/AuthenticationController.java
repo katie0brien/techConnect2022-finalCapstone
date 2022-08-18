@@ -22,33 +22,36 @@ public class AuthenticationController {
 		this.userDAO = userDAO;
 	}
 
-	@RequestMapping(path="/login", method=RequestMethod.GET)
+	@RequestMapping(path = "/login", method = RequestMethod.GET)
 	public String displayLoginForm() {
 		return "login";
 	}
-	
-	@RequestMapping(path="/login", method=RequestMethod.POST)
-	public String login(@RequestParam String userName, 
-						@RequestParam String password, 
-						@RequestParam(required=false) String destination,
+
+	@RequestMapping(path = "/login", method = RequestMethod.POST)
+	public String login(@RequestParam String userName,
+						@RequestParam String password,
+						@RequestParam(required = false) String destination,
 						HttpSession session) {
-		if(userDAO.searchForUsernameAndPassword(userName, password)) {
+		if (userDAO.searchForUsernameAndPassword(userName, password)) {
 			session.setAttribute("currentUser", userDAO.getUserByUserName(userName));
-			
-			if(destination != null && ! destination.isEmpty()) {
+
+			if (destination != null && !destination.isEmpty()) {
 				return "redirect:" + destination;
 			} else {
-				return "redirect:/users/"+userName;
+				return "redirect:/users/" + userName;
 			}
 		} else {
 			return "redirect:/login";
 		}
 	}
 
-	@RequestMapping(path="/logout", method=RequestMethod.POST)
+	@RequestMapping(path = "/logout", method = RequestMethod.POST)
 	public String logout(ModelMap model, HttpSession session) {
 		model.remove("currentUser");
 		session.invalidate();
 		return "redirect:/";
 	}
+
 }
+
+
