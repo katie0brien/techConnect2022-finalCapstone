@@ -16,5 +16,5 @@ public interface LandmarkDAO {
     void editLandmark(Landmark landmark);
     void deleteLandmark(long id);
     void addLandmark(Landmark landmark);
-//    void addLandmarkToRelatorTable(String landmarkId, int itineraryId);
+void addLandmarkToRelatorTable(String landmarkId, int itineraryId);
 }
