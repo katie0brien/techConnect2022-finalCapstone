@@ -106,11 +106,9 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     public List<Landmark> getLandmarkByItineraryId(int itineraryId) {
         List<Landmark> landmarks = new ArrayList<>();
 
-        String sql = "SELECT * " +
-                "FROM landmark AS l " +
-                "INNER JOIN itinerary_landmark AS il " +
-                "ON l.id = il.landmark_id " +
-                "WHERE il.itinerary_id = ?;";
+        String sql = "select *\n" +
+                "from landmark\n" +
+                "where id in (select landmark_id from itinerary_landmark where itinerary_id = ?);";
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(sql, itineraryId);
 

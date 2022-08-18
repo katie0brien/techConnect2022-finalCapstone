@@ -17,6 +17,7 @@ public class Itinerary {
     private String fromDate;
 
     private String toDate;
+    private LocalDate actualFromDate;
 
     private LocalDate tempDate;
     //constructor -- use default
@@ -70,6 +71,14 @@ public class Itinerary {
 
     public void setTempDate(LocalDate tempDate) {
         this.tempDate = tempDate;
+    }
+
+    public LocalDate getActualFromDate() {
+        return actualFromDate;
+    }
+
+    public void setActualFromDate(LocalDate actualFromDate) {
+        this.actualFromDate = actualFromDate;
     }
 
     public boolean isPast() {
