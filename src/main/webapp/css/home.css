@@ -121,7 +121,7 @@
     .statement{
         position: absolute;
         left: 30px;
-        top: 755px;
+        top: 820px;
         color: #DF7861;
         text-transform: uppercase;
         letter-spacing: 60px;
@@ -134,14 +134,14 @@
     .girl{
         width: 200px;
         position: absolute;
-        top: 1315px; right: 725px;
+        top: 1355px; right: 725px;
     }
     .girl img{
         width: 300px;
     }
     .buttonBox{
         position: absolute;
-        top: 1400px; right: 100px;
+        top: 1440px; right: 100px;
         display: flex; justify-content: center;
         align-items: center;
     }
