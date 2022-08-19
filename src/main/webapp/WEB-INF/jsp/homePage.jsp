@@ -53,7 +53,8 @@
 <c:url var="adventurer" value="../../img/adventurer.png" />
 <div class="girl">  <img src="${adventurer}" alt="">  </div>
 <div class="buttonBox">
-    <form method="get" action="">
+    <c:url var="createItinerary" value="/itinerary/create" />
+    <form method="get" action="${createItinerary}">
         <input class="createButton" type="submit" value="onwards" />
     </form>
 </div>

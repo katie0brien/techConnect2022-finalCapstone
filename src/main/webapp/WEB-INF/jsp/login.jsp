@@ -9,10 +9,10 @@
 			
 			rules : {
 				userName : {
-					required : true
+					required : false
 				},
 				password : {
-					required : true
+					required : false
 				}
 			},
 			messages : {			
@@ -68,7 +68,11 @@
 		</div>
 		<div class="grabber"> New to Trip Planner?</div>
 		<div class="buttonCase">
-			<button type="submit" class="joinButton">join today</button></div>
+			<c:url var="newUser" value="/users/new" />
+			<form style="width: 100%;text-align: center;" method="get"  action="${newUser}">
+			<button type="submit" class="joinButton">join today</button>
+			</form>
+		</div>
 		<div class="finisher">and see why thousands choose to explore with us</div>
 
 	</div>
