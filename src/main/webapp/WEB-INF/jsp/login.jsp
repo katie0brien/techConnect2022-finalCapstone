@@ -9,10 +9,10 @@
 			
 			rules : {
 				userName : {
-					required : true
+					required : false
 				},
 				password : {
-					required : true
+					required : false
 				}
 			},
 			messages : {			
@@ -41,10 +41,11 @@
 		<div class="company">trip planner</div>
 		<c:url var="adventurerDude" value="../../img/adventurerDude.png" />
 		<div class="logo"> <img src="${adventurerDude}" alt="">  </div>
-		<form method="POST" action="${formAction}">
+		<c:url var="goHome" value="/home" />
+		<form method="get" action="${goHome}">
 			<input type="hidden" name="destination" value="${param.destination}"/>
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-			<div class="form-group">
+			<div class="form-group" >
 				<input type="text" id="userName" name="userName" placeHolder="User Name" class="form-control" />
 			</div>
 			<div class="form-group">
@@ -67,8 +68,15 @@
 		</div>
 		<div class="grabber"> New to Trip Planner?</div>
 		<div class="buttonCase">
-			<button type="submit" class="joinButton">join today</button></div>
+			<c:url var="newUser" value="/users/new" />
+			<form style="width: 100%;text-align: center;" method="get"  action="${newUser}">
+			<button type="submit" class="joinButton">join today</button>
+			</form>
+		</div>
 		<div class="finisher">and see why thousands choose to explore with us</div>
 
 	</div>
 </div>
+
+
+

@@ -12,4 +12,6 @@ public interface UserDAO {
 
 	public boolean isUserNameAvailable(String userName);
 
+	public boolean userNamePasswordExist(String userName, String password);
+
 }

@@ -4,6 +4,7 @@ import com.techelevator.model.dao.ItineraryDAO;
 import com.techelevator.model.dao.LandmarkDAO;
 import com.techelevator.model.dto.Itinerary;
 import com.techelevator.model.dto.Landmark;
+import org.bouncycastle.ocsp.Req;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -71,6 +72,12 @@ public class ItineraryController {
         itineraryDAO.editItinerary(itinerary);
 
         return "redirect:/itinerary/list/1";
+    }
+
+//    ask about how to grab the id you want to assign on create itinerary and use the first request mapping above.
+    @RequestMapping(value="/create", method = RequestMethod.GET)
+    public String displayItineraryPage(){
+        return "createItinerary";
     }
 
 //    @RequestMapping(value = "createPin", method = RequestMethod.GET)
