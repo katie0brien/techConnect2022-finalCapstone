@@ -65,13 +65,35 @@ public class JDBCItineraryDAO implements ItineraryDAO {
     }
 
     @Override
+    public Itinerary getItineraryBy(int id) {
+        String sql = "SELECT *\n" +
+                "FROM itinerary\n" +
+                "WHERE id = ?";
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, id);
+        Itinerary temp = new Itinerary();
+
+        if(row.next()) {
+            temp.setName(row.getString("name"));
+            temp.setIrineraryId(row.getString("id"));
+            temp.setFromDate(row.getString("from_date"));
+            temp.setToDate(row.getString("to_date"));
+            temp.setTempDate(row.getDate("to_date").toLocalDate());
+            temp.setActualFromDate(row.getDate("from_date").toLocalDate());
+        }
+
+        return temp;
+    }
+
+    @Override
     public void editItinerary(Itinerary itinerary) {
         String sql = "UPDATE itinerary " +
-                "SET name = ?, from_date = ?, to_date = ?;";
+                "SET name = ?, from_date = ?, to_date = ? " +
+                "WHERE id = ?;";
 
 //        Date fromDate = Date.valueOf(itinerary.getFromDate());
 //        Date toDate = Date.valueOf(itinerary.getToDate());
-        jdbcTemplate.update(sql, itinerary.getName(), itinerary.getFromDate(), itinerary.getToDate());
+        jdbcTemplate.update(sql, itinerary.getName(), itinerary.getFromDate(), itinerary.getToDate(), itinerary.getIrineraryId());
 
     }
 
@@ -112,8 +134,13 @@ public class JDBCItineraryDAO implements ItineraryDAO {
     }
 
     @Override
-    public void deleteItinerary(int id) {
-        String sql = "DELETE FROM itinerary " +
+    public void deleteItinerary(int id, int userId) {
+        String sql = "DELETE FROM user_itinerary " +
+                "WHERE user_id = ? AND itinerary_id = ?;";
+
+        jdbcTemplate.update(sql, userId, id);
+
+        sql = "DELETE FROM itinerary " +
                 "WHERE id = ?;";
 
         jdbcTemplate.update(sql, id);

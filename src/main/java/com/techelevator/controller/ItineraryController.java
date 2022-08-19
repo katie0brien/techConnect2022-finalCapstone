@@ -8,11 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -21,9 +19,8 @@ import java.util.List;
 public class ItineraryController {
 
     ItineraryDAO itineraryDAO;
-
     @Autowired
-    public ItineraryController(ItineraryDAO itineraryDAO) {
+    public ItineraryController(ItineraryDAO itineraryDAO, LandmarkDAO landmarkDAO) {
         this.itineraryDAO = itineraryDAO;
     }
 
@@ -55,11 +52,26 @@ public class ItineraryController {
         return "redirect:itinerary/list/" + id; //todo fill in appropriate page
     }
 
-    @RequestMapping("/delete/{id}")
-    public String deleteItinerary(@PathVariable int id) {
-        itineraryDAO.deleteItinerary(id);
+    @RequestMapping(value = "/delete/{id}/{userId}", method = RequestMethod.POST)
+    public String deleteItinerary(@PathVariable int id, @PathVariable int userId) {
+        itineraryDAO.deleteItinerary(id, userId);
+        return "redirect:itinerary/list/1";
+    }
 
-        return "redirect:itinerary/list/";
+    @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
+    public String editItinerary(@PathVariable int id, Model model) {
+        Itinerary itinerary = itineraryDAO.getItineraryBy(id);
+        model.addAttribute("itinerary", itinerary);
+        return "editItinerary";
+    }
+
+    @RequestMapping(value = "edit/{id}", method = RequestMethod.PUT)
+    public String saveItinerary(@PathVariable int id, @RequestBody Itinerary itinerary) {
+
+        itinerary.setIrineraryId(Integer.toString(id));
+        itineraryDAO.editItinerary(itinerary);
+
+        return "redirect:itinerary/list/1";
     }
 
 //    @RequestMapping(value = "createPin", method = RequestMethod.GET)

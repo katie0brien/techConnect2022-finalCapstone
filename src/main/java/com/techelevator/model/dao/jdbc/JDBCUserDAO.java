@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.techelevator.model.dto.User;
 import com.techelevator.services.security.PasswordHasher;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Component
 public class JDBCUserDAO implements UserDAO
@@ -51,6 +52,22 @@ public class JDBCUserDAO implements UserDAO
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public boolean userNamePasswordExist( String userName, String password){
+		String dbSalty;
+		String p;
+
+		String queryCheck = "SELECT *  FROM app_user WHERE user_name = ?";
+		SqlRowSet checked = jdbcTemplate.queryForRowSet(queryCheck, userName);
+		if( checked.next() ){
+			dbSalty = checked.getString("salt");
+			p = checked.getString("password");
+			String passCode = hashMaster.computeHash(password, Base64.decode(dbSalty));
+			return p.equals(passCode);
+		}
+		return false;
 	}
 
 	@Override

@@ -41,10 +41,11 @@
 		<div class="company">trip planner</div>
 		<c:url var="adventurerDude" value="../../img/adventurerDude.png" />
 		<div class="logo"> <img src="${adventurerDude}" alt="">  </div>
-		<form method="POST" action="${formAction}">
+		<c:url var="goHome" value="/home" />
+		<form method="get" action="${goHome}">
 			<input type="hidden" name="destination" value="${param.destination}"/>
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-			<div class="form-group">
+			<div class="form-group" >
 				<input type="text" id="userName" name="userName" placeHolder="User Name" class="form-control" />
 			</div>
 			<div class="form-group">
@@ -72,3 +73,6 @@
 
 	</div>
 </div>
+
+
+
