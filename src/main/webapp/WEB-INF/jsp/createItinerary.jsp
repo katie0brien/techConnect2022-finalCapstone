@@ -9,7 +9,7 @@
 
 <%-- the form part of the website />--%>
 <c:url var="formAction" value="/itinerary/create/1" />
-<form method="POST" action="${formAction}">
+<form:form method="POST" action="${formAction}" modelAttribute="itinerary">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
         <div class="col-sm-4"></div>
@@ -30,7 +30,7 @@
         </div>
         <div class="col-sm-4"></div>
     </div>
-</form>
+</form:form>
 
 <%-- modal pop up about asking user to save pin />--%>
 <div class="modal" tabindex="-1" role="dialog" id="savePinModal">

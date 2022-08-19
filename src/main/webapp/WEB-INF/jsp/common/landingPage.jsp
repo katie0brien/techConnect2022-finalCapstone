@@ -10,7 +10,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>IT WORKS</title>
+    <title>TRIP PLANNER | M.S.K</title>
     <c:url var="bootstrapCss" value="/css/bootstrap.min.css" />
     <c:url var="siteCss" value="/css/login.css" />
 
