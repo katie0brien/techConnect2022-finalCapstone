@@ -72,69 +72,83 @@
         })
     );
 
+    map.on('click', (event) => {
+        addMarker(event.lngLat.lng, event.lngLat.lat)
+        $('savePinModal').modal('show');
+    })
+
+    function addMarker(lng, lat) {
+        const marker = new mapboxgl.Marker({
+            draggable: true
+        })
+
+        .setLngLat([lng,lat])
+        .addTo(map);
+    }
 
 
-    map.on('load', () => {
-// Add an image to use as a custom marker
-        map.loadImage(
-            'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
-            (error, image) => {
-                if (error) throw error;
-                map.addImage('custom-marker', image);
-// Add a GeoJSON source with 2 points
-                map.addSource('points', {
-                    'type': 'geojson',
-                    'data': {
-                        'type': 'FeatureCollection',
-                        'features': [
-                            {
-// feature for Mapbox DC
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [
-                                        -77.03238901390978, 38.913188059745586
-                                    ]
-                                },
-                                'properties': {
-                                    'title': 'Mapbox DC'
-                                }
-                            },
-                            {
-// feature for Mapbox SF
-                                'type': 'Feature',
-                                'geometry': {
-                                    'type': 'Point',
-                                    'coordinates': [-122.414, 37.776]
-                                },
-                                'properties': {
-                                    'title': 'Mapbox SF'
-                                }
-                            }
-                        ]
-                    }
-                });
 
-// Add a symbol layer
-                map.addLayer({
-                    'id': 'points',
-                    'type': 'symbol',
-                    'source': 'points',
-                    'layout': {
-                        'icon-image': 'custom-marker',
-// get the title name from the source's "title" property
-                        'text-field': ['get', 'title'],
-                        'text-font': [
-                            'Open Sans Semibold',
-                            'Arial Unicode MS Bold'
-                        ],
-                        'text-offset': [0, 1.25],
-                        'text-anchor': 'top'
-                    }
-                });
-            }
-        );
-    });
+//     map.on('load', () => {
+// // Add an image to use as a custom marker
+//         map.loadImage(
+//             'https://docs.mapbox.com/mapbox-gl-js/assets/custom_marker.png',
+//             (error, image) => {
+//                 if (error) throw error;
+//                 map.addImage('custom-marker', image);
+// // Add a GeoJSON source with 2 points
+//                 map.addSource('points', {
+//                     'type': 'geojson',
+//                     'data': {
+//                         'type': 'FeatureCollection',
+//                         'features': [
+//                             {
+// // feature for Mapbox DC
+//                                 'type': 'Feature',
+//                                 'geometry': {
+//                                     'type': 'Point',
+//                                     'coordinates': [
+//                                         -77.03238901390978, 38.913188059745586
+//                                     ]
+//                                 },
+//                                 'properties': {
+//                                     'title': 'Mapbox DC'
+//                                 }
+//                             },
+//                             {
+// // feature for Mapbox SF
+//                                 'type': 'Feature',
+//                                 'geometry': {
+//                                     'type': 'Point',
+//                                     'coordinates': [-122.414, 37.776]
+//                                 },
+//                                 'properties': {
+//                                     'title': 'Mapbox SF'
+//                                 }
+//                             }
+//                         ]
+//                     }
+//                 });
+//
+// // Add a symbol layer
+//                 map.addLayer({
+//                     'id': 'points',
+//                     'type': 'symbol',
+//                     'source': 'points',
+//                     'layout': {
+//                         'icon-image': 'custom-marker',
+// // get the title name from the source's "title" property
+//                         'text-field': ['get', 'title'],
+//                         'text-font': [
+//                             'Open Sans Semibold',
+//                             'Arial Unicode MS Bold'
+//                         ],
+//                         'text-offset': [0, 1.25],
+//                         'text-anchor': 'top'
+//                     }
+//                 });
+//             }
+//         );
+//     });
 
 
 </script>
@@ -142,10 +156,31 @@
 </body>
 </html>
 
-<div>
-    <form method="POST" action="${formAction}">
-        <button type="submit" id="pin button" class="btn btn-primary">Pin this Location</button>
-    </form>
+
+<%-- modal pop up about asking user to save pin />--%>
+<div class="modal" tabindex="-1" role="dialog" id="savePinModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Save this pin as a landmark?</h5>
+<%--                <button type="button" class="close" data-dismiss="modal" aria-label="Close">--%>
+                    <span aria-hidden="true">&times;</span>
+<%--                </button>--%>
+            </div>
+            <div class="modal-body">
+                <form method="POST" action="${formAction}">
+                    <div class="form-group">
+                        <label for="landmarkName">Pin Name: </label>
+                        <input type="Date" id="landmarkName" name="landmarkName" placeHolder="Pin Name" class="form-control" />
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
 </div>
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
