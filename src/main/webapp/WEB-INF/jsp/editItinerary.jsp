@@ -7,7 +7,7 @@
 <%--<script src="${validationJs}"></script>--%>
 <h1>Make changes to your ${itinerary.name} trip from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
 <c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}" />
-<form method="PUT" action="${formAction}">
+<form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
         <div class="col-sm-4"></div>

@@ -34,44 +34,43 @@ public class ItineraryController {
     }
 
     @RequestMapping(value = "/create/{id}", method = RequestMethod.GET)
-    public String createItinerary(@PathVariable String id) {
+    public String createItinerary(@PathVariable String id, Model model, @Valid @ModelAttribute Itinerary itinerary) {
+        model.addAttribute("itinerary", itinerary);
         return "createItinerary";
     }
 
     @RequestMapping(value = "/create/{id}", method = RequestMethod.POST)
-    public String addItinerary(Model model, @Valid @ModelAttribute Itinerary itinerary, @PathVariable String id, BindingResult result) {
-
+    public String addItinerary(@PathVariable String id ,Model model ,@Valid @ModelAttribute Itinerary itinerary,BindingResult result) {
         if (result.hasErrors()) {
             return "createItinerary";
         }
 
         itineraryDAO.createItinerary(itinerary, Integer.parseInt(id));
 
-        model.addAttribute("itinerary", itinerary);
-
-        return "redirect:itinerary/list/" + id; //todo fill in appropriate page
+        return "redirect:/itinerary/list/" + id; //todo fill in appropriate page
     }
 
     @RequestMapping(value = "/delete/{id}/{userId}", method = RequestMethod.POST)
-    public String deleteItinerary(@PathVariable int id, @PathVariable int userId) {
+    public  String deleteItinerary(@PathVariable int id, @PathVariable int userId) {
         itineraryDAO.deleteItinerary(id, userId);
-        return "redirect:itinerary/list/1";
+
+        return "redirect:/itinerary/list/" + userId;
     }
 
     @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
-    public String editItinerary(@PathVariable int id, Model model) {
-        Itinerary itinerary = itineraryDAO.getItineraryBy(id);
+    public String editItinerary(@PathVariable String id, Model model) {
+        Itinerary itinerary = itineraryDAO.getItineraryBy(Integer.parseInt(id));
         model.addAttribute("itinerary", itinerary);
         return "editItinerary";
     }
 
-    @RequestMapping(value = "edit/{id}", method = RequestMethod.PUT)
-    public String saveItinerary(@PathVariable int id, @RequestBody Itinerary itinerary) {
+    @RequestMapping(value = "edit/{id}", method = RequestMethod.POST)
+    public String saveItinerary(@PathVariable String id, @Valid @ModelAttribute Itinerary itinerary) {
 
-        itinerary.setIrineraryId(Integer.toString(id));
+        itinerary.setIrineraryId(id);
         itineraryDAO.editItinerary(itinerary);
 
-        return "redirect:itinerary/list/1";
+        return "redirect:/itinerary/list/1";
     }
 
 //    @RequestMapping(value = "createPin", method = RequestMethod.GET)

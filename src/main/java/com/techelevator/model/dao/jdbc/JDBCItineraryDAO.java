@@ -48,10 +48,8 @@ public class JDBCItineraryDAO implements ItineraryDAO {
             Itinerary temp = new Itinerary();
             temp.setName(row.getString("name"));
             temp.setIrineraryId(row.getString("id"));
-            temp.setFromDate(row.getString("from_date"));
-            temp.setToDate(row.getString("to_date"));
-            temp.setTempDate(row.getDate("to_date").toLocalDate());
-
+            temp.setToDate((row.getDate("to_date").toLocalDate()));
+            temp.setFromDate((row.getDate("from_date").toLocalDate()));
 //            List<Landmark> landmarks = jdbcLandMarkDAO.getLandmarkByItineraryId(row.getInt("id"));
 
 //            for(Landmark land : landmarks) {
@@ -76,10 +74,8 @@ public class JDBCItineraryDAO implements ItineraryDAO {
         if(row.next()) {
             temp.setName(row.getString("name"));
             temp.setIrineraryId(row.getString("id"));
-            temp.setFromDate(row.getString("from_date"));
-            temp.setToDate(row.getString("to_date"));
-            temp.setTempDate(row.getDate("to_date").toLocalDate());
-            temp.setActualFromDate(row.getDate("from_date").toLocalDate());
+            temp.setToDate((row.getDate("to_date").toLocalDate()));
+            temp.setFromDate((row.getDate("from_date").toLocalDate()));
         }
 
         return temp;
@@ -93,7 +89,7 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 
 //        Date fromDate = Date.valueOf(itinerary.getFromDate());
 //        Date toDate = Date.valueOf(itinerary.getToDate());
-        jdbcTemplate.update(sql, itinerary.getName(), itinerary.getFromDate(), itinerary.getToDate(), itinerary.getIrineraryId());
+        jdbcTemplate.update(sql, itinerary.getName(), itinerary.getFromDate(), itinerary.getToDate(), Integer.parseInt(itinerary.getIrineraryId()));
 
     }
 
@@ -112,16 +108,10 @@ public class JDBCItineraryDAO implements ItineraryDAO {
                 "VALUES(?,?,?) " +
                 "RETURNING id;";
 
-//        Date fromDate = Date.valueOf(itinerary.getFromDate());
-//        Date toDate = Date.valueOf(itinerary.getToDate());
 
-        int id = jdbcTemplate.queryForObject(sql, Integer.class, itinerary.getName(),Date.valueOf(itinerary.getFromDate()), Date.valueOf(itinerary.getToDate()));
+        int id = jdbcTemplate.queryForObject(sql, Integer.class, itinerary.getName(),itinerary.getFromDate(),itinerary.getToDate());
 
-        sql = "UPDATE itinerary " +
-                "SET name = ? " +
-                "WHERE id = ?;";
 
-        jdbcTemplate.update(sql,itinerary.getName(), id);
         addItineraryIdToRelatorTable(id, userId);
     }
 
