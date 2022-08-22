@@ -1,5 +1,9 @@
 package com.techelevator.model.dto;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -14,16 +18,15 @@ public class Itinerary {
 
     private String irineraryId;
 
-    private String fromDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate fromDate;
 
-    private String toDate;
-    private LocalDate actualFromDate;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    private LocalDate toDate;
 
-    private LocalDate tempDate;
     //constructor -- use default
 
     //what the class can do -- methods
-
 
     public String getName() {
         return name;
@@ -49,45 +52,25 @@ public class Itinerary {
         this.irineraryId = irineraryId;
     }
 
-    public String getFromDate() {
+    public LocalDate getFromDate() {
         return fromDate;
     }
 
-    public void setFromDate(String fromDate) {
+    public void setFromDate(LocalDate fromDate) {
         this.fromDate = fromDate;
     }
 
-    public String getToDate() {
+    public LocalDate getToDate() {
         return toDate;
     }
 
-    public void setToDate(String toDate) {
+    public void setToDate(LocalDate toDate) {
         this.toDate = toDate;
     }
 
-    public LocalDate getTempDate() {
-        return tempDate;
+
+    public boolean  isPast(){
+        return toDate.isBefore(LocalDate.now());
     }
 
-    public void setTempDate(LocalDate tempDate) {
-        this.tempDate = tempDate;
-    }
-
-    public LocalDate getActualFromDate() {
-        return actualFromDate;
-    }
-
-    public void setActualFromDate(LocalDate actualFromDate) {
-        this.actualFromDate = actualFromDate;
-    }
-
-    public boolean isPast() {
-        return tempDate.isBefore(LocalDate.now());
-    }
-
-    public String dateToString(LocalDate date) {
-        String[] splitDate = date.toString().split("-");
-        String newDate = splitDate[2] + "-" + splitDate[0] + "-" + splitDate[1];
-        return newDate;
-    }
 }
