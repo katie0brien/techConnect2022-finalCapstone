@@ -18,7 +18,7 @@ public class HomePageController {
         this.userDao = userDao;
     }
 
-    @RequestMapping(path="/home", method= RequestMethod.GET)
+    @RequestMapping(path="/home", method= RequestMethod.POST)
     public String displayHomePage(@RequestParam String userName, @RequestParam String password)
     {
         if ( userDao.userNamePasswordExist(userName, password) ) {

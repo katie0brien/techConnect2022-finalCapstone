@@ -42,7 +42,7 @@
 		<c:url var="adventurerDude" value="../../img/adventurerDude.png" />
 		<div class="logo"> <img src="${adventurerDude}" alt="">  </div>
 		<c:url var="goHome" value="/home" />
-		<form method="get" action="${goHome}">
+		<form method="post" action="${goHome}">
 			<input type="hidden" name="destination" value="${param.destination}"/>
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 			<div class="form-group" >

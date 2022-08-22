@@ -1,0 +1,107 @@
+@media only screen and (min-width: 1600px) and (max-width: 2000px){
+    html{
+        height: 2000px;
+        background-color: #94B49F;
+        padding: 0px;
+    }
+    html::-webkit-scrollbar {
+        width: 0px
+    }
+    body{
+        position: relative;
+        margin:0; padding:0;
+        width: 1920px;
+    }
+    .mountains{
+        width:100%;
+    }
+    .mountains img{
+        width: 100%;
+    }
+    .formContainer{
+        width: 1920px;
+        height: 1400px;
+        background-color: #94B49F;
+        border-radius: 60px;
+        position: absolute;
+        top: 610px;
+
+    }
+    .title{
+        display:flex;
+        justify-content: center;
+        font-family: 'Raleway', sans-serif;
+        font-size: 80px;
+        font-weight: 800;
+        letter-spacing: 16px;
+        text-transform: uppercase;
+        padding-bottom:30px;
+        margin-top: 40px;
+        color: #FCF8E8;
+        margin-bottom:20px;
+    }
+    .test{
+        display: flex;
+        justify-content: center;
+    }
+    .form-column{
+        width: 480px;
+    }
+
+    input, label{
+        display: block;
+    }
+    .form-control{
+        width: 400px;
+        height: 60px;
+        font-family: 'Raleway', sans-serif;
+        background-color: #FCF8E8;
+        border: none; border-radius: 20px;
+        margin-top: 15px;
+        margin-bottom:5px;
+        letter-spacing: 3px;
+        font-size:17px;
+        padding-left: 30px;
+
+
+    }
+    .hidden-validation{
+        visibility: hidden;
+        position: absolute;
+    }
+    .form-column img{
+        width:350px;
+    }
+    .top{
+        margin-top: 50px;
+        font-family: 'Raleway', sans-serif;
+        text-transform: uppercase;
+        font-size: 30px;
+        letter-spacing: 4px;
+        font-weight: 400;
+    }
+    .specialRight{
+        margin-top: 242px;
+    }
+    .buttonBox{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 100px;
+    }
+    .newUserButton{
+        width: 25%;
+        height: 80px;
+        margin: 0 auto;
+        border-radius: 30px; border: none;
+        background-color: #DF7861;
+        color: #FCF8E8;
+        font-family: 'Raleway', sans-serif;
+        text-transform: uppercase;
+        font-size: 40px;
+        font-weight: 500;
+        letter-spacing: 10px;;
+
+    }
+
+}
