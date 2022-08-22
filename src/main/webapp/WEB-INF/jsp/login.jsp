@@ -42,7 +42,7 @@
 		<c:url var="adventurerDude" value="../../img/adventurerDude.png" />
 		<div class="logo"> <img src="${adventurerDude}" alt="">  </div>
 		<c:url var="goHome" value="/home" />
-		<form method="get" action="${goHome}">
+		<form method="post" action="${goHome}">
 			<input type="hidden" name="destination" value="${param.destination}"/>
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 			<div class="form-group" >
@@ -69,7 +69,7 @@
 		<div class="grabber"> New to Trip Planner?</div>
 		<div class="buttonCase">
 			<c:url var="newUser" value="/users/new" />
-			<form style="width: 100%;text-align: center;" method="get"  action="${newUser}">
+			<form class="join" method="get"  action="${newUser}">
 			<button type="submit" class="joinButton">join today</button>
 			</form>
 		</div>
