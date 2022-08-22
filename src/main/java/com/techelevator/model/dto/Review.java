@@ -4,14 +4,21 @@ public class Review {
 
     private int id;
     private boolean isThumbsUp;
-    private int userId;
-    private int landmarkId;
+    private Integer userId;
+    private String landmarkId;
 
-    public Review(int id, boolean isThumbsUp, int userId, int landmarkId) {
+    private String longitude;
+    private String latitude;
+    public Review() {
+    }
+
+    public Review(Integer id, boolean isThumbsUp, Integer userId, String landmarkId, String longitude, String latitude) {
         this.id = id;
         this.isThumbsUp = isThumbsUp;
         this.userId = userId;
         this.landmarkId = landmarkId;
+        this.longitude = longitude;
+        this.latitude = latitude;
     }
 
     public int getId() {
@@ -30,21 +37,35 @@ public class Review {
         isThumbsUp = thumbsUp;
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
-    public int getLandmarkId() {
+    public String getLandmarkId() {
         return landmarkId;
     }
 
-    public void setLandmarkId(int landmarkId) {
+    public void setLandmarkId(String landmarkId) {
         this.landmarkId = landmarkId;
     }
 
+    public String getLongitude() {
+        return longitude;
+    }
 
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
+    }
 }
