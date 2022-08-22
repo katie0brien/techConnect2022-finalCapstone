@@ -65,7 +65,7 @@ CREATE TABLE user_itinerary (
 CREATE TABLE review (
   review_id SERIAL PRIMARY KEY,
   user_id int,
-  landmark_id int,
+  landmark_id varchar(50),
   thumbs_up boolean default false,
   FOREIGN KEY (landmark_id) REFERENCES landmark(id),
   FOREIGN KEY (user_id) REFERENCES app_user(id)
