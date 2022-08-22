@@ -69,7 +69,7 @@
 		<div class="grabber"> New to Trip Planner?</div>
 		<div class="buttonCase">
 			<c:url var="newUser" value="/users/new" />
-			<form style="width: 100%;text-align: center;" method="get"  action="${newUser}">
+			<form class="join" method="get"  action="${newUser}">
 			<button type="submit" class="joinButton">join today</button>
 			</form>
 		</div>

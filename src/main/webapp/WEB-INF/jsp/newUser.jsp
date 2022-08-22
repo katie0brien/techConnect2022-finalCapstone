@@ -49,7 +49,7 @@
 							<label class="top" for="lname">Last Name: </label>
 							<input type="text" id="lname" name="lname" placeHolder="Last Name" class="form-control" />
 						</div>
-						<br/>
+
 						<div class="form-group">
 							<label class="top" for="password">Password: </label>
 							<input type="password" id="password" name="password" placeHolder="Password" class="form-control" />

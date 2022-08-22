@@ -3,7 +3,7 @@
     html{
         height: 100vh;
         background-color: #FCF8E8;
-        padding: 0px;
+        padding: 0;
     }
     input:-webkit-autofill,
     input:-webkit-autofill:focus {
@@ -11,7 +11,7 @@
     }
 
     html::-webkit-scrollbar {
-        width: 0px
+        width: 0;
     }
     body{
         position: relative;
@@ -20,7 +20,7 @@
     }
     .leftBox{
         position: absolute;
-        left: 0px;
+        left: 0;
         width: 50%;
         height: 100vh;
         background-color: #94B49F;
@@ -30,7 +30,7 @@
         height: 100%;
         background-color: #FCF8E8;
         position: absolute;
-        right: 0px;
+        right: 0;
     }
     .destinationLogin{
         display: flex;
@@ -41,8 +41,6 @@
     }
     .destinationLogin img{
         width: 500px;
-
-
     }
     .greeting{
         width: 100%;
@@ -58,7 +56,6 @@
     }
     .existingUser{
         width: 100%;
-
     }
     .company{
         display:flex;
@@ -151,9 +148,8 @@
         margin: 10px auto auto auto;
     }
     .join{
-
+        width: 100%;
         text-align: center;
-        width: 800px;
     }
     .joinButton{
         width: 25%;

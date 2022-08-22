@@ -23,7 +23,7 @@ public class HomePageController {
     }
 
 
-    @RequestMapping(path="/home/", method= RequestMethod.GET)
+    @RequestMapping(path="/home", method= RequestMethod.POST)
     public String displayHomePage(@ModelAttribute User user, HttpServletRequest request)
 
     {

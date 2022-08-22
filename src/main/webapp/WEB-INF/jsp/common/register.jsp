@@ -5,12 +5,14 @@
   Time: 10:42 AM
   To change this template use File | Settings | File Templates.
 --%>
+
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>TRIP PLANNER</title>
-
-    <c:url var="newDude" value="/css/newUser.css" />
+    <title>TRIP PLANNER | M.S.K</title>
+    <c:url var="bootstrapCss" value="/css/bootstrap.min.css" />
+    <c:url var="siteCss" value="/css/newUser.css" />
 
     <c:url var="jQueryJs" value="/js/jquery.min.js" />
     <c:url var="jqValidateJs" value="/js/jquery.validate.min.js" />
@@ -20,7 +22,7 @@
     <%--    <c:url var="bootstrapJs" value="/js/bootstrap.min.js" />--%>
 
     <%--    <link rel="stylesheet" type="text/css" href="${bootstrapCss}">--%>
-    <link rel="stylesheet" type="text/css" href="${newDude}">
+    <link rel="stylesheet" type="text/css" href="${siteCss}">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Raleway:wght@400;500&display=swap" rel="stylesheet">
 
@@ -30,10 +32,28 @@
     <script src="${jqvAddMethJs}"></script>
     <script src="${jqTimeagoJs}"></script>
     <script src="${popperJs}"></script>
+    <script src="${bootstrapJs}"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("time.timeago").timeago();
+
+            $("#logoutLink").click(function(event) {
+                $("#logoutForm").submit();
+            });
+
+            var pathname = window.location.pathname;
+            $("nav a[href='" + pathname + "']").parent().addClass("active");
+
+        });
+    </script>
 
 </head>
-
 <body>
+
+
+
+<div class="container">
 
 
 
