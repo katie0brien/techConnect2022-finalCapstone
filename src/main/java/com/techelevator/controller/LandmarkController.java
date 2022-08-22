@@ -52,11 +52,14 @@ public class LandmarkController {
     //itinerary/1/landmark/create
     //itinerary/{/landmark/create
     //also need to get the longitude and latitude from pin if they click save
-    @RequestMapping(path="/itinerary/{id}/landmark/create", method=RequestMethod.POST)
-    public @ResponseBody void addLandmarkAsPin(@PathVariable int id, @ModelAttribute Landmark landmark) {
+    @RequestMapping(path="/itinerary/{id}/landmark/create/{landmarkName}/{longitude}/{latitude}", method=RequestMethod.POST)
+    public @ResponseBody void addLandmarkAsPin(@PathVariable int id, @PathVariable String landmarkName,
+                                               @PathVariable String longitude, @PathVariable String latitude) { //@ModelAttribute Landmark landmark) {
         //creating new var using variables given from modal/pin -- find out how to set pin data need js probably
-//        Landmark landmark = new Landmark();
-//        landmark.setName(landmarkName);
+        Landmark landmark = new Landmark();
+        landmark.setName(landmarkName);
+        landmark.setLatitude(latitude);
+        landmark.setLongitude(longitude);
 
         //saving that information in the data base
         landmarkDAO.addLandmark(landmark);

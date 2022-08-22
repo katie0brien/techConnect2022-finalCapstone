@@ -121,14 +121,20 @@
 
         landmark.landmarkName = $("#landmarkName").val();
 
-        // make an api call to mapbox with lat andf lng to get the address info
+        // make an api call to mapbox with lat and lng to get the address info
+        const response = await fetch('http://localhost:8080/itinerary/create/pk.eyJ1Ijoic29ja3Nyb2NrIiwiYSI6ImNsNno3OTh4YzAxbmIzeHBiM3E5b3dxeTkifQ.dQS6hDACss4VM7ifRg2l7A');
+        const myJson = await response.json();
+
+        landmark.latitude = myJson.lngLat.lat;
+        landmark.longitude = myJson.lngLat.lng
 
         const body = {
             ...landmark,
             'CSRF_TOKEN': $("#CSRF_TOKEN").val()
         }
 
-        let url = '/landmark/itinerary/1/landmark/create';
+        let url = '/landmark/itinerary/1/landmark/create/' + landmark.landmarkName + '/'
+        + landmark.longitude + '/' + landmark.latitude;
 
         $.post(url, body, (data) => {
             $('#savePinModal').modal('hide');
