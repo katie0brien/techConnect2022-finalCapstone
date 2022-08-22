@@ -4,6 +4,7 @@ import com.techelevator.model.dao.ReviewDAO;
 import com.techelevator.model.dto.Review;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -11,6 +12,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
+@Component
 public class JDBCReviewDAO implements ReviewDAO {
 
     JdbcTemplate jdbcTemplate;
