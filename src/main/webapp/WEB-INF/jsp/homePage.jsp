@@ -35,7 +35,8 @@
 <div class="topBox">
     <div class="holder"> <p>M</p>  </div>
     <div class="company"> trip planner</div>
-    <div class="profile"> <p>M</p>  </div>
+    <c:url var="hat" value="../../img/cowboy-hat.png" />
+    <div class="profile"> <img style="max-width: 100%;" src="${hat}" alt="">  </div>
 </div>
 <div class="pillBox">
     <c:url var="homeV5" value="../../img/homV5.jpg" />

@@ -13,9 +13,9 @@ VALUES
 
 INSERT INTO landmark(ID, LATITUDE, LONGITUDE, NAME, street_address, city, state_or_region, zip_or_postal, country)
 VALUES
-        ('1', 'ON', '0W', 'MOHAMEDS HOUSE', '123 Main Street', 'Columbus', 'Ohio', 43210, 'USA'),
-        ('2', '1N', '1W', 'MOHAMEDS WORK', '222 Main Street', 'Columbus', 'Ohio', 43210, 'USA'),
-        ('3', '2N', '2W', 'MOHAMEDS COUNTRY', '333 Main Street', 'Columbus', 'Ohio', 43210, 'USA');
+        ('1', '123', '456', 'MOHAMEDS HOUSE', '123 Main Street', 'Columbus', 'Ohio', 43210, 'USA'),
+        ('2', '1111', '1212', 'MOHAMEDS WORK', '222 Main Street', 'Columbus', 'Ohio', 43210, 'USA'),
+        ('3', '789', '1010', 'MOHAMEDS COUNTRY', '333 Main Street', 'Columbus', 'Ohio', 43210, 'USA');
 
 INSERT INTO user_landmark(USER_ID, LANDMARK_ID)
 VALUES
@@ -41,4 +41,21 @@ VALUES
     (1,'2'),
     (2,'3');
 
+
+INSERT INTO review(longitude, latitude, user_id, landmark_id, thumbs_up)
+VALUES  ('123','456',1,1,TRUE),
+        ('123','456',1,1,TRUE),
+        ('123','456',1,1,TRUE),
+        ('123','456',1,1,TRUE),
+        ('123','456',1,1,TRUE),
+        ('789','1010',1,2,FALSE),
+        ('1111','1212',1,2,FALSE),
+        ('1111','1212',1,2,FALSE),
+        ('789','1010',1,2,TRUE),
+        ('789','1010',1,2,TRUE),
+        ('123','456',1,3,TRUE),
+        ('789','1010',1,3,FALSE),
+        ('1111','1212',1,3,TRUE),
+        ('1111','1212',1,3,TRUE),
+        ('1111','1212',1,3,TRUE);
 COMMIT;
