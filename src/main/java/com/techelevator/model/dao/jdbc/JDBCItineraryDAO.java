@@ -135,4 +135,5 @@ public class JDBCItineraryDAO implements ItineraryDAO {
 
         jdbcTemplate.update(sql, id);
     }
+
 }

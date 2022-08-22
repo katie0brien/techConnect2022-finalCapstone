@@ -57,7 +57,9 @@
     </div>
 </div>
 
-<%-- the map part of the website />--%>
+
+<%--RE SPRINT PLANNING 3 MAP WILL ONLY BE DISPLAYED ON EDIT ITINERARY, DELETE COMMENTED OUT CODE LATER--%>
+<%--&lt;%&ndash; the map part of the website />&ndash;%&gt;--%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -121,25 +123,44 @@
 
         landmark.landmarkName = $("#landmarkName").val();
 
-        // make an api call to mapbox with lat and lng to get the address info
-        const response = await fetch('http://localhost:8080/itinerary/create/pk.eyJ1Ijoic29ja3Nyb2NrIiwiYSI6ImNsNno3OTh4YzAxbmIzeHBiM3E5b3dxeTkifQ.dQS6hDACss4VM7ifRg2l7A');
-        const myJson = await response.json();
+        const apiUrl = `https://api.mapbox.com/geocoding/v5/mapbox.places/` + landmark.longitude + `,` +landmark.latitude + `.json?access_token=pk.eyJ1Ijoic29ja3Nyb2NrIiwiYSI6ImNsNno3OTh4YzAxbmIzeHBiM3E5b3dxeTkifQ.dQS6hDACss4VM7ifRg2l7A`;
 
-        landmark.latitude = myJson.lngLat.lat;
-        landmark.longitude = myJson.lngLat.lng
 
-        const body = {
-            ...landmark,
-            'CSRF_TOKEN': $("#CSRF_TOKEN").val()
-        }
+        // // make an api call to mapbox with lat and lng to get the address info
+        // const response = await fetch('http://localhost:8080/itinerary/create/pk.eyJ1Ijoic29ja3Nyb2NrIiwiYSI6ImNsNno3OTh4YzAxbmIzeHBiM3E5b3dxeTkifQ.dQS6hDACss4VM7ifRg2l7A');
+        // const myJson = await response.json();
+        //
+        // landmark.latitude = myJson.lngLat.lat;
+        // landmark.longitude = myJson.lngLat.lng
 
-        let url = '/landmark/itinerary/1/landmark/create/' + landmark.landmarkName + '/'
-        + landmark.longitude + '/' + landmark.latitude;
+        $.get(apiUrl, (data) => {
+            console.log(data.features[0].place_name)
+            const address = data.features.filter(feature => feature.id.startsWith('address'))[0];
+            const streetAddress = address.address + ' ' + address.text;
 
-        $.post(url, body, (data) => {
-            $('#savePinModal').modal('hide');
-            addMarker(landmark.longitude, landmark.latitude)
-        })
+            const city =  data.features.filter(feature => feature.id.startsWith('place'))[0].text
+
+            const stateOrRegion =  data.features.filter(feature => feature.id.startsWith('region'))[0].text +
+                data.features.filter(feature => feature.id.startsWith('postcode'))[0].text
+
+            const country =  data.features.filter(feature => feature.id.startsWith('country'))[0].text
+
+            const body = {
+                ...landmark,
+                'streetAddress': streetAddress,
+                'city': city,
+                'stateOrRegion': stateOrRegion,
+                'country': country,
+                'CSRF_TOKEN': $("#CSRF_TOKEN").val()
+            }
+
+            let url = '/landmark/itinerary/1/landmark/create'///' + landmark.landmarkName + '/' + landmark.longitude + '/' + landmark.latitude;
+
+            $.post(url, body, (data) => {
+                $('#savePinModal').modal('hide');
+                addMarker(landmark.longitude, landmark.latitude)
+            })
+        });
 
 
     }

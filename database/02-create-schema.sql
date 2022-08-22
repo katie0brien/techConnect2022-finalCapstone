@@ -20,15 +20,15 @@ CREATE TABLE app_user (
 );
 
 CREATE TABLE landmark (
-  id varchar(50) PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   latitude varchar(25),
   longitude varchar(25),
-  name varchar(50) NOT NULL UNIQUE,
-  street_address varchar(100) UNIQUE,
-  city varchar(25),
-  state_or_region varchar(50),
-  zip_or_postal int,
-  country varchar(50)
+  name varchar(50) NOT NULL,
+  street_address varchar(100) NULL,
+  city varchar(25) NULL,
+  state_or_region varchar(50) NULL,
+  zip_or_postal int NULL,
+  country varchar(50) NULL
 );
 
 CREATE TABLE user_landmark (
