@@ -7,6 +7,7 @@
         <th>Address</th>
         <th>State or Region</th>
         <th>city</th>
+        <th>Zip or Postal</th>
         <th>Country</th>
     </tr>
     <c:forEach items="${landmarks}" var="landmark">
@@ -25,9 +26,9 @@
             <td>
                 <c:out value="${landmark.city}"></c:out>
             </td>
-<%--            <td>--%>
-<%--                <c:out value="${landmark.zipOrPostal}"></c:out>--%>
-<%--            </td>--%>
+            <td>
+                <c:out value="${landmark.zipOrPostal}"></c:out>
+            </td>
             <td>
                 <c:out value="${landmark.country}"></c:out>
             </td>

@@ -30,10 +30,9 @@ public class ItineraryController {
     }
 
 
-
-
-    @RequestMapping("/list/{id}")
-    public String listItineraries(Model model, @PathVariable int id) {
+    //note: id here is userName
+    @RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
+    public String listItineraries(Model model, @PathVariable String id) {
         List<Itinerary> itineraries = itineraryDAO.getItinerariesByUserName(id);
 
         model.addAttribute("itineraries", itineraries);
@@ -82,10 +81,10 @@ public class ItineraryController {
     }
 
 //    ask about how to grab the id you want to assign on create itinerary and use the first request mapping above.
-    @RequestMapping(value="/create", method = RequestMethod.GET)
-    public String displayItineraryPage(){
-        return "createItinerary";
-    }
+//    @RequestMapping(value="/create", method = RequestMethod.GET)
+//    public String displayItineraryPage(){
+//        return "createItinerary";
+//    }
 
 
     @RequestMapping(value="edit/download/{id}", method = RequestMethod.GET)
