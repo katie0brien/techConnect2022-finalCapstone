@@ -30,7 +30,7 @@
                         </td>
 
                         <td><a href="/itinerary/edit/${itinerary.irineraryId}">Edit</a></td>
-                        <td><a href="/landmark/itinerary/${itinerary.irineraryId}">View Landmarks</a></td>
+                        <td><a href="/landmark/details/${itinerary.irineraryId}">View Landmarks</a></td>
                         <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/1"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                             <input type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
                         <td><a href="/itinerary/edit/download/${itinerary.irineraryId}">Download your Itinerary (.csv)</a></td>
@@ -65,7 +65,7 @@
                         <td>
                             <c:out value="${itinerary.toDate}"/>
                         </td>
-                        <td><a href="/landmark/itinerary/${itinerary.irineraryId}">View Landmarks</a></td>
+                        <td><a href="/landmark/details/${itinerary.irineraryId}">View Landmarks</a></td>
                         <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/1"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                             <input type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
                         <td><a href="/itinerary/edit/download/${itinerary.irineraryId}">Download your Itinerary (.csv)</a></td>

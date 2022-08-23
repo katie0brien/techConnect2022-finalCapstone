@@ -120,7 +120,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     }
 
     @Override
-    public Landmark getLandmarkByID(String ID) {
+    public Landmark getLandmarkByID(int ID) {
 
         String sql = "SELECT *\n" +
                 "FROM landmark WHERE id = ?;";

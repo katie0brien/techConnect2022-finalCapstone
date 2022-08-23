@@ -22,21 +22,21 @@ public class HomePageController {
 
     @RequestMapping(path="/home/{id}", method = RequestMethod.GET)
     public String goToHomePage(@PathVariable String id, Model model) {
-        model.addAttribute("id", id);
+        model.addAttribute("user", (User)userDao.getUserByUserName(id));
         return "homePage";
     }
 
-    @RequestMapping(path="/home/{id}", method= RequestMethod.POST)
-    public String displayHomePage(HttpServletRequest request, Model model, @PathVariable String id)
-
-    {
-       // if ( userDao.userNamePasswordExist(user.getUserName(), user.getPassword()) ) {
-            model.addAttribute("id", id);
-            return "redirect:/home/" + id;
-      //  }
-
-      //  return "login";
-    }
+//    @RequestMapping(path="/home/{id}", method= RequestMethod.POST)
+//    public String displayHomePage(HttpServletRequest request, Model model, @PathVariable String id)
+//
+//    {
+//       // if ( userDao.userNamePasswordExist(user.getUserName(), user.getPassword()) ) {
+//            model.addAttribute("id", id);
+//            return "redirect:/home/" + id;
+//      //  }
+//
+//      //  return "login";
+//    }
 
 
 }

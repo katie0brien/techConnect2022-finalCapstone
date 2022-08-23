@@ -33,7 +33,7 @@ public class LandmarkController {
     }
 
     @RequestMapping("/details/{id}")
-    public String landmarkDetail(@PathVariable String id, Model model) {
+    public String landmarkDetail(@PathVariable int id, Model model) {
         Landmark landmark = landmarkDAO.getLandmarkByID(id);
         model.addAttribute("landmark", landmark);
 

@@ -2,8 +2,10 @@ package com.techelevator.controller;
 
 import javax.servlet.http.HttpSession;
 
+import com.techelevator.model.dto.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,7 +17,6 @@ import com.techelevator.model.dao.UserDAO;
 public class AuthenticationController {
 
 	private UserDAO userDAO;
-
 	@Autowired
 	public AuthenticationController(UserDAO userDAO) {
 
@@ -23,7 +24,8 @@ public class AuthenticationController {
 	}
 
 	@RequestMapping(path = "/login", method = RequestMethod.GET)
-	public String displayLoginForm() {
+	public String displayLoginForm(@RequestParam(required = false) String userName, Model model) {
+
 		return "login";
 	}
 
@@ -36,9 +38,9 @@ public class AuthenticationController {
 			session.setAttribute("currentUser", userDAO.getUserByUserName(userName));
 
 			if (destination != null && !destination.isEmpty()) {
-				return "redirect:" + destination + "/" + userName;
+				return "redirect:/home/"+ userName;
 			} else {
-				return "redirect:/users/" + userName;
+				return "redirect:/home/"+ userName;
 			}
 		} else {
 			return "redirect:/login";
