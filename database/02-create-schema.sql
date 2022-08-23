@@ -27,13 +27,13 @@ CREATE TABLE landmark (
   street_address varchar(100) NULL,
   city varchar(25) NULL,
   state_or_region varchar(50) NULL,
-  zip_or_postal int NULL,
+  zip_or_postal varchar(50) NULL,
   country varchar(50) NULL
 );
 
 CREATE TABLE user_landmark (
   user_id int,
-  landmark_id varchar(50),
+  landmark_id int,
   FOREIGN KEY (user_id) REFERENCES app_user(id),
   FOREIGN KEY (landmark_id) REFERENCES landmark(id),
   PRIMARY KEY (user_id, landmark_id)
@@ -48,7 +48,7 @@ CREATE TABLE itinerary (
 
 CREATE TABLE itinerary_landmark (
     itinerary_id int,
-    landmark_id varchar(50),
+    landmark_id int,
     FOREIGN KEY (itinerary_id) REFERENCES itinerary(id),
     FOREIGN KEY (landmark_id) REFERENCES landmark(id),
     PRIMARY KEY (itinerary_id, landmark_id)
@@ -67,7 +67,7 @@ CREATE TABLE review (
   latitude varchar(25) NULL,
   longitude varchar(25) NULL,
   user_id int,
-  landmark_id varchar(50),
+  landmark_id int,
   thumbs_up boolean default false,
   FOREIGN KEY (landmark_id) REFERENCES landmark(id),
   FOREIGN KEY (user_id) REFERENCES app_user(id)

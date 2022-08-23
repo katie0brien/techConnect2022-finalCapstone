@@ -12,7 +12,9 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 
 @Controller
@@ -20,12 +22,16 @@ import java.util.List;
 public class ItineraryController {
 
     ItineraryDAO itineraryDAO;
+    LandmarkDAO landmarkDAO;
     @Autowired
     public ItineraryController(ItineraryDAO itineraryDAO, LandmarkDAO landmarkDAO) {
         this.itineraryDAO = itineraryDAO;
+        this.landmarkDAO = landmarkDAO;
     }
 
+
     @RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
+
     public String listItineraries(Model model, @PathVariable int id) {
         List<Itinerary> itineraries = itineraryDAO.getItinerariesByUserName(id);
 
@@ -80,9 +86,19 @@ public class ItineraryController {
         return "createItinerary";
     }
 
-//    @RequestMapping(value = "createPin", method = RequestMethod.GET)
-//    public String createPin() {
-//
-//    }
+
+    @RequestMapping(value="edit/download/{id}", method = RequestMethod.GET)
+    public void downloadItinerary(@PathVariable String id, HttpServletResponse response) throws IOException {
+        response.setContentType("text/csv; charset=utf-8");
+
+        List<String> landmarks = landmarkDAO.getLandmarkAddressByItineraryId(Integer.parseInt(id));
+
+        for(int i = 0; i < landmarks.size() ; i++) {
+            response.getWriter().println(landmarks.get(i));
+        }
+
+    }
+
+
 
 }

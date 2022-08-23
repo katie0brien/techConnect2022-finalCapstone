@@ -156,16 +156,17 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     }
 
     @Override
-    public void addLandmark(Landmark landmark) {
+    public int addLandmark(Landmark landmark) {
         String sql = "INSERT INTO landmark(LATITUDE, LONGITUDE, NAME, STREET_ADDRESS, CITY, STATE_OR_REGION, zip_or_postal, COUNTRY)\n" +
-                "VALUES (?,?,?,?,?,?,?,?);";
+                "VALUES (?,?,?,?,?,?,?,?) " +
+                "RETURNING id;";
 
-        int num = jdbcTemplate.update(sql, landmark.getLatitude(),landmark.getLongitude(),landmark.getName(),
-                                        landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getZipOrPostal(), landmark.getCountry());
+        return jdbcTemplate.queryForObject(sql, Integer.class, landmark.getLatitude(),landmark.getLongitude(),landmark.getName(),
+                                        landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getZipOrPostal(), landmark.getCountry()).intValue();
     }
 
     @Override
-    public void addLandmarkToRelatorTable(String landmarkId, int itineraryId) {
+    public void addLandmarkToRelatorTable(int landmarkId, int itineraryId) {
         String sql = "INSERT INTO itinerary_landmark(ITINERARY_ID, LANDMARK_ID)\n" +
                 "VALUES (?,?);";
 
@@ -176,14 +177,14 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     public Landmark mapToLandmark(SqlRowSet row) {
         Landmark landmark = new Landmark();
 
-        landmark.setId(row.getString("id"));
+        landmark.setId(row.getInt("id"));
         landmark.setLatitude(row.getString("latitude"));
         landmark.setLongitude(row.getString("longitude"));
         landmark.setName(row.getString("name"));
         landmark.setStreetAddress(row.getString("street_address"));
         landmark.setCity(row.getString("city"));
         landmark.setStateOrRegion(row.getString("state_or_region"));
-//        landmark.setZipOrPostal(row.getInt("zip_or_postal"));
+        landmark.setZipOrPostal(row.getString("zip_or_postal"));
         landmark.setCountry(row.getString("country"));
 
         return landmark;
