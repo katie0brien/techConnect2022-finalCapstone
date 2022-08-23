@@ -38,7 +38,7 @@
 
     <c:url var="hat" value="../../img/cowboy-hat.png" />
     <div class="profile">
-        <c:url var="profilePage" value="/itinerary/list/{id}" />
+        <c:url var="profilePage" value="/itinerary/list/${user.userName}" />
         <form method="get" action="${profilePage}">
             <input type="image" src="${hat}" style="max-width: 100%;"  alt="Submit" />
 
@@ -62,7 +62,7 @@
 <c:url var="adventurer" value="../../img/adventurer.png" />
 <div class="girl">  <img src="${adventurer}" alt="">  </div>
 <div class="buttonBox">
-    <c:url var="createItinerary" value="/itinerary/create" />
+    <c:url var="createItinerary" value="/itinerary/create/${user.userName}" />
     <form method="get" action="${createItinerary}">
         <input class="createButton" type="submit" value="onwards" />
     </form>

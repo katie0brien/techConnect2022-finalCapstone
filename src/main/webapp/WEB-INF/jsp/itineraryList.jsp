@@ -75,7 +75,7 @@
             </c:forEach>
         </table>
 
-        <p><a href="/itinerary/create/1">add itinerary</a></p>
+        <p><a href="/itinerary/create/${userName}">add itinerary</a></p>
 
 </form>
 
