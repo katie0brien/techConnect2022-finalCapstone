@@ -62,7 +62,7 @@ CREATE TABLE user_itinerary (
     PRIMARY KEY (itinerary_id, user_id)
 );
 
-CREATE TABLE review (
+CREATE TABLE user_review (
   review_id SERIAL PRIMARY KEY,
   user_id int,
   landmark_id int,

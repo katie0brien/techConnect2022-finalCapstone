@@ -42,7 +42,7 @@ VALUES
     (2,'3');
 
 
-INSERT INTO review(user_id, landmark_id, thumbs_up)
+INSERT INTO user_review(user_id, landmark_id, thumbs_up)
 VALUES  (1,1, true),
         (1,2, false),
         (2,2, true),
