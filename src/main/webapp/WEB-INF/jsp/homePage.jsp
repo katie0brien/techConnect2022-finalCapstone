@@ -35,8 +35,16 @@
 <div class="topBox">
     <div class="holder"> <p>M</p>  </div>
     <div class="company"> trip planner</div>
+
     <c:url var="hat" value="../../img/cowboy-hat.png" />
-    <div class="profile"> <img style="max-width: 100%;" src="${hat}" alt="">  </div>
+    <div class="profile">
+        <c:url var="profilePage" value="/itinerary/list/{id}" />
+        <form method="get" action="${profilePage}">
+            <input type="image" src="${hat}" style="max-width: 100%;"  alt="Submit" />
+
+        </form>
+
+    </div>
 </div>
 <div class="pillBox">
     <c:url var="homeV5" value="../../img/homV5.jpg" />

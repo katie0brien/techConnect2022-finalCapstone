@@ -25,7 +25,7 @@ public class ItineraryController {
         this.itineraryDAO = itineraryDAO;
     }
 
-    @RequestMapping("/list/{id}")
+    @RequestMapping(value = "/list/{id}", method = RequestMethod.GET)
     public String listItineraries(Model model, @PathVariable int id) {
         List<Itinerary> itineraries = itineraryDAO.getItinerariesByUserName(id);
 
