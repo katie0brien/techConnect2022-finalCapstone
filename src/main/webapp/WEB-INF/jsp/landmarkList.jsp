@@ -33,16 +33,35 @@
                 <c:out value="${landmark.country}"></c:out>
             </td>
 
-            <td><form method="POST" action="/landmark/review/${landmark.id}/${"True"}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-                <input type="submit" value="Like"/></form>
-            </td>
+<%--            <td><form method="POST" action="/landmark/review/${landmark.id}/${"True"}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>--%>
+<%--                <input type="submit" value="Like"/></form>--%>
+<%--            </td>--%>
 
-            <td><form method="POST" action="/landmark/review/${landmark.id}/${"False"}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-                <input type="submit" value="Dislike"/></form>
+<%--            <td><form method="POST" action="/landmark/review/${landmark.id}/${"False"}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>--%>
+<%--                <input type="submit" value="Dislike"/></form>--%>
+<%--            </td>--%>
+
+            <td>
+                <form method="POST" action="/landmark/review/${landmark.id}">
+                    <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                    <input type="submit" id="likeButton" value="${landmark.liked : "Like" ? "Dislike"}" onclick="Buttontoggle();">
+                </form>
             </td>
         </tr>
-        </tr>
+<%--        </tr>--%>
 
     </c:forEach>
 </table>
+
+<script type="text/javascript">
+    function Buttontoggle()
+    {
+        var t = document.getElementById("likeButton");
+        if(t.value=="Dislike"){
+            t.value="Like";}
+        else if(t.value=="Like"){
+            t.value="Dislike";}
+    }
+</script>
+
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
