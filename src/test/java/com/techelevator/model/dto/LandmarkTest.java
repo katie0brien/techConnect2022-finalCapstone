@@ -75,11 +75,11 @@ public class LandmarkTest  {
 
     @Test
     public void getZipcode_Should_return_correct_ZipCode() {
-        int expected = 43004;
+        String expected = "43004";
 
         landmark.setZipOrPostal(expected);
 
-        long actual = landmark.getZipOrPostal();
+        String actual = landmark.getZipOrPostal();
         String message = "setZipcode should return the correct value set for ZipCode";
         assertEquals(message,expected, actual);
 
@@ -110,11 +110,11 @@ public class LandmarkTest  {
 
     @Test
     public void getId_Should_return_correct_id() {
-        String expected = "123456";
+        int expected = 123456;
 
         landmark.setId(expected);
 
-        String actual = landmark.getId();
+        int actual = landmark.getId();
         String message = "setID should return the correct value set for id";
         assertEquals(message,expected, actual);
 
