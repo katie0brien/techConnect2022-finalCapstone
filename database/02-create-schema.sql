@@ -5,7 +5,7 @@
 BEGIN;
 
 -- CREATE statements go here
-DROP TABLE IF EXISTS app_user, landmark, user_landmark, itinerary_landmark, itinerary, user_itinerary;
+DROP TABLE IF EXISTS app_user, landmark, user_landmark, itinerary_landmark, itinerary, user_itinerary, review;
 
 CREATE TABLE app_user (
   id SERIAL PRIMARY KEY,
@@ -20,15 +20,15 @@ CREATE TABLE app_user (
 );
 
 CREATE TABLE landmark (
-  id varchar(50) PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   latitude varchar(25),
   longitude varchar(25),
-  name varchar(50) NOT NULL UNIQUE,
-  street_address varchar(100) UNIQUE,
-  city varchar(25),
-  state_or_region varchar(50),
-  zip_or_postal int,
-  country varchar(50)
+  name varchar(50) NOT NULL,
+  street_address varchar(100) NULL,
+  city varchar(25) NULL,
+  state_or_region varchar(50) NULL,
+  zip_or_postal int NULL,
+  country varchar(50) NULL
 );
 
 CREATE TABLE user_landmark (
@@ -64,6 +64,8 @@ CREATE TABLE user_itinerary (
 
 CREATE TABLE review (
   review_id SERIAL PRIMARY KEY,
+  latitude varchar(25) NULL,
+  longitude varchar(25) NULL,
   user_id int,
   landmark_id varchar(50),
   thumbs_up boolean default false,

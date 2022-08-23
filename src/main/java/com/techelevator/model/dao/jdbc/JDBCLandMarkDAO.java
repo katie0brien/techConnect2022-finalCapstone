@@ -157,10 +157,10 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
 
     @Override
     public void addLandmark(Landmark landmark) {
-        String sql = "INSERT INTO landmark(ID, LATITUDE, LONGITUDE, NAME, STREET_ADDRESS, CITY, STATE_OR_REGION, zip_or_postal, COUNTRY)\n" +
-                "VALUES (?,?,?,?,?,?,?,?,?);";
+        String sql = "INSERT INTO landmark(LATITUDE, LONGITUDE, NAME, STREET_ADDRESS, CITY, STATE_OR_REGION, zip_or_postal, COUNTRY)\n" +
+                "VALUES (?,?,?,?,?,?,?,?);";
 
-        int num = jdbcTemplate.update(sql,landmark.getId(),landmark.getLatitude(),landmark.getLongitude(),landmark.getName(),
+        int num = jdbcTemplate.update(sql, landmark.getLatitude(),landmark.getLongitude(),landmark.getName(),
                                         landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getZipOrPostal(), landmark.getCountry());
     }
 
@@ -187,5 +187,29 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
         landmark.setCountry(row.getString("country"));
 
         return landmark;
+    }
+
+    //this method will be used to export data to our .csv file
+    @Override
+    public List<String> getLandmarkAddressByItineraryId(int itineraryId) {
+        List<String> landmarks = new ArrayList<>();
+
+        String sql = "select street_address, city, state_or_region, zip_or_postal " +
+                "from landmark\n" +
+                "where id in (select landmark_id from itinerary_landmark where itinerary_id = ?);";
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, itineraryId);
+
+        String temp = "";
+
+        while(row.next()) {
+            temp = row.getString("street_address") + ", " + row.getString("city") + ", "
+                    + row.getString("state_or_region") + " " + row.getString("zip_or_postal");
+
+            landmarks.add(temp);
+        }
+
+
+        return landmarks;
     }
 }

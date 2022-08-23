@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
+<%@page import="com.techelevator.io.csvFileWriter"%>
 
 <form action="/itinerary/delete" method="POST">
         <table>
@@ -30,6 +31,15 @@
                         <td><a href="/landmark/itinerary/${itinerary.irineraryId}">View Landmarks</a></td>
                         <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/1"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                             <input type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
+                        <td><a href="">Download your Itinerary (.csv)</a>
+<%--                            <c:set var="id" value="${itinerary.irineraryId}" scope="request"/>--%>
+<%--                            <%--%>
+<%--                                csvFileWriter writer = new csvFileWriter();--%>
+<%--                                //writer.makeFile(Integer.parseInt("request.getAttribute(\"id\")"));--%>
+<%--                                writer.makeFile(1);--%>
+<%--                            %>--%>
+                        </td>
+                        <td><a href="https://labs.mapbox.com/community/nonprofit-route-tool/#/authoring" target="_blank">Route your Trip</a></td>
 
                     </tr>
 
@@ -63,6 +73,8 @@
                         <td><a href="/landmark/itinerary/${itinerary.irineraryId}">View Landmarks</a></td>
                         <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/1"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                             <input type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
+                        <td><a href="">Download your Itinerary (.csv)</a></td>
+                        <td><a href="https://labs.mapbox.com/community/nonprofit-route-tool/#/authoring" target="_blank">Route your Trip</a></td>
                     </tr>
                 </c:if>
 
