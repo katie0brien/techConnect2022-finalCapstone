@@ -32,34 +32,34 @@
     </div>
 </form:form>
 
-<%-- modal pop up about asking user to save pin />--%>
-<div class="modal" tabindex="-1" role="dialog" id="savePinModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Save this pin as a landmark?</h2>
-            </div>
-            <div class="modal-body">
-                <c:url var="formAction" value="/itinerary/create/1" />
-                <div>
-                    <input type="hidden" id="CSRF_TOKEN" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-                    <div class="form-group">
-                        <label for="landmarkName">Pin Name: </label>
-                        <input type="text" id="landmarkName" name="landmarkName" placeHolder="Pin Name" class="form-control" />
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" onclick="saveLandmark()">Save changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+<%--&lt;%&ndash; modal pop up about asking user to save pin />&ndash;%&gt;--%>
+<%--<div class="modal" tabindex="-1" role="dialog" id="savePinModal">--%>
+<%--    <div class="modal-dialog" role="document">--%>
+<%--        <div class="modal-content">--%>
+<%--            <div class="modal-header">--%>
+<%--                <h2 class="modal-title">Save this pin as a landmark?</h2>--%>
+<%--            </div>--%>
+<%--            <div class="modal-body">--%>
+<%--                <c:url var="formAction" value="/itinerary/create/1" />--%>
+<%--                <div>--%>
+<%--                    <input type="hidden" id="CSRF_TOKEN" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>--%>
+<%--                    <div class="form-group">--%>
+<%--                        <label for="landmarkName">Pin Name: </label>--%>
+<%--                        <input type="text" id="landmarkName" name="landmarkName" placeHolder="Pin Name" class="form-control" />--%>
+<%--                        <div class="modal-footer">--%>
+<%--                            <button type="button" class="btn btn-primary" onclick="saveLandmark()">Save changes</button>--%>
+<%--                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--        </div>--%>
+<%--    </div>--%>
+<%--</div>--%>
 
 
-<%--RE SPRINT PLANNING 3 MAP WILL ONLY BE DISPLAYED ON EDIT ITINERARY, DELETE COMMENTED OUT CODE LATER--%>
-<%--&lt;%&ndash; the map part of the website />&ndash;%&gt;--%>
+<%--&lt;%&ndash;RE SPRINT PLANNING 3 MAP WILL ONLY BE DISPLAYED ON EDIT ITINERARY, DELETE COMMENTED OUT CODE LATER&ndash;%&gt;--%>
+<%--&lt;%&ndash;&lt;%&ndash; the map part of the website />&ndash;%&gt;&ndash;%&gt;--%>
 <%--<!DOCTYPE html>--%>
 <%--<html>--%>
 <%--<head>--%>

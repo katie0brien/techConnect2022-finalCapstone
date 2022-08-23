@@ -32,6 +32,31 @@
     </div>
 </form>
 
+<%-- modal pop up about asking user to save pin />--%>
+<div class="modal" tabindex="-1" role="dialog" id="savePinModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Save this pin as a landmark?</h2>
+            </div>
+            <div class="modal-body">
+                <c:url var="formAction" value="/itinerary/create/1" />
+                <div>
+                    <input type="hidden" id="CSRF_TOKEN" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                    <div class="form-group">
+                        <label for="landmarkName">Pin Name: </label>
+                        <input type="text" id="landmarkName" name="landmarkName" placeHolder="Pin Name" class="form-control" />
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="saveLandmark()">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <%-- the map part of the website />--%>
 <!DOCTYPE html>
 <html>
@@ -113,8 +138,9 @@
 
             const city =  data.features.filter(feature => feature.id.startsWith('place'))[0].text
 
-            const stateOrRegion =  data.features.filter(feature => feature.id.startsWith('region'))[0].text +
-                data.features.filter(feature => feature.id.startsWith('postcode'))[0].text
+            const stateOrRegion =  data.features.filter(feature => feature.id.startsWith('region'))[0].text
+
+            const zipOrPostal = data.features.filter(feature => feature.id.startsWith('postcode'))[0].text
 
             const country =  data.features.filter(feature => feature.id.startsWith('country'))[0].text
 
@@ -123,6 +149,7 @@
                 'streetAddress': streetAddress,
                 'city': city,
                 'stateOrRegion': stateOrRegion,
+                'zipOrPostal': zipOrPostal,
                 'country': country,
                 'CSRF_TOKEN': $("#CSRF_TOKEN").val()
             }

@@ -4,17 +4,17 @@ import javax.swing.*;
 
 public class Landmark {
 
-    private String id;
+    private int id;
     private String latitude;
     private String longitude;
     private String name;
     private String streetAddress;
     private String city;
-    private int zipOrPostal;
+    private String zipOrPostal;
     private String stateOrRegion;
     private String country;
 
-    public Landmark(String id, String latitude, String longitude, String name, String streetAddress, String city, int zipOrPostal, String stateOrRegion, String country) {
+    public Landmark(int id, String latitude, String longitude, String name, String streetAddress, String city, String zipOrPostal, String stateOrRegion, String country) {
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -68,11 +68,11 @@ public class Landmark {
         this.city = city;
     }
 
-    public int getZipOrPostal() {
+    public String getZipOrPostal() {
         return zipOrPostal;
     }
 
-    public void setZipOrPostal(int zipOrPostal) {
+    public void setZipOrPostal(String zipOrPostal) {
         this.zipOrPostal = zipOrPostal;
     }
 
@@ -92,11 +92,11 @@ public class Landmark {
         this.country = country;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 }

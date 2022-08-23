@@ -57,8 +57,12 @@ public class LandmarkController {
     public @ResponseBody void addLandmarkAsPin(@RequestParam(required = false) String landmarkName,
                                                @RequestParam(required = false) String latitude,
                                                @RequestParam(required = false) String longitude,
-                                               @RequestParam(required = false) String streetAddress
-
+                                               @RequestParam(required = false) String streetAddress,
+                                               @RequestParam(required = false) String city,
+                                               @RequestParam(required = false) String stateOrRegion,
+                                               @RequestParam(required = false) String zipOrPostal,
+                                               @RequestParam(required = false) String country,
+                                               @PathVariable int id
                                                ) { //@ModelAttribute Landmark landmark) {
         //creating new var using variables given from modal/pin -- find out how to set pin data need js probably
         Landmark landmark = new Landmark();
@@ -66,9 +70,14 @@ public class LandmarkController {
         landmark.setLatitude(latitude);
         landmark.setLongitude(longitude);
         landmark.setStreetAddress(streetAddress);
+        landmark.setCity(city);
+        landmark.setStateOrRegion(stateOrRegion);
+        landmark.setZipOrPostal(zipOrPostal);
+        landmark.setCountry(country);
 
         //saving that information in the data base
-        landmarkDAO.addLandmark(landmark);
+        int landmarkId = landmarkDAO.addLandmark(landmark); //add landmark to table
+        landmarkDAO.addLandmarkToRelatorTable(landmarkId, id); //create connection between landmark and itinerary
 
 //        return "redirect:/itinerary/create/1";
     }
