@@ -12,7 +12,7 @@
 <head>
     <title>TRIP PLANNER</title>
     <c:url var="bootstrapCss" value="/css/bootstrap.min.css" />
-    <c:url var="home" value="/css/mapPages.css" />
+    <c:url var="home" value="/css/create.css" />
 
     <c:url var="jQueryJs" value="/js/jquery.min.js" />
     <c:url var="jqValidateJs" value="/js/jquery.validate.min.js" />

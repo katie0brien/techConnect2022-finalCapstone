@@ -6,6 +6,17 @@
 <c:url var="plane" value="../../img/airplane.png" />
 <c:url var="van" value="../../img/van.png" />
 <c:url var="hot" value="../../img/hotB.png" />
+<c:url var="home1" value="../../img/1.jpg" />
+<c:url var="start" value="../../img/2.jpg" />
+<c:url var="home2" value="../../img/home2.jpg" />
+<c:url var="home3" value="../../img/home3.jpg" />
+<c:url var="home4" value="../../img/home4.jpg" />
+<c:url var="home5" value="../../img/home5.jpg" />
+<c:url var="home6" value="../../img/home6.jpg" />
+<c:url var="home7" value="../../img/home7.jpg" />
+<c:url var="home8" value="../../img/home8.jpg" />
+<c:url var="home9" value="../../img/home9.jpg" />
+<c:url var="home10" value="../../img/home10.jpg" />
 
 
 <div class="top">
@@ -44,9 +55,8 @@
 
     <div class="title"> <p>where to?</p> </div>
     <div class="mapBox">
-        <%--        THE MAP GOES IN HERE--%>
 
-        <div id="map"></div>
+        <img id="myimg1" src="${start}" alt="">
     </div>
 
 </div>
@@ -56,6 +66,22 @@
 
 <div class="vanContainer"> <img class="van" src="${van}" alt=""> </div>
 <div class="hotContainer"> <img class="hot" src="${hot}" alt=""> </div>
+
+<script type="text/javascript">
+    var myelemet = document.getElementById('myimg1'),
+        myimgs =["${home1}","${start}", "${home2}", "${home3}", "${home4}", "${home5}", "${home6}", "${home7}", "${home8}", "${home9}", "${home10}" ];
+    function changeImg(myelemet,myimgs){
+        'use stict';
+        setInterval(function(){
+            var myRandomNum = Math.floor(Math.random() * myimgs.length);
+            myelemet.src = myimgs[myRandomNum];
+        }, 5000);
+    }
+    changeImg(myelemet,myimgs);
+
+</script>
+
+
 
 
 

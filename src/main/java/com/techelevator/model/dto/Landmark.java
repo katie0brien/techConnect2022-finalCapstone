@@ -13,6 +13,7 @@ public class Landmark {
     private String zipOrPostal;
     private String stateOrRegion;
     private String country;
+    private boolean liked;
 
     public Landmark(int id, String latitude, String longitude, String name, String streetAddress, String city, String zipOrPostal, String stateOrRegion, String country) {
         this.id = id;
@@ -98,5 +99,13 @@ public class Landmark {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isLiked() {
+        return liked;
+    }
+
+    public void setLiked(boolean liked) {
+        this.liked = liked;
     }
 }
