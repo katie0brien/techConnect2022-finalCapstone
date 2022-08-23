@@ -68,7 +68,7 @@
         margin-left: -150px; margin-top: -250px;
     }
     .home1 img{
-        width: 103%
+        width: 103%;
     }
     .home2{
         margin-top:10px;
@@ -149,7 +149,6 @@
         font-size: 40px;
         font-weight: 600;
         font-family: 'Raleway', sans-serif;
-
         color: #FCF8E8;
     }
     .createButton:hover{
