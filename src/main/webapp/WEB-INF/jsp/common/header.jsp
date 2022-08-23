@@ -6,6 +6,7 @@
 <title>TRAVEL PLANNER</title>
 <c:url var="bootstrapCss" value="/css/bootstrap.min.css" />
 <c:url var="siteCss" value="/css/site.css" />
+<c:url var="itineraryListCss" value="/css/itineraryList.css"/>
 
 <c:url var="jQueryJs" value="/js/jquery.min.js" />
 <c:url var="jqValidateJs" value="/js/jquery.validate.min.js" />
@@ -14,8 +15,11 @@
 <c:url var="popperJs" value="/js/popper.min.js" />
 <c:url var="bootstrapJs" value="/js/bootstrap.min.js" />
 
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <link rel="stylesheet" type="text/css" href="${bootstrapCss}">
-<link rel="stylesheet" type="text/css" href="${siteCss}">
+<link rel="stylesheet" type="text/css" href="${siteCss}"/>
+
 
 <script src="${jQueryJs}"></script>
 <script src="${jqValidateJs}"></script>

@@ -64,8 +64,6 @@ CREATE TABLE user_itinerary (
 
 CREATE TABLE review (
   review_id SERIAL PRIMARY KEY,
-  latitude varchar(25) NULL,
-  longitude varchar(25) NULL,
   user_id int,
   landmark_id varchar(50),
   thumbs_up boolean default false,

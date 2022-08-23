@@ -3,6 +3,8 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 <%@page import="com.techelevator.io.csvFileWriter"%>
 
+<c:url var="likeJs" value="/js/like-button.js"/>
+<script type="text/javascript" href="${likeJs}"></script>
 <form action="/itinerary/delete" method="POST">
         <table>
             <h1>Upcoming Trips</h1>
@@ -17,14 +19,14 @@
 
                     <tr>
                         <td>
-                            <c:out value="${itinerary.name}"></c:out>
+                            <c:out value="${itinerary.name}"/>
 
                         </td>
                         <td>
-                            <c:out value="${itinerary.fromDate}"></c:out>
+                            <c:out value="${itinerary.fromDate}"/>
                         </td>
                         <td>
-                            <c:out value="${itinerary.toDate}"></c:out>
+                            <c:out value="${itinerary.toDate}"/>
                         </td>
 
                         <td><a href="/itinerary/edit/${itinerary.irineraryId}">Edit</a></td>
@@ -61,14 +63,14 @@
 
                     <tr>
                         <td>
-                            <c:out value="${itinerary.name}"></c:out>
+                            <c:out value="${itinerary.name}"/>
 
                         </td>
                         <td>
-                            <c:out value="${itinerary.fromDate}"></c:out>
+                            <c:out value="${itinerary.fromDate}"/>
                         </td>
                         <td>
-                            <c:out value="${itinerary.toDate}"></c:out>
+                            <c:out value="${itinerary.toDate}"/>
                         </td>
                         <td><a href="/landmark/itinerary/${itinerary.irineraryId}">View Landmarks</a></td>
                         <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/1"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
