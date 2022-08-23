@@ -82,4 +82,11 @@ public class LandmarkController {
 //        return "redirect:/itinerary/create/1";
     }
 
+    @RequestMapping(path = "/review/{landmarkId}/{choice}")
+    public String landmarkReview(@PathVariable String landmarkId, @PathVariable String choice) {
+        landmarkDAO.updateThumbsUp(choice, landmarkId);
+
+        return "redirect:/itinerary/list/1";
+    }
+
 }

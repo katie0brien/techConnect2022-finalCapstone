@@ -110,7 +110,7 @@ public class JDBCReviewDAO implements ReviewDAO {
     @Override
     public Review getReviewByID(int id) {
         String sql = "SELECT *\n" +
-                "FROM review\n" +
+                "FROM user_review\n" +
                 "WHERE review_id = ?;";
 
         SqlRowSet row = jdbcTemplate.queryForRowSet(sql, id);

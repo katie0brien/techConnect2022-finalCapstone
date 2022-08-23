@@ -1,0 +1,17 @@
+.fa {
+    font-size: 50px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.fa:hover {
+    color: darkblue;
+}
+
+.like-toggle {
+    color: green;
+}
+
+.dislike-toggle {
+    color: red;
+}

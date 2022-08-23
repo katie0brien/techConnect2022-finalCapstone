@@ -7,6 +7,7 @@
         <th>Address</th>
         <th>State or Region</th>
         <th>city</th>
+        <th>Zip or Postal</th>
         <th>Country</th>
     </tr>
     <c:forEach items="${landmarks}" var="landmark">
@@ -25,12 +26,21 @@
             <td>
                 <c:out value="${landmark.city}"></c:out>
             </td>
-<%--            <td>--%>
-<%--                <c:out value="${landmark.zipOrPostal}"></c:out>--%>
-<%--            </td>--%>
+            <td>
+                <c:out value="${landmark.zipOrPostal}"></c:out>
+            </td>
             <td>
                 <c:out value="${landmark.country}"></c:out>
             </td>
+
+            <td><form method="POST" action="/landmark/review/${landmark.id}/${"True"}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                <input type="submit" value="Like"/></form>
+            </td>
+
+            <td><form method="POST" action="/landmark/review/${landmark.id}/${"False"}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                <input type="submit" value="Dislike"/></form>
+            </td>
+        </tr>
         </tr>
 
     </c:forEach>

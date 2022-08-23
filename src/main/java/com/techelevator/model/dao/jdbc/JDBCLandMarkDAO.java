@@ -213,4 +213,13 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
 
         return landmarks;
     }
+
+    @Override
+    public void updateThumbsUp(String choice, String landmark_id) {
+        String sql = "UPDATE review\n" +
+                "SET thumbs_up = ?\n" +
+                "WHERE landmark_id = ?;";
+
+        jdbcTemplate.update(sql, choice, landmark_id);
+    }
 }
