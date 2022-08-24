@@ -10,6 +10,8 @@ VALUES
         ('johnD', '3px9aJGVaMz/AF/nE0xILA==', 'John', 'Doe', 'johnDoe@email.com', '0000000000', 'City Visitor', 'rqtsXcP6bhSN94/03RwXeloN+hluYiHrFGi3QfVA7U0UBB3YWAyV8RzBXXnpDX5Io8qg31JPaYU8SmWo1DVoKhg/+4zximtT5ltK11t9ZI57S1Ls2HAiVRSDdp1rO9xCFgWtYJUnMP6PIkmYTE8Li8JRzlgxDH0l4xXE7/9fG/k='),
         ('janeD', '3px9aJGVaMz/AF/nE0xILA==', 'Jane', 'Doe', 'janeDoe@email.com', '0000000000', 'City Visitor', 'rqtsXcP6bhSN94/03RwXeloN+hluYiHrFGi3QfVA7U0UBB3YWAyV8RzBXXnpDX5Io8qg31JPaYU8SmWo1DVoKhg/+4zximtT5ltK11t9ZI57S1Ls2HAiVRSDdp1rO9xCFgWtYJUnMP6PIkmYTE8Li8JRzlgxDH0l4xXE7/9fG/k='),
         ('barb', '3px9aJGVaMz/AF/nE0xILA==', 'Barbie', 'Que', 'sauce@gmail.com', '(423)525-7020', 'City Visitor', 'rqtsXcP6bhSN94/03RwXeloN+hluYiHrFGi3QfVA7U0UBB3YWAyV8RzBXXnpDX5Io8qg31JPaYU8SmWo1DVoKhg/+4zximtT5ltK11t9ZI57S1Ls2HAiVRSDdp1rO9xCFgWtYJUnMP6PIkmYTE8Li8JRzlgxDH0l4xXE7/9fG/k=');
+ALTER SEQUENCE app_user_id_seq RESTART WITH 16;
+
 
 INSERT INTO landmark(ID, LATITUDE, LONGITUDE, NAME, street_address, city, state_or_region, zip_or_postal, country)
 VALUES

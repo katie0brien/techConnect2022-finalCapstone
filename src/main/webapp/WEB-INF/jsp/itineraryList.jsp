@@ -54,7 +54,8 @@
                             <input class="delete" type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
                         <td><a href="/itinerary/edit/download/${itinerary.irineraryId}">Download your Itinerary (.csv)</a></td>
                         <td><a href="https://labs.mapbox.com/community/nonprofit-route-tool/#/authoring" target="_blank">
-                                ${itineraries.size() < 3 ? "" : "Route Your Trip"}
+<%--                                ${itineraries.size() < 2 ? "" : "Route Your Trip"}--%>
+                            Route your Trip (2+ landmarks required)
                         </a></td>
 
                     </tr>
@@ -96,7 +97,8 @@
                             <input class="delete" type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
                         <td><a href="/itinerary/edit/download/${itinerary.irineraryId}">Download your Itinerary (.csv)</a></td>
                         <td><a href="https://labs.mapbox.com/community/nonprofit-route-tool/#/authoring" target="_blank">
-                            ${itineraries.size() < 2 ? "" : "Route Your Trip"}
+<%--                            ${itineraries.size() < 3 ? "" : "Route Your Trip"}--%>
+                                Route your Trip (2+ landmarks required)
                         </a></td>
                     </tr>
                 </c:if>

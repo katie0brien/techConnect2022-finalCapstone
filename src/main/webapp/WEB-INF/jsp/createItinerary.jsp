@@ -33,6 +33,7 @@
     </div>
 </div>
 <div class="left">
+    <c:url var="formAction" value="/itinerary/create/${userName}" />
     <form:form class="theForm" method="POST" action="${formAction}" modelAttribute="itinerary">
         <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
         <div class="row">

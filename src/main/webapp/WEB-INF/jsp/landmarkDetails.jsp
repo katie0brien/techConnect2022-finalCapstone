@@ -76,7 +76,7 @@
         <div class="upload"><img src="/img/home10.jpg" alt=""></div>
     </c:when>
     <c:otherwise>
-        <div class="upload"><img src="/img/uploads/3-image.jpg" alt=""></div>
+        <div class="upload"><img src="/img/uploads/${landmark.id}-image.jpg" alt=""></div>
     </c:otherwise>
 </c:choose>
 
