@@ -120,7 +120,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     }
 
     @Override
-    public Landmark getLandmarkByID(String ID) {
+    public Landmark getLandmarkByID(int ID) {
 
         String sql = "SELECT *\n" +
                 "FROM landmark WHERE id = ?;";
@@ -186,6 +186,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
         landmark.setStateOrRegion(row.getString("state_or_region"));
         landmark.setZipOrPostal(row.getString("zip_or_postal"));
         landmark.setCountry(row.getString("country"));
+        landmark.setLiked(row.getBoolean("thumbs_up"));
 
         return landmark;
     }
@@ -215,11 +216,36 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     }
 
     @Override
-    public void updateThumbsUp(String choice, String landmark_id) {
-        String sql = "UPDATE review\n" +
+    public void updateThumbsUp(Boolean choice, int landmark_id) {
+        String sql = "UPDATE landmark\n" +
                 "SET thumbs_up = ?\n" +
-                "WHERE landmark_id = ?;";
+                "WHERE id = ?;";
 
-        jdbcTemplate.update(sql, choice, landmark_id);
+        boolean condition = false;
+
+        if (choice != null) {
+            condition = choice ? false : true;
+        }
+
+        jdbcTemplate.update(sql, condition, landmark_id);
+    }
+
+    @Override
+    public List<Landmark> getFavorites(String userName) {
+        List<Landmark> landmarks = new ArrayList<>();
+        String sql = "SELECT *\n" +
+                "FROM landmark\n" +
+                "WHERE id IN (SELECT landmark_id\n" +
+                "             FROM user_landmark\n" +
+                "             WHERE user_id IN (SELECT user_id\n" +
+                "                               FROM app_user\n" +
+                "                               WHERE user_name = ?)) AND thumbs_up = TRUE;";
+
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql,userName);
+
+        while(rows.next()) {
+            landmarks.add(mapToLandmark(rows));
+        }
+        return landmarks;
     }
 }

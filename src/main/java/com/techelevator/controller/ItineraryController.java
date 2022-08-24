@@ -36,7 +36,7 @@ public class ItineraryController {
         List<Itinerary> itineraries = itineraryDAO.getItinerariesByUserName(id);
 
         model.addAttribute("itineraries", itineraries);
-
+        model.addAttribute("userName", id);
         return "itineraryList"; //todo fill in appropriate page
     }
 

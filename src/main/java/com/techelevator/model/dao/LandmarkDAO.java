@@ -12,12 +12,13 @@ public interface LandmarkDAO {
     List<Landmark> getLandmarksByState(String stateOrRegion);
     List<Landmark> getLandmarksByUser(int userID);
     List<Landmark> getLandmarkByItineraryId(int itineraryId);
-    Landmark getLandmarkByID(String id);
+    Landmark getLandmarkByID(int id);
     void editLandmark(Landmark landmark);
     void deleteLandmark(long id);
     int addLandmark(Landmark landmark);
     void addLandmarkToRelatorTable(int landmarkId, int itineraryId);
     List<String> getLandmarkAddressByItineraryId(int itineraryId);
-    void updateThumbsUp(String choice, String landmark_id );
+    void updateThumbsUp(Boolean choice, int landmark_id );
+    List<Landmark> getFavorites(String userName);
 
 }

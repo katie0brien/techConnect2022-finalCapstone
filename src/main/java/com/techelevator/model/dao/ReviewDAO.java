@@ -7,10 +7,5 @@ import java.util.Queue;
 
 public interface ReviewDAO {
 
-    List<Review> getAllReviews();
-    List<Review> getAllReviewsByUser();
-    List<Review> getAllReviewsLandmark();
-    Queue<String> getAllCoordinatesDesc();
-    List<Review>getAllReviewsDesc(Queue<String> order);
-    Review getReviewByID(int id);
+    void updateReview(int landmarkId, boolean liked);
 }

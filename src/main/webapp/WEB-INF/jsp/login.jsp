@@ -41,8 +41,8 @@
 		<div class="company">trip planner</div>
 		<c:url var="adventurerDude" value="../../img/adventurerDude.png" />
 		<div class="logo"> <img src="${adventurerDude}" alt="">  </div>
-		<c:url var="goHome" value="/home" />
-		<form method="post" action="${goHome}">
+		<c:url var="goHome" value="/login" />
+		<form method="POST" action="${goHome}">
 			<input type="hidden" name="destination" value="${param.destination}"/>
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 			<div class="form-group" >
