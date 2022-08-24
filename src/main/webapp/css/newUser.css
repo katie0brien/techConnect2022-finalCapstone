@@ -65,6 +65,14 @@
 
 
     }
+    input[type="text"]{
+        background-color: #FCF8E8;
+        color:black ;
+    }
+    input[type="text"]:focus{
+        background-color: #FCF8E8;
+        color:black ;
+    }
     .hidden-validation{
         visibility: hidden;
         position: absolute;

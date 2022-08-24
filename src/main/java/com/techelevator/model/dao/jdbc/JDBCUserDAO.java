@@ -79,14 +79,15 @@ public class JDBCUserDAO implements UserDAO
 	public Object getUserByUserName(String userName) {
 		String sqlSearchForUsername ="SELECT * "+
 		"FROM app_user "+
-		"WHERE UPPER(user_name) = ? ";
+		"WHERE (user_name)  ILIKE ? ";
 
-		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase()); 
+		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForUsername, userName.toUpperCase() );
 		User thisUser = null;
 		if(user.next()) {
 			thisUser = new User();
 			thisUser.setUserName(user.getString("user_name"));
 			thisUser.setPassword(user.getString("password"));
+			thisUser.setFname(user.getString("fname"));
 		}
 
 		return thisUser;

@@ -4,10 +4,10 @@
         overflow-y: hidden;
         height: 100vh;
         background-color: #FCF8E8;
-        padding: 0;
+        padding: 0px;
     }
     html::-webkit-scrollbar {
-        width: 0
+        width: 0px
     }
     body{
         position: relative;
@@ -15,9 +15,23 @@
         width: 1920px;
         height: 100vh;
     }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active{
+        color: #FCF8E8;
+        background-color: #94B49F;
+        -webkit-box-shadow: 0 0 0 37px #94B49F inset !important;
+    }
+
+
+    .disable-select {
+        user-select: none;
+    }
     .left{
         position: absolute;
-        left: 0;
+        left: 0px;
         width: 50%;
         height: 100%;
         background-color: #FCF8E8;
@@ -32,7 +46,7 @@
         height: 100%;
         background-color: rgba(148, 180, 159,.3);
         position: absolute;
-        right: 0;
+        right: 0px;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -41,7 +55,7 @@
     .top{
         width: 50%; height: 70px;
         position: absolute; top:0;
-
+        background-color: none;
         display: flex; justify-content: space-between;
         font-family: 'Raleway', sans-serif;
         z-index: 2;
@@ -51,7 +65,7 @@
         height: 60px;
         margin-left: 25px;
         margin-top: 10px;
-
+        background-color: none;
 
     }
     .girl img{
@@ -91,11 +105,20 @@
         padding-right: 45px;
 
     }
+    input[type="text"]{
+        background-color: #94B49F;
+        color: #FCF8E8;
+    }
+    input[type="text"]:focus{
+        background-color: #94B49F;
+        color: #FCF8E8;
+    }
+
     .form-group{
         margin-top: 30px;
         font-family: 'Raleway', sans-serif;
         text-transform: uppercase;
-        font-size: 25px;
+        font-size: 25;
         letter-spacing: 5px;
     }
     .form-group label{
@@ -118,10 +141,12 @@
         letter-spacing: 3px;
         font-size:17px;
         padding-left: 30px;
-        user-select: none;
     }
-    input[type=text] {
-        background-color:  #94B49F;
+    textarea {
+        border: none;
+        background-color: #94B49F;
+        resize: none;
+        outline: none;
         color: #FCF8E8;
     }
 
@@ -132,6 +157,7 @@
         align-items: center;
         margin-top: 50px;
     }
+
     .submitButton{
         width: 30%;
         height: 60px;
