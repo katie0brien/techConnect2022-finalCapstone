@@ -43,6 +43,7 @@ public class ItineraryController {
     @RequestMapping(value = "/create/{id}", method = RequestMethod.GET)
     public String createItinerary(@PathVariable String id, Model model, @Valid @ModelAttribute Itinerary itinerary) {
         model.addAttribute("itinerary", itinerary);
+        model.addAttribute("userName", id);
         return "createItinerary";
     }
 
