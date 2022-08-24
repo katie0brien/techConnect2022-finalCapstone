@@ -19,9 +19,9 @@ VALUES
 
 INSERT INTO user_landmark(USER_ID, LANDMARK_ID)
 VALUES
-        (1,'1'),
-        (1,'2'),
-        (2,'3');
+        (7,'1'),
+        (8,'2'),
+        (9,'3');
 
 INSERT INTO itinerary(name, from_date, to_date)
 VALUES
@@ -31,21 +31,13 @@ VALUES
 
 INSERT INTO user_itinerary(itinerary_id, user_id)
 VALUES
-    (1,1),
-    (2,1),
-    (3,2);
+    (4,7),
+    (5,7),
+    (6,8);
 
 INSERT INTO itinerary_landmark(itinerary_id, landmark_id)
 VALUES
-    (1,'1'),
-    (1,'2'),
-    (2,'3');
-
-
-INSERT INTO user_review(user_id, landmark_id, thumbs_up)
-VALUES  (1,1, true),
-        (1,2, false),
-        (2,2, true),
-        (2,3, true),
-        (3,2, true);
+    (4,'1'),
+    (4,'2'),
+    (5,'3');
 COMMIT;

@@ -21,4 +21,5 @@ public interface LandmarkDAO {
     void updateThumbsUp(Boolean choice, int landmark_id);
     List<Landmark> getFavorites(String userName);
     void editTravelNotes(String notes, int id);
+    void addImageName(String imageName, int id);
 }

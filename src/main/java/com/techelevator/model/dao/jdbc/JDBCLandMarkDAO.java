@@ -47,7 +47,6 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
         while (row.next()) {
             landmarks.add(mapToLandmark(row));
         }
-
         return landmarks;
     }
 
@@ -188,6 +187,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
         landmark.setCountry(row.getString("country"));
         landmark.setLiked(row.getBoolean("thumbs_up"));
         landmark.setTravelNotes(row.getString("travel_notes"));
+        landmark.setImageName(row.getString("image_name"));
 
         return landmark;
     }
@@ -259,5 +259,14 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
 
         jdbcTemplate.update(sql, notes, id);
 
+    }
+
+    @Override
+    public void addImageName(String imageName, int id) {
+        String sql = "UPDATE landmark\n" +
+                "SET image_name = ?\n" +
+                "WHERE id = ?;";
+
+        jdbcTemplate.update(sql, imageName, id);
     }
 }
