@@ -28,7 +28,8 @@ CREATE TABLE landmark (
   city varchar(25) NULL,
   state_or_region varchar(50) NULL,
   zip_or_postal varchar(50) NULL,
-  country varchar(50) NULL
+  country varchar(50) NULL,
+  thumbs_up boolean default FALSE
 );
 
 CREATE TABLE user_landmark (

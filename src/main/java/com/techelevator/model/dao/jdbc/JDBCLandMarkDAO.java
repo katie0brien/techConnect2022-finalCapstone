@@ -186,6 +186,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
         landmark.setStateOrRegion(row.getString("state_or_region"));
         landmark.setZipOrPostal(row.getString("zip_or_postal"));
         landmark.setCountry(row.getString("country"));
+        landmark.setLiked(row.getBoolean("thumbs_up"));
 
         return landmark;
     }
@@ -215,11 +216,17 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
     }
 
     @Override
-    public void updateThumbsUp(String choice, String landmark_id) {
-        String sql = "UPDATE review\n" +
+    public void updateThumbsUp(Boolean choice, int landmark_id) {
+        String sql = "UPDATE landmark\n" +
                 "SET thumbs_up = ?\n" +
-                "WHERE landmark_id = ?;";
+                "WHERE id = ?;";
 
-        jdbcTemplate.update(sql, choice, landmark_id);
+        boolean condition = false;
+
+        if (choice != null) {
+            condition = choice ? false : true;
+        }
+
+        jdbcTemplate.update(sql, condition, landmark_id);
     }
 }

@@ -20,116 +20,13 @@ public class JDBCReviewDAO implements ReviewDAO {
     public JDBCReviewDAO(DataSource dataSource) {this.jdbcTemplate = new JdbcTemplate(dataSource);}
 
     @Override
-    public List<Review> getAllReviews() {
-        String sql = "SELECT *\n" +
-                "FROM review;";
+    public void updateReview(int landmarkId, boolean liked) {
+        String sql = "UPDATE user_review\n" +
+                "SET thumbs_up = ?\n" +
+                "WHERE landmark_id = ?;";
 
-        List<Review> reviews = new ArrayList<>();
-        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
+        String choice = liked ? "FALSE" : "TRUE";
 
-        while(rows.next()) {
-            reviews.add(mapToReview(rows));
-        }
-
-        return reviews;
-    }
-
-    @Override
-    public List<Review> getAllReviewsByUser() {
-        String sql = "SELECT *\n" +
-                "FROM review\n" +
-                "WHERE user_id = ?;";
-
-        List<Review> reviews = new ArrayList<>();
-        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
-
-        while(rows.next()) {
-            reviews.add(mapToReview(rows));
-        }
-
-        return reviews;
-    }
-
-    @Override
-    public List<Review> getAllReviewsLandmark() {
-        String sql = "SELECT *\n" +
-                "FROM review\n" +
-                "WHERE landmark_id ILIKE ?;";
-
-        List<Review> reviews = new ArrayList<>();
-        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
-
-        while(rows.next()) {
-            reviews.add(mapToReview(rows));
-        }
-
-        return reviews;
-    }
-
-    @Override
-    public Queue<String> getAllCoordinatesDesc() {
-        String sql = "SELECT longitude, latitude, COUNT(*) as nums_of_likes\n" +
-                "FROM review\n" +
-                "GROUP BY latitude, longitude\n" +
-                "ORDER BY nums_of_likes DESC;";
-
-        Queue<String> order = new LinkedList<>();
-        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql);
-
-        while(rows.next()) {
-            String coordinates = rows.getString("latitude") + " " + rows.getString("longitude");
-            order.add(coordinates);
-        }
-
-        return order;
-    }
-
-    @Override
-    public List<Review> getAllReviewsDesc(Queue<String> order) {
-        String sql = "SELECT *\n" +
-                "FROM landmark\n" +
-                "Where latitude = ? AND longitude = ?;";
-
-        List<Review> reviews = new ArrayList<>();
-        while(!order.isEmpty()) {
-            String[] coordinates = order.poll().split(" ");
-            String latitude = coordinates[0];
-            String longitude = coordinates[1];
-
-            SqlRowSet rows = jdbcTemplate.queryForRowSet(sql, latitude, longitude);
-
-            while(rows.next()) {
-                reviews.add(mapToReview(rows));
-            }
-
-        }
-
-        return reviews;
-    }
-
-    @Override
-    public Review getReviewByID(int id) {
-        String sql = "SELECT *\n" +
-                "FROM user_review\n" +
-                "WHERE review_id = ?;";
-
-        SqlRowSet row = jdbcTemplate.queryForRowSet(sql, id);
-
-        if (row.next()) {
-            return mapToReview(row);
-        }
-        return null;
-    }
-
-    public Review mapToReview(SqlRowSet row) {
-        Review review = new Review();
-        review.setId(row.getInt("review_id"));
-        review.setLandmarkId(row.getString("landmark_id"));
-        review.setUserId(row.getInt("user_id"));
-        review.setThumbsUp(row.getBoolean("thumbs_up"));
-        review.setLatitude(row.getString("latitude"));
-        review.setLongitude(row.getString("longitude"));
-
-        return review;
+        jdbcTemplate.update(sql,choice,landmarkId);
     }
 }

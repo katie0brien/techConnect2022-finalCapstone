@@ -23,11 +23,12 @@ public class LandmarkController {
         this.landmarkDAO = landmarkDAO;
     }
 
-    @RequestMapping("/list")
-    public String listLandmarks(Model model ) {
-        List<Landmark> landmarks = landmarkDAO.getAllLandmarks();
+    @RequestMapping("/list/{id}")
+    public String listLandmarks(@PathVariable Integer id, Model model ) {
+        List<Landmark> landmarks = landmarkDAO.getLandmarkByItineraryId(id);
 
         model.addAttribute("landmarks", landmarks);
+        model.addAttribute("itineraryId", id);
 
         return "landmarkList";
     }
@@ -82,11 +83,5 @@ public class LandmarkController {
 //        return "redirect:/itinerary/create/1";
     }
 
-    @RequestMapping(path = "/review/{landmarkId}/{choice}")
-    public String landmarkReview(@PathVariable String landmarkId, @PathVariable String choice) {
-        landmarkDAO.updateThumbsUp(choice, landmarkId);
-
-        return "redirect:/itinerary/list/1";
-    }
 
 }

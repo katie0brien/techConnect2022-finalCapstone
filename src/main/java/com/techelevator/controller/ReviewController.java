@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import com.techelevator.model.dao.LandmarkDAO;
 import com.techelevator.model.dao.ReviewDAO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,17 +9,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/review")
 public class ReviewController {
-
-    ReviewDAO reviewDAO;
-
+    LandmarkDAO landmarkDAO;
     @Autowired
-    public ReviewController(ReviewDAO reviewDAO) {
-        this.reviewDAO = reviewDAO;
+    public ReviewController(LandmarkDAO landmarkDAO) {
+        this.landmarkDAO = landmarkDAO;
     }
 
-    @RequestMapping(value = "review/new/{userId}/{landmarkId}", method = RequestMethod.POST)
-    public String addReview(@PathVariable int userId, @PathVariable String landmarkId) {
-        return " ";
+    @RequestMapping(value = "/new/{landmarkId}/{liked}/{itinerary_id}", method = RequestMethod.POST)
+    public String addReview(@PathVariable int landmarkId, @PathVariable Boolean liked, @PathVariable int itinerary_id) {
+        landmarkDAO.updateThumbsUp(liked, landmarkId);
+        return "redirect:/landmark/list/" + itinerary_id;
     }
 }
