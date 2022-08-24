@@ -1,10 +1,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:import url="/WEB-INF/jsp/common/header.jsp" />
+<c:import url="/WEB-INF/jsp/common/profile.jsp" />
 <%@page import="com.techelevator.io.csvFileWriter"%>
 
 <c:url var="likeJs" value="/js/like-button.js"/>
+<c:import url="/WEB-INF/jsp/common/profile.jsp" />
+
 <script type="text/javascript" href="${likeJs}"></script>
+<div class="top">
+    <div class="company">trip planner</div>
+    <div class="spaced">
+        <div class="hello">hello</div>
+        <c:url var="adventurer" value="../../img/adventurer.png" />
+        <div class="logo">  <img src="${adventurer}" alt="">  </div>
+        <div class="name">${user.fname}</div>
+    </div>
+</div>
+<div class="main">
+    <div class="formHolder">
+
 <form action="/itinerary/delete" method="POST">
         <table>
             <h1>Upcoming Trips</h1>
@@ -12,6 +26,11 @@
                 <th>Trip Name</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
 
             <c:forEach items="${itineraries}" var="itinerary">
@@ -51,6 +70,11 @@
                 <th>Trip Name</th>
                 <th>Start Date</th>
                 <th>End Date</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+
             </tr>
 
             <c:forEach items="${itineraries}" var="itinerary">
@@ -84,6 +108,9 @@
         <p><a href="/itinerary/create/${userName}">add itinerary</a></p>
 
 </form>
+
+    </div>
+</div>
 
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

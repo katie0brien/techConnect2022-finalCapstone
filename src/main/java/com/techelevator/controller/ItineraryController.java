@@ -2,7 +2,9 @@ package com.techelevator.controller;
 
 import com.techelevator.model.dao.ItineraryDAO;
 import com.techelevator.model.dao.LandmarkDAO;
+import com.techelevator.model.dao.UserDAO;
 import com.techelevator.model.dto.Itinerary;
+import com.techelevator.model.dto.User;
 import com.techelevator.model.dto.Landmark;
 import org.bouncycastle.ocsp.Req;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,10 +25,13 @@ public class ItineraryController {
 
     ItineraryDAO itineraryDAO;
     LandmarkDAO landmarkDAO;
+    UserDAO userDao;
+
     @Autowired
-    public ItineraryController(ItineraryDAO itineraryDAO, LandmarkDAO landmarkDAO) {
+    public ItineraryController(ItineraryDAO itineraryDAO, LandmarkDAO landmarkDAO, UserDAO userDao) {
         this.itineraryDAO = itineraryDAO;
         this.landmarkDAO = landmarkDAO;
+        this.userDao = userDao;
     }
 
 
@@ -35,8 +40,10 @@ public class ItineraryController {
     public String listItineraries(Model model, @PathVariable String id) {
         List<Itinerary> itineraries = itineraryDAO.getItinerariesByUserName(id);
 
+
         model.addAttribute("itineraries", itineraries);
         model.addAttribute("userName", id);
+        model.addAttribute("user", (User) userDao.getUserByUserName(id));
         return "itineraryList"; //todo fill in appropriate page
     }
 
