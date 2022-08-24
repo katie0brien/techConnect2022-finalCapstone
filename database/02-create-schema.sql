@@ -5,7 +5,7 @@
 BEGIN;
 
 -- CREATE statements go here
-DROP TABLE IF EXISTS app_user, landmark, user_landmark, itinerary_landmark, itinerary, user_itinerary, review;
+DROP TABLE IF EXISTS user_itinerary, user_landmark, itinerary_landmark,app_user, landmark,  itinerary CASCADE;
 
 CREATE TABLE app_user (
   id SERIAL PRIMARY KEY,
@@ -30,7 +30,8 @@ CREATE TABLE landmark (
   zip_or_postal varchar(50) NULL,
   country varchar(50) NULL,
   travel_notes varchar(5000) NULL,
-  thumbs_up boolean default FALSE
+  thumbs_up boolean default FALSE,
+  image_name varchar(25) NULL
 );
 
 CREATE TABLE user_landmark (
@@ -63,15 +64,4 @@ CREATE TABLE user_itinerary (
     FOREIGN KEY (user_id) REFERENCES app_user(id),
     PRIMARY KEY (itinerary_id, user_id)
 );
-
-CREATE TABLE user_review (
-  review_id SERIAL PRIMARY KEY,
-  user_id int,
-  landmark_id int,
-  thumbs_up boolean default false,
-  FOREIGN KEY (landmark_id) REFERENCES landmark(id),
-  FOREIGN KEY (user_id) REFERENCES app_user(id)
-);
-
-
 COMMIT;
