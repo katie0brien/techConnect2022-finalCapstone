@@ -18,7 +18,7 @@ public interface LandmarkDAO {
     int addLandmark(Landmark landmark);
     void addLandmarkToRelatorTable(int landmarkId, int itineraryId);
     List<String> getLandmarkAddressByItineraryId(int itineraryId);
-    void updateThumbsUp(Boolean choice, int landmark_id );
+    void updateThumbsUp(Boolean choice, int landmark_id);
     List<Landmark> getFavorites(String userName);
-
+    void editTravelNotes(String notes, int id);
 }
