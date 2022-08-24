@@ -49,8 +49,8 @@ public class ItineraryController {
     }
 
     @RequestMapping(value = "/create/{id}", method = RequestMethod.GET)
-    public String createItinerary(@PathVariable String id, Model model) {//, @Valid @ModelAttribute Itinerary itinerary) {
-    //    model.addAttribute("itinerary", itinerary);
+    public String createItinerary(@PathVariable String id, Model model, @Valid @ModelAttribute Itinerary itinerary) {
+        model.addAttribute("itinerary", itinerary);
         model.addAttribute("userName", id);
         return "createItinerary";
     }
@@ -73,10 +73,11 @@ public class ItineraryController {
         return "redirect:/itinerary/list/" + userId;
     }
 
-    @RequestMapping(value = "edit/{id}", method = RequestMethod.GET)
-    public String editItinerary(@PathVariable String id, Model model) {
+    @RequestMapping(value = "edit/{id}/{userName}", method = RequestMethod.GET)
+    public String editItinerary(@PathVariable String id,@PathVariable String userName, Model model) {
         Itinerary itinerary = itineraryDAO.getItineraryBy(Integer.parseInt(id));
         model.addAttribute("itinerary", itinerary);
+        model.addAttribute("userName", userName);
         // get current landmarks
         List<Landmark> landmarks = landmarkDAO.getLandmarkByItineraryId(Integer.parseInt(id));
         // if empty set default lat/lng
