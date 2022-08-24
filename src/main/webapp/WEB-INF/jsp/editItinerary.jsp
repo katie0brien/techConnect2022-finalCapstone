@@ -5,7 +5,14 @@
 <div class="top">
     <div class="girl">  </div>
     <div class="company">trip planner</div>
-    <div class="profile"> <img src="cowboy-hat.png" alt="">  </div>
+    <div class="profile">
+        <c:url var="profilePage" value="/itinerary/list/${userName}" />
+        <form method="get" action="${profilePage}">
+            <input type="image" src="${hat}" style="max-width: 100%;"  alt="Submit" />
+
+        </form>
+
+    </div>
 </div>
 
 <%--<c:url var="validationJs" value="/js/user-validation.js" />--%>
@@ -13,22 +20,16 @@
 
 <c:url var="home" value="../../img/home.png" />
 <c:url var="itineraryList" value="/itinerary/list/${userName}" />
-<div class="homeButton">
-    <form method="get" action="${itineraryList}">
-<%--        <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>--%>
-        <input type="image" src="${home}" style="max-width: 100%;"  alt="Submit" />
-    </form>
-</div>
+
 
 <%--<script src="${validationJs}"></script>--%>
 <div class="left">
 
-
 <c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}" />
-<form method="POST" action="${formAction}">
+<form class="theForm" method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
-        <h1>Make changes to your ${itinerary.name} trip from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
+        <h1 class="titleTop">Make changes to ${itinerary.name} from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
 
             <div class="form-group">
                 <label for="name">Trip Name: </label>
@@ -44,10 +45,12 @@
                 <label for="toDate">End Date: </label>
                 <input type="Date" id="toDate" name="toDate" placeHolder="End Date" class="form-control" />
             </div>
-            <button type="submit" id="" class="submitButton">confirm changes</button>
-
-
+        <div class="buttonBox">
+            <button type="submit" id="" class="submitButton">create</button></div>
     </div>
+
+
+
 </form>
 </div>
 
@@ -55,33 +58,27 @@
 
     <div class="title"> <p>where to?</p> </div>
     <div class="mapBox">
-
-
         <div id="map"></div>
 
 
-
     </div>
-
-</div>
-
-<%-- modal pop up about asking user to save pin />--%>
-<div class="modal" tabindex="-1" role="dialog" id="savePinModal">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 class="modal-title">Save this pin as a landmark?</h2>
-            </div>
-            <div class="modal-body">
-                <c:url var="formAction" value="/itinerary/create/1" />
-                <div>
-                    <input type="hidden" id="CSRF_TOKEN" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-                    <div class="form-group">
-                        <label for="landmarkName">Pin Name: </label>
-                        <input type="text" id="landmarkName" name="landmarkName" placeHolder="Pin Name" class="form-control" />
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-primary" onclick="saveLandmark()">Save changes</button>
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+    <div class="modal" tabindex="-1" role="dialog" id="savePinModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title">Save this pin as a landmark?</h2>
+                </div>
+                <div class="modal-body">
+                    <c:url var="formAction" value="/itinerary/create/1" />
+                    <div>
+                        <input type="hidden" id="CSRF_TOKEN" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                        <div class="form-group">
+                            <label for="landmarkName">Pin Name: </label>
+                            <input type="text" id="landmarkName" name="landmarkName" placeHolder="Pin Name" class="form-control" />
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" onclick="saveLandmark()">Save changes</button>
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -89,6 +86,9 @@
         </div>
     </div>
 </div>
+
+<%-- modal pop up about asking user to save pin />--%>
+
 
 <%-- the map part of the website />--%>
 <!DOCTYPE html>
@@ -100,8 +100,8 @@
     <link href="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css" rel="stylesheet">
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
     <style>
-        body { margin: 0; padding: 0; }
-        #map { position: absolute; top: 375px; bottom: 0; width: 50%; }
+
+        #map { position: absolute; top: 160px; right: 270px; height: 50%; width: 50%; }
     </style>
 </head>
 <body>
