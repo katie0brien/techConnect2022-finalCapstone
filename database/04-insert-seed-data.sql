@@ -19,25 +19,22 @@ VALUES
 
 INSERT INTO user_landmark(USER_ID, LANDMARK_ID)
 VALUES
-        (7,'1'),
-        (8,'2'),
-        (9,'3');
+        ('1',1);
 
 INSERT INTO itinerary(name, from_date, to_date)
 VALUES
     ('Mexico','2022-07-16', '2022-07-18'),
-    ('California','2022-08-19', '2022-08-25'),
-    ('Ohio','2022-07-16','2022-10-16');
+    ('California','2022-08-19', '2022-08-25');
+
 
 INSERT INTO user_itinerary(itinerary_id, user_id)
 VALUES
-    (4,7),
-    (5,7),
-    (6,8);
+    (1,1);
+
 
 INSERT INTO itinerary_landmark(itinerary_id, landmark_id)
 VALUES
-    (4,'1'),
-    (4,'2'),
-    (5,'3');
+    (1,'1'),
+    (1,'2');
+
 COMMIT;

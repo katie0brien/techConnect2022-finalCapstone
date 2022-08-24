@@ -1,7 +1,5 @@
 		</div>
-		
-		<footer>
-			Copyright 2016 Critter Inc.
-		</footer>
+
+		<div class="bottom"> <p>sarah. mohamed. katie.</p> </div>
 	</body>
 </html>

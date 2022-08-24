@@ -51,7 +51,7 @@
                         <td><a href="/itinerary/edit/${itinerary.irineraryId}">Edit</a></td>
                         <td><a href="/landmark/list/${itinerary.irineraryId}/${userName}">View Landmarks</a></td>
                         <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/1"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-                            <input type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
+                            <input class="delete" type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
                         <td><a href="/itinerary/edit/download/${itinerary.irineraryId}">Download your Itinerary (.csv)</a></td>
                         <td><a href="https://labs.mapbox.com/community/nonprofit-route-tool/#/authoring" target="_blank">
                                 ${itineraries.size() < 3 ? "" : "Route Your Trip"}
@@ -93,7 +93,7 @@
                         </td>
                         <td><a href="/landmark/list/${itinerary.irineraryId}/${userName}">View Landmarks</a></td>
                         <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-                            <input type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
+                            <input class="delete" type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
                         <td><a href="/itinerary/edit/download/${itinerary.irineraryId}">Download your Itinerary (.csv)</a></td>
                         <td><a href="https://labs.mapbox.com/community/nonprofit-route-tool/#/authoring" target="_blank">
                             ${itineraries.size() < 2 ? "" : "Route Your Trip"}
@@ -108,8 +108,14 @@
         <p><a href="/itinerary/create/${userName}">add itinerary</a></p>
 
 </form>
-
+        <c:url var="home" value="../../img/home.png" />
     </div>
+    <c:url var="homePage" value="/home/{id}" />
+    <div class="homeButton">
+    <form method="get" action="${homePage}">
+        <input type="image" src="${home}" style="max-width: 100%;"  alt="Submit" />
+
+    </form></div>
 </div>
 
 
