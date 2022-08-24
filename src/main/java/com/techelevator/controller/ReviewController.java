@@ -17,9 +17,9 @@ public class ReviewController {
         this.landmarkDAO = landmarkDAO;
     }
 
-    @RequestMapping(value = "/new/{landmarkId}/{liked}/{itinerary_id}", method = RequestMethod.POST)
-    public String addReview(@PathVariable int landmarkId, @PathVariable Boolean liked, @PathVariable int itinerary_id) {
+    @RequestMapping(value = "/new/{landmarkId}/{liked}/{itinerary_id}/{userName}", method = RequestMethod.POST)
+    public String addReview(@PathVariable int landmarkId, @PathVariable Boolean liked, @PathVariable int itinerary_id, @PathVariable String userName) {
         landmarkDAO.updateThumbsUp(liked, landmarkId);
-        return "redirect:/landmark/list/" + itinerary_id;
+        return "redirect:/landmark/list/" + itinerary_id + "/" + userName;
     }
 }

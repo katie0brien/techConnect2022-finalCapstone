@@ -42,7 +42,7 @@
                     <%--            </td>--%>
 
                 <td>
-                    <form method="POST" action="/review/new/${landmark.id}/${landmark.liked}/${itineraryId}">
+                    <form method="POST" action="/review/new/${landmark.id}/${landmark.liked}/${itineraryId}/${userName}">
                         <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                         <input type="submit" id="likeButton" value="${landmark.liked ? "Remove From Favorites" : "Add to Favorites"}" onclick="Buttontoggle()">
                     </form>
@@ -52,7 +52,7 @@
 </table>
 
 
-    <h2>Favorites</h2>
+    <h2>Favorites From This Itinerary</h2>
 <ul>
     <c:forEach items="${landmarks}" var="landmark">
         <c:if test="${landmark.liked}">
@@ -61,6 +61,7 @@
     </c:forEach>
 </ul>
 
+<p><a href="/landmark/favorites/${userName}">View All Favorites</a></p>
 
 
 <script type="text/javascript">

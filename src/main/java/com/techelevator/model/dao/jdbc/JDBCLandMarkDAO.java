@@ -229,4 +229,23 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
 
         jdbcTemplate.update(sql, condition, landmark_id);
     }
+
+    @Override
+    public List<Landmark> getFavorites(String userName) {
+        List<Landmark> landmarks = new ArrayList<>();
+        String sql = "SELECT *\n" +
+                "FROM landmark\n" +
+                "WHERE id IN (SELECT landmark_id\n" +
+                "             FROM user_landmark\n" +
+                "             WHERE user_id IN (SELECT user_id\n" +
+                "                               FROM app_user\n" +
+                "                               WHERE user_name = ?)) AND thumbs_up = TRUE;";
+
+        SqlRowSet rows = jdbcTemplate.queryForRowSet(sql,userName);
+
+        while(rows.next()) {
+            landmarks.add(mapToLandmark(rows));
+        }
+        return landmarks;
+    }
 }
