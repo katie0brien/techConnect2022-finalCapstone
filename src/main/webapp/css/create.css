@@ -108,10 +108,12 @@
     input[type="text"]{
         background-color: #94B49F;
         color: #FCF8E8;
+        border:none;
     }
     input[type="text"]:focus{
         background-color: #94B49F;
         color: #FCF8E8;
+        border:none;
     }
 
     .form-group{
