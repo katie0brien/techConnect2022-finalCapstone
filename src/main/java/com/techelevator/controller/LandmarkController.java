@@ -84,9 +84,11 @@ public class LandmarkController {
 //        return "redirect:/itinerary/create/1";
     }
 
-    @RequestMapping("/favorites/{userName}")
-    public String viewFavorites(@PathVariable String userName, Model model) {
+    @RequestMapping("/favorites/{userName}/{itineraryId}")
+    public String viewFavorites(@PathVariable String userName, Model model, @PathVariable Integer itineraryId) {
         model.addAttribute("landmarks", landmarkDAO.getFavorites(userName));
+        model.addAttribute("itineraryId", itineraryId);
+        model.addAttribute("personName", userName);
         return "favoritesPage";
     }
 

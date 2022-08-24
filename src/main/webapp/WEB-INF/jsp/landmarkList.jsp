@@ -75,7 +75,7 @@
     </c:forEach>
 </ul>
 
-<p class="fav"><a href="/landmark/favorites/${userName}">View Favorites</a></p>
+<p class="fav"><a href="/landmark/favorites/${userName}/${itineraryId}">View Favorites</a></p>
 </div>
 
 <div class="hotB">

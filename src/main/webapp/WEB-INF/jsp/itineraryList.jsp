@@ -48,7 +48,7 @@
                             <c:out value="${itinerary.toDate}"/>
                         </td>
 
-                        <td><a href="/itinerary/edit/${itinerary.irineraryId}">Edit</a></td>
+                        <td><a href="/itinerary/edit/${itinerary.irineraryId}/${userName}">Edit</a></td>
                         <td><a href="/landmark/list/${itinerary.irineraryId}/${userName}">View Landmarks</a></td>
                         <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/1"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                             <input class="delete" type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
