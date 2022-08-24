@@ -23,7 +23,14 @@
 <div class="top">
     <div class="girl">  </div>
     <div class="company">trip planner</div>
-    <div class="profile"> <img src="${hat}" alt="">  </div>
+    <div class="profile">
+        <c:url var="profilePage" value="/itinerary/list/${userName}" />
+        <form method="get" action="${profilePage}">
+            <input type="image" src="${hat}" style="max-width: 100%;"  alt="Submit" />
+
+        </form>
+
+    </div>
 </div>
 <div class="left">
     <c:url var="formAction" value="/itinerary/create/${userName}" />
