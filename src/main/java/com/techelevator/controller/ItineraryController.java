@@ -37,12 +37,14 @@ public class ItineraryController {
 
         model.addAttribute("itineraries", itineraries);
         model.addAttribute("userName", id);
+       // model.addAttribute("landmarks", landmarkDAO.getLandmarkByItineraryId(id));
         return "itineraryList"; //todo fill in appropriate page
     }
 
     @RequestMapping(value = "/create/{id}", method = RequestMethod.GET)
-    public String createItinerary(@PathVariable String id, Model model, @Valid @ModelAttribute Itinerary itinerary) {
-        model.addAttribute("itinerary", itinerary);
+    public String createItinerary(@PathVariable String id, Model model) {//, @Valid @ModelAttribute Itinerary itinerary) {
+    //    model.addAttribute("itinerary", itinerary);
+        model.addAttribute("userName", id);
         return "createItinerary";
     }
 
@@ -52,13 +54,13 @@ public class ItineraryController {
             return "createItinerary";
         }
 
-        itineraryDAO.createItinerary(itinerary, Integer.parseInt(id));
+        itineraryDAO.createItinerary(itinerary, id);
 
         return "redirect:/itinerary/list/" + id; //todo fill in appropriate page
     }
 
     @RequestMapping(value = "/delete/{id}/{userId}", method = RequestMethod.POST)
-    public  String deleteItinerary(@PathVariable int id, @PathVariable int userId) {
+    public  String deleteItinerary(@PathVariable int id, @PathVariable String userId) {
         itineraryDAO.deleteItinerary(id, userId);
 
         return "redirect:/itinerary/list/" + userId;
@@ -68,6 +70,18 @@ public class ItineraryController {
     public String editItinerary(@PathVariable String id, Model model) {
         Itinerary itinerary = itineraryDAO.getItineraryBy(Integer.parseInt(id));
         model.addAttribute("itinerary", itinerary);
+        // get current landmarks
+        List<Landmark> landmarks = landmarkDAO.getLandmarkByItineraryId(Integer.parseInt(id));
+        // if empty set default lat/lng
+        if(landmarks.size() == 0) {
+            model.addAttribute("latitude", "43.6568");
+            model.addAttribute("longitude", "-79.4512");
+        } else {
+            model.addAttribute("latitude", landmarks.get(0).getLatitude());
+            model.addAttribute("longitude", landmarks.get(0).getLongitude());
+        }
+        // else use lat/lng of the first lanemark
+
         return "editItinerary";
     }
 
@@ -99,6 +113,12 @@ public class ItineraryController {
 
     }
 
+    @RequestMapping(value="/{id}/landmarks")
+    public @ResponseBody List<Landmark> getLandmarksByItinerary(@PathVariable int id) {
+
+        List<Landmark> landmarks = landmarkDAO.getLandmarkByItineraryId(id);
+        return landmarks;
+    }
 
 
 }

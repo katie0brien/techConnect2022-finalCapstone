@@ -83,7 +83,7 @@
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/socksrock/cl6z7fpw9000i14klmkauspuj',
-        center: [-79.4512, 43.6568],
+        center: [${longitude}, ${latitude}],
         zoom: 13
     });
 
@@ -165,7 +165,16 @@
 
     }
 
+    <c:set var="markerUrl" value="/itinerary/${itinerary.irineraryId}/landmarks" />
+    map.on('load', () => {
+        const url = '${markerUrl}';
 
+        $.get(url, (data) => {
+            data.forEach(landmark => {
+                addMarker(landmark.longitude, landmark.latitude)
+            })
+        })
+    })
 
 
     //     map.on('load', () => {
