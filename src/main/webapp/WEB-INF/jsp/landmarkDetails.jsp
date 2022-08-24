@@ -44,7 +44,7 @@
                 <div class="row">
                 <div class="col-sm-4"></div>
                 <div class="col-sm-4">
-                    <c:url var="formAction" value="/upload" />
+                    <c:url var="formAction" value="/upload/${landmark.id}" />
                     <form method="POST" action="${formAction}" enctype="multipart/form-data">
                         <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 
@@ -62,5 +62,25 @@
         </tr>
 
 </table>
+<style>
+    .upload {
+        width: 200px;
+    }
+    .upload img {
+        max-width: 100%;
+    }
+</style>
+
+<c:choose>
+    <c:when test="${landmark.imageName == null}">
+        <div class="upload"><img src="/img/home10.jpg" alt=""></div>
+    </c:when>
+    <c:otherwise>
+        <div class="upload"><img src="/img/uploads/3-image.jpg" alt=""></div>
+    </c:otherwise>
+</c:choose>
+
+
+
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />
