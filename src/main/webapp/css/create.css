@@ -118,6 +118,11 @@
         letter-spacing: 3px;
         font-size:17px;
         padding-left: 30px;
+        user-select: none;
+    }
+    input[type=text] {
+        background-color:  #94B49F;
+        color: #FCF8E8;
     }
 
     .buttonBox{
@@ -214,7 +219,7 @@
         position: absolute;
 
         animation-name: hot;
-        animation-duration: 60s;
+        animation-duration: 30s;
         animation-iteration-count: infinite;
     }
     @keyframes car {
@@ -230,14 +235,14 @@
         100% {right: 130%;}
     }
     @keyframes hot {
-        0%   {left: 25px; top: 10px;}
+        0%  {left: 25px; top: 10px;}
         20% {left: 25px; top: 10px;}
-        25% {left: 25px; top: -10%;}
-        36% {left: 90%; top: -10%;}
-        60% {left: 90%; top: 120%;}
-        61% {left: 53%; top: 120%;}
-        90% { left: 53%; top: -10%}
-        91% {left: 25px; top: -10%;}
+        30% {left: 25px; top: -10%;}
+        31% {left: -10%; top: -10%;}
+        33% {left: -10%; top: 110%;}
+        35% {left: 25px; top: 110%;}
+
+
         100%{ left: 25px; top: 10px;}
 
     }
