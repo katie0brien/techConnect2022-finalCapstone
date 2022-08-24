@@ -110,7 +110,7 @@
 </form>
         <c:url var="home" value="../../img/home.png" />
     </div>
-    <c:url var="homePage" value="/home/{id}" />
+    <c:url var="homePage" value="/home/${userName}" />
     <div class="homeButton">
     <form method="get" action="${homePage}">
         <input type="image" src="${home}" style="max-width: 100%;"  alt="Submit" />
