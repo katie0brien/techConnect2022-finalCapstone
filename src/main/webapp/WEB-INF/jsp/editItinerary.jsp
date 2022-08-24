@@ -1,17 +1,24 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:import url="/WEB-INF/jsp/common/header.jsp" />
+<c:import url="/WEB-INF/jsp/common/edit.jsp" />
+<div class="top">
+    <div class="girl">  </div>
+    <div class="company">trip planner</div>
+    <div class="profile"> <img src="cowboy-hat.png" alt="">  </div>
+</div>
 
 <%--<c:url var="validationJs" value="/js/user-validation.js" />--%>
 <%--<script src="${validationJs}"></script>--%>
-<h1>Make changes to your ${itinerary.name} trip from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
+<div class="left">
+
+
 <c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}" />
 <form method="POST" action="${formAction}">
     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
     <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
+        <h1>Make changes to your ${itinerary.name} trip from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
+
             <div class="form-group">
                 <label for="name">Trip Name: </label>
                 <input type="text" id="name" name="name" placeHolder="${itinerary.name}" class="form-control" />
@@ -26,11 +33,26 @@
                 <label for="toDate">End Date: </label>
                 <input type="Date" id="toDate" name="toDate" placeHolder="End Date" class="form-control" />
             </div>
-            <button type="submit" id="" class="btn btn-primary">Create Itinerary</button>
-        </div>
-        <div class="col-sm-4"></div>
+            <button type="submit" id="" class="submitButton">confirm changes</button>
+
+
     </div>
 </form>
+</div>
+
+<div class="right">
+
+    <div class="title"> <p>where to?</p> </div>
+    <div class="mapBox">
+
+
+        <div id="map"></div>
+
+
+
+    </div>
+
+</div>
 
 <%-- modal pop up about asking user to save pin />--%>
 <div class="modal" tabindex="-1" role="dialog" id="savePinModal">
@@ -76,7 +98,7 @@
 <script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
 
-<div id="map"></div>
+
 
 <script>
     mapboxgl.accessToken = 'pk.eyJ1Ijoic29ja3Nyb2NrIiwiYSI6ImNsNno3OTh4YzAxbmIzeHBiM3E5b3dxeTkifQ.dQS6hDACss4VM7ifRg2l7A';
