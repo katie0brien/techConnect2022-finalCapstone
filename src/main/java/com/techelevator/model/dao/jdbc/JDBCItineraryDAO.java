@@ -103,7 +103,7 @@ public class JDBCItineraryDAO implements ItineraryDAO {
     }
 
     @Override
-    public void createItinerary(Itinerary itinerary, int userId) {
+    public void createItinerary(Itinerary itinerary, String userId) {
         String sql = "INSERT INTO itinerary(name, from_date, to_date) " +
                 "VALUES(?,?,?) " +
                 "RETURNING id;";
@@ -116,17 +116,21 @@ public class JDBCItineraryDAO implements ItineraryDAO {
     }
 
     @Override
-    public void addItineraryIdToRelatorTable(int itineraryId, int userId) {
+    public void addItineraryIdToRelatorTable(int itineraryId, String userId) {
         String sql = "INSERT INTO user_itinerary(itinerary_id, user_id) " +
-                "VALUES(?, ?);";
+                "VALUES(?, " +
+                "(SELECT id " +
+                "FROM app_user " +
+                "WHERE user_name = ?)" +
+                ");";
 
         jdbcTemplate.update(sql, itineraryId, userId);
     }
 
     @Override
-    public void deleteItinerary(int id, int userId) {
+    public void deleteItinerary(int id, String userId) {
         String sql = "DELETE FROM user_itinerary " +
-                "WHERE user_id = ? AND itinerary_id = ?;";
+                "WHERE user_id = (SELECT id FROM app_user WHERE user_name = ?) AND itinerary_id = ?;";
 
         jdbcTemplate.update(sql, userId, id);
 

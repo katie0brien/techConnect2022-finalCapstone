@@ -4,6 +4,17 @@
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
 
 <%--<c:url var="validationJs" value="/js/user-validation.js" />--%>
+
+
+<c:url var="home" value="../../img/home.png" />
+<c:url var="itineraryList" value="/itinerary/list/${userName}" />
+<div class="homeButton">
+    <form method="get" action="${itineraryList}">
+<%--        <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>--%>
+        <input type="image" src="${home}" style="max-width: 100%;"  alt="Submit" />
+    </form>
+</div>
+
 <%--<script src="${validationJs}"></script>--%>
 <h1>Make changes to your ${itinerary.name} trip from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
 <c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}" />
@@ -83,7 +94,7 @@
     const map = new mapboxgl.Map({
         container: 'map',
         style: 'mapbox://styles/socksrock/cl6z7fpw9000i14klmkauspuj',
-        center: [-79.4512, 43.6568],
+        center: [${longitude}, ${latitude}],
         zoom: 13
     });
 
@@ -165,7 +176,16 @@
 
     }
 
+    <c:set var="markerUrl" value="/itinerary/${itinerary.irineraryId}/landmarks" />
+    map.on('load', () => {
+        const url = '${markerUrl}';
 
+        $.get(url, (data) => {
+            data.forEach(landmark => {
+                addMarker(landmark.longitude, landmark.latitude)
+            })
+        })
+    })
 
 
     //     map.on('load', () => {
