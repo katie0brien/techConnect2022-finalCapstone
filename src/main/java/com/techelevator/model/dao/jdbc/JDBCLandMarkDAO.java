@@ -157,12 +157,12 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
 
     @Override
     public int addLandmark(Landmark landmark) {
-        String sql = "INSERT INTO landmark(LATITUDE, LONGITUDE, NAME, STREET_ADDRESS, CITY, STATE_OR_REGION, zip_or_postal, COUNTRY)\n" +
-                "VALUES (?,?,?,?,?,?,?,?) " +
+        String sql = "INSERT INTO landmark(LATITUDE, LONGITUDE, NAME, STREET_ADDRESS, CITY, STATE_OR_REGION, zip_or_postal, COUNTRY, travel_notes)\n" +
+                "VALUES (?,?,?,?,?,?,?,?,?) " +
                 "RETURNING id;";
 
         return jdbcTemplate.queryForObject(sql, Integer.class, landmark.getLatitude(),landmark.getLongitude(),landmark.getName(),
-                                        landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getZipOrPostal(), landmark.getCountry()).intValue();
+                                        landmark.getStreetAddress(),landmark.getCity(), landmark.getStateOrRegion(), landmark.getZipOrPostal(), landmark.getCountry(), landmark.getTravelNotes()).intValue();
     }
 
     @Override
@@ -187,6 +187,7 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
         landmark.setZipOrPostal(row.getString("zip_or_postal"));
         landmark.setCountry(row.getString("country"));
         landmark.setLiked(row.getBoolean("thumbs_up"));
+        landmark.setTravelNotes(row.getString("travel_notes"));
 
         return landmark;
     }
@@ -247,5 +248,16 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
             landmarks.add(mapToLandmark(rows));
         }
         return landmarks;
+    }
+
+    @Override
+    public void editTravelNotes(String notes, int id) {
+
+        String sql = "UPDATE landmark " +
+                "SET travel_notes = ? " +
+                "WHERE id = ?;";
+
+        jdbcTemplate.update(sql, notes, id);
+
     }
 }
