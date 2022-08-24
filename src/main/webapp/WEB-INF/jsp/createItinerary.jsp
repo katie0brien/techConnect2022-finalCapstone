@@ -17,6 +17,7 @@
 <c:url var="home8" value="../../img/home8.jpg" />
 <c:url var="home9" value="../../img/home9.jpg" />
 <c:url var="home10" value="../../img/home10.jpg" />
+<c:url var="home11" value="../../img/home11.jpg" />
 
 
 <div class="top">
@@ -53,7 +54,7 @@
 
 <div class="right">
 
-    <div class="title"> <p>where to?</p> </div>
+    <div class="title"> <p>where will you go?</p> </div>
     <div class="mapBox">
 
         <img id="myimg1" src="${start}" alt="">
@@ -62,14 +63,12 @@
 </div>
 
 
-<div class="planeContainer"> <img class="plane" src="${plane}" alt="">  </div>
 
-<div class="vanContainer"> <img class="van" src="${van}" alt=""> </div>
 <div class="hotContainer"> <img class="hot" src="${hot}" alt=""> </div>
 
 <script type="text/javascript">
     var myelemet = document.getElementById('myimg1'),
-        myimgs =["${home1}","${start}", "${home2}", "${home3}", "${home4}", "${home5}", "${home6}", "${home7}", "${home8}", "${home9}", "${home10}" ];
+        myimgs =["${home1}","${start}", "${home2}", "${home3}", "${home4}", "${home5}", "${home6}", "${home7}", "${home8}", "${home9}", "${home10}", "${home11}" ];
     function changeImg(myelemet,myimgs){
         'use stict';
         setInterval(function(){

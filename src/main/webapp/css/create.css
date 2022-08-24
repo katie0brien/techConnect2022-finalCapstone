@@ -4,10 +4,10 @@
         overflow-y: hidden;
         height: 100vh;
         background-color: #FCF8E8;
-        padding: 0px;
+        padding: 0;
     }
     html::-webkit-scrollbar {
-        width: 0px
+        width: 0
     }
     body{
         position: relative;
@@ -17,7 +17,7 @@
     }
     .left{
         position: absolute;
-        left: 0px;
+        left: 0;
         width: 50%;
         height: 100%;
         background-color: #FCF8E8;
@@ -32,7 +32,7 @@
         height: 100%;
         background-color: rgba(148, 180, 159,.3);
         position: absolute;
-        right: 0px;
+        right: 0;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -41,7 +41,7 @@
     .top{
         width: 50%; height: 70px;
         position: absolute; top:0;
-        background-color: none;
+
         display: flex; justify-content: space-between;
         font-family: 'Raleway', sans-serif;
         z-index: 2;
@@ -51,7 +51,7 @@
         height: 60px;
         margin-left: 25px;
         margin-top: 10px;
-        background-color: none;
+
 
     }
     .girl img{
@@ -95,7 +95,7 @@
         margin-top: 30px;
         font-family: 'Raleway', sans-serif;
         text-transform: uppercase;
-        font-size: 25;
+        font-size: 25px;
         letter-spacing: 5px;
     }
     .form-group label{
