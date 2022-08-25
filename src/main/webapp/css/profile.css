@@ -2,7 +2,7 @@
     html{
 
         overflow-x: hidden;
-        height: 100vh;
+        min-height: 100vh;
         background-color: #FCF8E8;
         padding: 0;
     }
@@ -10,10 +10,10 @@
         width: 0;
     }
     body{
-        position: relative;
+        position: absolute;
         margin:0; padding:0;
         width: 1920px;
-        height: 100vh;
+        min-height: 100vh;
     }
     .top{
         width: 100%;
@@ -40,12 +40,14 @@
         align-items: center;
         color: #FCF8E8;
         margin-bottom: 10px;
+
     }
     .hello{
         font-size: 75px;
         font-family: 'Dancing Script', cursive;
         text-transform: capitalize;
         letter-spacing: 7px; margin-left: 20%;
+
     }
     .logo{
         width: 8%;
@@ -65,8 +67,6 @@
         width: 100%;
         display: flex;
         justify-content: center;
-
-
 
     }
     .formHolder{
@@ -116,8 +116,6 @@
         border: none;
         border-radius: 20px;
         text-transform: uppercase;
-
-
 
     }
     .bottom{

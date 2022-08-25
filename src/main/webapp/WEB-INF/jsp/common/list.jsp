@@ -12,13 +12,18 @@
 <head>
   <title>TRIP PLANNER</title>
   <c:url var="bootstrapCss" value="/css/bootstrap.min.css" />
-  <c:url var="home" value="/css/listLandmarks.css.css" />
+  <c:url var="home" value="/css/listLandmarks.css" />
 
   <c:url var="jQueryJs" value="/js/jquery.min.js" />
   <c:url var="jqValidateJs" value="/js/jquery.validate.min.js" />
   <c:url var="jqvAddMethJs" value="/js/additional-methods.min.js" />
   <c:url var="jqTimeagoJs" value="/js/jquery.timeago.js" />
   <c:url var="popperJs" value="/js/popper.min.js" />
+  <c:url var="hot1" value="../../img/hotB.png" />
+  <c:url var="hot2" value="../../img/hot2.png" />
+  <c:url var="hot3" value="../../img/hot3.png" />
+  <c:url var="hot4" value="../../../img/hot4.png" />
+  <c:url var="blimp" value="../../../img/blimp.png" />
   <%--    <c:url var="bootstrapJs" value="/js/bootstrap.min.js" />--%>
 
   <%--    <link rel="stylesheet" type="text/css" href="${bootstrapCss}">--%>

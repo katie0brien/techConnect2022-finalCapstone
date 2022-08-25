@@ -12,25 +12,25 @@
     <div class="company"> trip planner</div>
     <div class="title">
 
-        <div class="trip">Egg hunt</div>
+        <div class="trip">An Awesome Trip</div>
         <div class="by">by</div>
-        <div class="name">camille camel</div>
+        <div class="name">${userName}</div>
 
     </div>
-    <c:url var="adventurer" value="../../img/adventurerDude.png" />
-    <div class="logo"> <img src="${adventurer}" alt="">  </div>
+
+    <div class="logo"><img src="${blimp}" alt="">  </div>
 
 </div>
 
 <div class="right">
-
+<br/>
     <h1>Landmarks Visited</h1>
     <table>
         <tr>
             <th>Name</th>
             <th>Address</th>
             <th>State or Region</th>
-            <th>city</th>
+            <th>City</th>
             <th>Country</th>
             <th>Liked</th>
         </tr>
@@ -106,4 +106,3 @@
 
 </script>
 
-<c:import url="/WEB-INF/jsp/common/footer.jsp" />
