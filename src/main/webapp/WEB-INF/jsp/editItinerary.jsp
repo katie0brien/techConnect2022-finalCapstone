@@ -4,7 +4,7 @@
 
 <c:import url="/WEB-INF/jsp/common/edit.jsp" />
 <c:url var="hat" value="../../img/cowboy-hat.png" />
-<c:url var="van" value="../../img/van.png" />
+
 
 <div class="top">
     <div class="girl">  </div>
@@ -12,7 +12,8 @@
     <div class="profile">
         <c:url var="profilePage" value="/itinerary/list/${userName}" />
         <form method="get" action="${profilePage}">
-            <input type="image" src="${hat}" style="max-width: 100%;"  alt="BACK" />
+            <c:url var="van" value="../../img/home.png" />
+            <input type="image" src="${van}" style="max-width: 100%;"  alt="BACK" />
 
         </form>
 
