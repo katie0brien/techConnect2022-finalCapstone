@@ -1,0 +1,14 @@
+#back{
+    padding: 20px 20px;
+    background-color: #76549A;
+    color: #FCF8E8;
+    border: none;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+.createButton {
+    width: 100px;
+    height: 60px;
+    background-color: #76549A;
+    color: #FCF8E8;
+}

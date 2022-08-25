@@ -1,6 +1,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <c:import url="/WEB-INF/jsp/common/header.jsp" />
+
+<div class="buttonBox">
+    <c:url var="landmarkList" value="/landmark/list/${itineraryId}/${userName}" />
+    <form method="get" action="${landmarkList}">
+        <input class="createButton" type="submit" value="Back" />
+    </form>
+</div>
+
 <table>
     <tr>
         <th>Name</th>

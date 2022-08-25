@@ -34,10 +34,12 @@ public class LandmarkController {
         return "landmarkList";
     }
 
-    @RequestMapping("/details/{id}")
-    public String landmarkDetail(@PathVariable int id, Model model) {
+    @RequestMapping("/details/{id}/{itineraryId}/{userName}")
+    public String landmarkDetail(@PathVariable int id, Model model, @PathVariable int itineraryId, @PathVariable String userName) {
         Landmark landmark = landmarkDAO.getLandmarkByID(id);
         model.addAttribute("landmark", landmark);
+        model.addAttribute("itineraryId", itineraryId);
+        model.addAttribute("userName", userName);
 
         return "landmarkDetails";
     }
