@@ -30,7 +30,7 @@
 <%--<script src="${validationJs}"></script>--%>
 <div class="left">
 
-    <c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}" />
+    <c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}/${userName}" />
     <form class="theForm" method="POST" action="${formAction}">
         <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
         <div class="row">
@@ -51,7 +51,7 @@
                 <input type="Date" id="toDate" name="toDate" placeHolder="End Date" class="forms-control" />
             </div>
             <div class="buttonBox">
-                <button type="submit" id="" class="submitButton">create</button></div>
+                <button type="submit" id="" class="submitButton">Save</button></div>
         </div>
 
 
@@ -80,7 +80,7 @@
                 <h2 class="modal-title">Save this pin as a landmark?</h2>
             </div>
             <div class="modal-body">
-                <c:url var="formAction" value="/itinerary/create/1" />
+                <c:url var="formAction" value="/itinerary/create/${userName}" />
                 <div>
                     <input type="hidden" id="CSRF_TOKEN" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                     <div class="form-group">
