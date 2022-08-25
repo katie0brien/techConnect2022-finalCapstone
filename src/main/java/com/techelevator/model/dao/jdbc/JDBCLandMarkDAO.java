@@ -166,10 +166,28 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
 
     @Override
     public void addLandmarkToRelatorTable(int landmarkId, int itineraryId) {
+        //adding to itinerary landmark relator table
         String sql = "INSERT INTO itinerary_landmark(ITINERARY_ID, LANDMARK_ID)\n" +
                 "VALUES (?,?);";
 
         jdbcTemplate.update(sql, itineraryId, landmarkId);
+
+        //adding to landmark user table
+        String queryForUserId = "SELECT user_id " +
+                "FROM user_itinerary " +
+                "WHERE itinerary_id = ?";
+
+        SqlRowSet row = jdbcTemplate.queryForRowSet(queryForUserId, itineraryId);
+
+        int user_id = 0;
+        if(row.next()) {
+            user_id = row.getInt("user_id");
+        }
+
+        sql = "INSERT INTO user_landmark(user_id, landmark_id) " +
+                "VALUES (?, ?);";
+
+        jdbcTemplate.update(sql, user_id, landmarkId);
     }
 
 
