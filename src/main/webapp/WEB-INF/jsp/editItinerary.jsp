@@ -1,19 +1,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:import url="/WEB-INF/jsp/common/edit.jsp" />
-<div class="top">
-    <div class="girl">  </div>
-    <div class="company">trip planner</div>
-    <div class="profile">
-        <c:url var="profilePage" value="/itinerary/list/${userName}" />
-        <form method="get" action="${profilePage}">
-            <input type="image" src="${hat}" style="max-width: 100%;"  alt="Submit" />
+<c:import url="/WEB-INF/jsp/common/header.jsp" />
 
-        </form>
 
-    </div>
-</div>
+
 
 <%--<c:url var="validationJs" value="/js/user-validation.js" />--%>
 
@@ -23,7 +14,7 @@
 
 
 <%--<script src="${validationJs}"></script>--%>
-<div class="left">
+
 
 <c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}" />
 <form class="theForm" method="POST" action="${formAction}">
@@ -52,33 +43,29 @@
 
 
 </form>
-</div>
-
-<div class="right">
-
-    <div class="title"> <p>where to?</p> </div>
-    <div class="mapBox">
-        <div id="map"></div>
 
 
-    </div>
-    <div class="modal" tabindex="-1" role="dialog" id="savePinModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title">Save this pin as a landmark?</h2>
-                </div>
-                <div class="modal-body">
-                    <c:url var="formAction" value="/itinerary/create/1" />
-                    <div>
-                        <input type="hidden" id="CSRF_TOKEN" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-                        <div class="form-group">
-                            <label for="landmarkName">Pin Name: </label>
-                            <input type="text" id="landmarkName" name="landmarkName" placeHolder="Pin Name" class="form-control" />
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-primary" onclick="saveLandmark()">Save changes</button>
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            </div>
+
+<div id="map"></div>
+<div class="vanContainer"> <img class="van" src="${van}" alt=""> </div>
+
+<%-- modal pop up about asking user to save pin />--%>
+<div class="modal" tabindex="-1" role="dialog" id="savePinModal">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Save this pin as a landmark?</h2>
+            </div>
+            <div class="modal-body">
+                <c:url var="formAction" value="/itinerary/create/1" />
+                <div>
+                    <input type="hidden" id="CSRF_TOKEN" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                    <div class="form-group">
+                        <label for="landmarkName">Pin Name: </label>
+                        <input type="text" id="landmarkName" name="landmarkName" placeHolder="Pin Name" class="form-control" />
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" onclick="saveLandmark()">Save changes</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         </div>
                     </div>
                 </div>
@@ -86,9 +73,6 @@
         </div>
     </div>
 </div>
-
-<%-- modal pop up about asking user to save pin />--%>
-
 
 <%-- the map part of the website />--%>
 <!DOCTYPE html>
@@ -101,7 +85,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
     <style>
 
-        #map { position: absolute; top: 160px; right: 270px; height: 50%; width: 50%; }
+        #map { position: absolute; top: 173px; right: 830px; height: 500px; width: 500px; }
     </style>
 </head>
 <body>
