@@ -93,13 +93,13 @@ public class ItineraryController {
         return "editItinerary";
     }
 
-    @RequestMapping(value = "edit/{id}", method = RequestMethod.POST)
-    public String saveItinerary(@PathVariable String id, @Valid @ModelAttribute Itinerary itinerary) {
+    @RequestMapping(value = "edit/{id}/{userName}", method = RequestMethod.POST)
+    public String saveItinerary(@PathVariable String id,@PathVariable String userName, @Valid @ModelAttribute Itinerary itinerary) {
 
         itinerary.setIrineraryId(id);
         itineraryDAO.editItinerary(itinerary);
 
-        return "redirect:/itinerary/list/1";
+        return "redirect:/itinerary/list/" + userName;
     }
 
 //    ask about how to grab the id you want to assign on create itinerary and use the first request mapping above.

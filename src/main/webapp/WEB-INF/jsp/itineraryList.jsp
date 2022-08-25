@@ -19,7 +19,6 @@
 <div class="main">
     <div class="formHolder">
 
-<form action="/itinerary/delete" method="POST">
         <table>
             <h1>Upcoming Trips</h1>
             <tr>
@@ -50,7 +49,7 @@
 
                         <td><a href="/itinerary/edit/${itinerary.irineraryId}/${userName}">Edit</a></td>
                         <td><a href="/landmark/list/${itinerary.irineraryId}/${userName}">View Landmarks</a></td>
-                        <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/1"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                        <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/${userName}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                             <input class="delete" type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
                         <td><a href="/itinerary/edit/download/${itinerary.irineraryId}">Download your Itinerary (.csv)</a></td>
                         <td><a href="https://labs.mapbox.com/community/nonprofit-route-tool/#/authoring" target="_blank">
@@ -93,7 +92,7 @@
                             <c:out value="${itinerary.toDate}"/>
                         </td>
                         <td><a href="/landmark/list/${itinerary.irineraryId}/${userName}">View Landmarks</a></td>
-                        <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+                        <td><form method="POST" action="/itinerary/delete/${itinerary.irineraryId}/${userName}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                             <input class="delete" type="submit" value="Delete" onclick = "return confirm('Confirm Deletion of ${itinerary.name} from itineraries');" /></form></td>
                         <td><a href="/itinerary/edit/download/${itinerary.irineraryId}">Download your Itinerary (.csv)</a></td>
                         <td><a href="https://labs.mapbox.com/community/nonprofit-route-tool/#/authoring" target="_blank">
@@ -108,7 +107,7 @@
 
         <p><a href="/itinerary/create/${userName}">add itinerary</a></p>
 
-</form>
+
         <c:url var="home" value="../../img/home.png" />
     </div>
     <c:url var="homePage" value="/home/${userName}" />
