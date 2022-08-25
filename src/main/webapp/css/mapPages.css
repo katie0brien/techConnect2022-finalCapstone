@@ -99,24 +99,24 @@
 
 
     }
-    .theForm input[type="date"]{
-
+  input[type="date"]{
+    color: #FCF8E8;
         background-color: #94B49F;
 
     }
-    .theForm input[type="text"]{
-
+   input[type="text"]{
+    color: #FCF8E8;
         background-color: #94B49F;
 
     }
-    .theForm .form-group{
+    .theForm .forms-group{
         margin-top: 30px;
         font-family: 'Raleway', sans-serif;
         text-transform: uppercase;
         font-size: 25px;
         letter-spacing: 5px;
     }
-    .theForm .form-group label{
+    .theForm .forms-group label{
         padding-bottom: 10px;
         font-weight: 500;
         color: black;
@@ -125,7 +125,7 @@
         color: #FCF8E8;
     }
 
-    .theForm .form-control{
+    .theForm .forms-control{
         width: 90%;
         border-radius: 20px;
         border: none;
@@ -137,6 +137,24 @@
         font-size:17px;
         padding-left: 30px;
     }
+    .theForm .forms-control:focus{
+        background-color: #94B49F;
+        color: #FCF8E8;
+    }
+    .theForm input[type="text"]{
+        background-color: #94B49F;
+        color: #FCF8E8;
+        border:none;
+    }
+    .theForm input[type="text"]:focus{
+        background-color: #94B49F;
+        color: #FCF8E8;
+        border:none;
+    }
+
+
+
+
     .titleTop{
         font-family: 'Raleway', sans-serif;
         text-transform: uppercase;
@@ -171,6 +189,7 @@
         border-radius: 25px;
         background-color: #94B49F;
         display: flex;
+
 
     }
     .title{
@@ -287,12 +306,7 @@
         animation-duration: 25s;
         animation-iteration-count: infinite;
     }
-    .modal{
-        z-index: 3;
-        position: absolute;
-        background-color: #5bc0de;
-        top: 79px; right: 87px;
-    }
+
 
 
 

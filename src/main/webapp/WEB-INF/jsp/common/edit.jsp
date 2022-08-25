@@ -19,9 +19,9 @@
   <c:url var="jqvAddMethJs" value="/js/additional-methods.min.js" />
   <c:url var="jqTimeagoJs" value="/js/jquery.timeago.js" />
   <c:url var="popperJs" value="/js/popper.min.js" />
-  <%--    <c:url var="bootstrapJs" value="/js/bootstrap.min.js" />--%>
+      <c:url var="bootstrapJs" value="/js/bootstrap.min.js" />
 
-  <%--    <link rel="stylesheet" type="text/css" href="${bootstrapCss}">--%>
+      <link rel="stylesheet" type="text/css" href="${bootstrapCss}">
   <link rel="stylesheet" type="text/css" href="${home}">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Raleway:wght@400;500&display=swap" rel="stylesheet">

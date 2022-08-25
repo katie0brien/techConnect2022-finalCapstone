@@ -1,10 +1,23 @@
+
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<c:import url="/WEB-INF/jsp/common/header.jsp" />
+<c:import url="/WEB-INF/jsp/common/edit.jsp" />
+<c:url var="hat" value="../../img/cowboy-hat.png" />
+<c:url var="van" value="../../img/van.png" />
 
+<div class="top">
+    <div class="girl">  </div>
+    <div class="company">trip planner</div>
+    <div class="profile">
+        <c:url var="profilePage" value="/itinerary/list/${userName}" />
+        <form method="get" action="${profilePage}">
+            <input type="image" src="${hat}" style="max-width: 100%;"  alt="Submit" />
 
+        </form>
 
+    </div>
+</div>
 
 <%--<c:url var="validationJs" value="/js/user-validation.js" />--%>
 
@@ -14,44 +27,48 @@
 
 
 <%--<script src="${validationJs}"></script>--%>
-<div class="buttonBox">
-    <c:url var="itineraryList" value="/itinerary/list/${userName}" />
-    <form method="get" action="${itineraryList}">
-        <input class="backButton" type="submit" value="Back" />
-    </form>
-</div>
+<div class="left">
 
-<c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}" />
-<form class="theForm" method="POST" action="${formAction}">
-    <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-    <div class="row">
-        <h1 class="titleTop">Make changes to ${itinerary.name} from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
+    <c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}" />
+    <form class="theForm" method="POST" action="${formAction}">
+        <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+        <div class="row">
+            <h1 class="titleTop">Make changes to ${itinerary.name} from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
 
-            <div class="form-group">
+            <div class="forms-group">
                 <label for="name">Trip Name: </label>
-                <input type="text" id="name" name="name" placeHolder="${itinerary.name}" class="form-control" />
+                <input type="text" id="name" name="name" placeHolder="${itinerary.name}" class="forms-control" />
                 <%--                <label id="userNameAvailableError" class="error">This user name is taken</label>--%>
             </div>
 
-            <div class="form-group">
+            <div class="forms-group">
                 <label for="fromDate">Start Date: </label>
-                <input type="Date" id="fromDate" name="fromDate" placeHolder="Start Date" class="form-control" />
+                <input type="Date" id="fromDate" name="fromDate" placeHolder="Start Date" class="forms-control" />
             </div>
-            <div class="form-group">
+            <div class="forms-group">
                 <label for="toDate">End Date: </label>
-                <input type="Date" id="toDate" name="toDate" placeHolder="End Date" class="form-control" />
+                <input type="Date" id="toDate" name="toDate" placeHolder="End Date" class="forms-control" />
             </div>
-        <div class="buttonBox">
-            <button type="submit" id="" class="submitButton">create</button></div>
+            <div class="buttonBox">
+                <button type="submit" id="" class="submitButton">create</button></div>
+        </div>
+
+
+
+    </form>
+</div>
+
+<div class="right">
+
+    <div class="title"> <p>where to?</p> </div>
+    <div class="mapBox">
+        <div id="map"></div>
+
+
     </div>
 
+</div>
 
-
-</form>
-
-
-
-<div id="map"></div>
 <div class="vanContainer"> <img class="van" src="${van}" alt=""> </div>
 
 <%-- modal pop up about asking user to save pin />--%>
@@ -90,7 +107,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
     <style>
 
-        #map { position: absolute; top: 450px; right: 830px; height: 500px; width: 500px; }
+        #map { position: absolute; height: 500px; width: 500px; border-radius:10px;}
     </style>
 </head>
 <body>
@@ -121,7 +138,8 @@
         landmark.latitude = event.lngLat.lat;
         landmark.longitude = event.lngLat.lng;
 
-        $('#savePinModal').modal('show');
+        const popUp = $('#savePinModal');
+        popUp.modal('show');
     })
 
     function addMarker(lng, lat) {
