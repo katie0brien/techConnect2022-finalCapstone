@@ -90,7 +90,7 @@
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js"></script>
     <style>
 
-        #map { position: absolute; top: 173px; right: 830px; height: 500px; width: 500px; }
+        #map { position: absolute; top: 450px; right: 830px; height: 500px; width: 500px; }
     </style>
 </head>
 <body>
