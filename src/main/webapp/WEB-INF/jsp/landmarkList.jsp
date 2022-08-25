@@ -10,8 +10,17 @@
 
 
 <div class="left">
-
+<div class="top">
+    <div class="buttonBox">
+    <c:url var="itineraryList" value="/itinerary/list/${userName}" />
+    <form method="get" action="${itineraryList}">
+        <input class="backButton" type="submit" value="Back" />
+    </form>
+</div>
     <div class="company"> trip planner</div>
+    <div class="holder"></div>
+
+</div>
     <div class="title">
 
         <div class="trip">An Awesome Trip</div>
@@ -19,13 +28,9 @@
         <div class="name">${userName}</div>
 
     </div>
+    <div class="hiddenBottom"></div>
 
-    <div class="buttonBox">
-        <c:url var="itineraryList" value="/itinerary/list/${userName}" />
-        <form method="get" action="${itineraryList}">
-            <input class="backButton" type="submit" value="Back" />
-        </form>
-    </div>
+
 
 </div>
 
@@ -72,8 +77,8 @@
         </c:forEach>
     </table>
 
-
-    <h2>Favorites From This Itinerary</h2>
+   <div class="break"></div>
+    <h1>Favorites From This Itinerary</h1>
 <ul>
     <c:forEach items="${landmarks}" var="landmark">
         <c:if test="${landmark.liked}">
@@ -103,11 +108,11 @@
             t.value="Dislike";}
     }
 
-    var picRan = new Array ("${hot1}", "${hot2}", "${hot3}", "${hot4}", "${blimp}");
+    var picRan = ["${hot1}", "${hot2}", "${hot3}", "${hot4}", "${blimp}"];
     var randomNum = Math.floor(Math.random()*picRan.length);
     document.getElementById("ranPic").src=picRan[randomNum];
 
-    var picRan2 =  new Array ("${hot1}", "${hot2}", "${hot3}", "${hot4}", "${blimp}");
+    var picRan2 =  ["${hot1}", "${hot2}", "${hot3}", "${hot4}", "${blimp}"];
     var randomNum = Math.floor(Math.random()*picRan2.length);
     document.getElementById("ranPic2").src=picRan2[randomNum];
 
