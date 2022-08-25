@@ -41,6 +41,12 @@
         justify-content: center;
         align-items: center;
     }
+    .top{
+        width: 100%;
+        height:20%;
+        display: flex;
+        justify-content: space-between;
+    }
 
     .company{
         text-transform: uppercase;
@@ -50,6 +56,9 @@
         margin-top: 20px;
         color: #FCF8E8;
 
+    }
+    .holder{
+        width: 20%;
     }
     .title{
         height: 30%;
@@ -77,6 +86,10 @@
         letter-spacing: 4px;
         font-weight: 600;
     }
+    .hiddenBottom{
+        height:20%;
+        width: 100%;
+    }
 
     .logo{
         height: 200px;
@@ -85,11 +98,11 @@
         max-height: 100%;
     }
     .buttonBox{
-        width: 100%;
-       display: flex;
-        justify-content: center;
-        align-items: center;
+        width: 20%;
+        margin-top: 10px;
+
         margin-bottom: 10px;
+
 
     }
     .backButton{
@@ -100,16 +113,20 @@
         padding:10px 20px;
         border: none;
         border-radius: 5px;
+        margin-left:10px;
 
     }
 
     table{
-        width: 80%;
+        width: 90%;
         display: flex;
         justify-content: space-between;
         align-items: center;
         font-family: 'Raleway', sans-serif;
 
+    }
+    tr{
+        width: 90%;
     }
     th{
         padding-top: 10px;
@@ -150,7 +167,12 @@
         animation-name: balloon1;
         animation-duration: 20s;
         animation-iteration-count: infinite;
+        z-index: 2;
 
+    }
+    .break{
+        width: 90%;
+       margin-top: 100px;
     }
     .hot1 img{
         max-width: 100%;
@@ -174,12 +196,11 @@
     }
 
     #likeButton{
-
         height: 60px;
-        background-color:  #FCF8E8;
-        border: 5px solid #94B49F;
+        background-color: #94B49F ;
         border-radius: 20px;
-        color: #94B49F;
+        color: #FCF8E8 ;
+        border: none;
         font-family: 'Raleway', sans-serif;
         text-transform: uppercase;
         padding-left:20px; padding-right: 20px;
@@ -191,31 +212,23 @@
         font-weight: 500;
         letter-spacing: 5px;
         font-size: 27px;
-        width: 80%;
+
+
         text-align: center;
         margin-bottom: 25px;
         border-bottom: 3px solid #94B49F;
         padding-bottom: 25px;
+        padding-top: 25px;
+        padding-left: 15px;
+        padding-right: 15px;
 
     }
-    h2{
-        font-family: 'Raleway', sans-serif;
-        text-transform: uppercase;
-        font-weight: 500;
-        letter-spacing: 5px;
-        font-size: 27px;
-        width: 80%;
-        text-align: center;
-        margin-bottom: 25px;
-        border-bottom: 3px solid #94B49F;
-        padding-bottom: 25px;
-        margin-top: 90px;
 
-
-    }
     ul{
         font-family: 'Raleway', sans-serif;
         font-size: 20px;
+        list-style : none;
+        margin-left:-40px;
 
     }
     .fav{
