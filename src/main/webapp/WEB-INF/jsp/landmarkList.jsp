@@ -7,6 +7,13 @@
 <c:url var="hot4" value="../../img/hot4.png" />
 <c:url var="blimp" value="../../img/blimp.png" />
 
+<div class="buttonBox">
+    <c:url var="itineraryList" value="/itinerary/list/${userName}" />
+    <form method="get" action="${itineraryList}">
+        <input class="createButton" type="submit" value="Back" />
+    </form>
+</div>
+
 <div class="left">
 
     <div class="company"> trip planner</div>
@@ -37,7 +44,7 @@
         <c:forEach items="${landmarks}" var="landmark">
             <tr>
                 <td>
-                    <c:url var="landmarkDetailsPageUrl" value="/landmark/details/${landmark.id}"></c:url>
+                    <c:url var="landmarkDetailsPageUrl" value="/landmark/details/${landmark.id}/${itineraryId}/${userName}"></c:url>
                     <a href="${landmarkDetailsPageUrl}"><c:out value="${landmark.name}"></c:out></a>
 
                 </td>

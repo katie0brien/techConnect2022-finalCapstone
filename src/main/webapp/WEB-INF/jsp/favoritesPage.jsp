@@ -7,15 +7,20 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<c:url var="fovoritesCss" value="/css/favoritesPage.css"/>
 
-<c:import url="/WEB-INF/jsp/common/header.jsp" />
+<link rel="stylesheet" type="text/css" href="${favoritesCss}"/>
+
+<c:import url="/WEB-INF/jsp/common/favorite.jsp" />
 <c:url var="landmarkList" value="/landmark/list/${itineraryId}/${personName}"/>
-<div class="homeButton">
+
+<div class="buttonBox" id ="back">
+    <c:url var="landmarkList" value="/landmark/list/${itineraryId}/${userName}" />
     <form method="get" action="${landmarkList}">
-        <%--        <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>--%>
-        <input type="image" src="${home}" style="max-width: 100%;"  alt="Submit" />
+        <input class="createButton" type="submit" value="Back" />
     </form>
 </div>
+
 <ul>
     <c:forEach items="${landmarks}" var="landmark">
         <li><c:out value="${landmark.name}"/></li>
