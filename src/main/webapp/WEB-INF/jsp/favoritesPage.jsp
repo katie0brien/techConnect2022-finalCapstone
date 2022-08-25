@@ -14,19 +14,32 @@
 <c:import url="/WEB-INF/jsp/common/favorite.jsp" />
 <c:url var="landmarkList" value="/landmark/list/${itineraryId}/${personName}"/>
 
-<div class="buttonBox" id ="back">
-    <c:url var="landmarkList" value="/landmark/list/${itineraryId}/${userName}" />
-    <form method="get" action="${landmarkList}">
-        <input class="createButton" type="submit" value="Back" />
-    </form>
-</div>
 
+
+<div class="top">
+    <div class="profile">
+        <c:url var="landmarkList" value="/landmark/list/${itineraryId}/${userName}" />
+        <form method="get" action="${landmarkList}">
+            <button type="submit" class="backButton">back</button>
+        </form>
+
+    </div>
+
+    <div class="company">trip planner</div>
+    <div class="girl"><img src="${hot}" alt="">   </div>
+</div>
+<div class="left">
+    <h1>Favorites</h1>
 <ul>
     <c:forEach items="${landmarks}" var="landmark">
         <li><c:out value="${landmark.name}"/></li>
     </c:forEach>
 </ul>
+</div>
 
+<div class="right">
+    <img src="" alt="">
+</div>
 
 
 <c:import url="/WEB-INF/jsp/common/footer.jsp" />

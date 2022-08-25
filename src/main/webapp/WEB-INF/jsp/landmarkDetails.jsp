@@ -1,20 +1,30 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
-<c:import url="/WEB-INF/jsp/common/header.jsp" />
+<c:import url="/WEB-INF/jsp/common/single.jsp" />
+<c:url var="hot" value="../../img/hotB.png" />
+<c:url var="hat" value="../../img/cowboy-hat.png" />
 
-<div class="buttonBox">
+
+<div class="top">
+    <div class="profile">
     <c:url var="landmarkList" value="/landmark/list/${itineraryId}/${userName}" />
     <form method="get" action="${landmarkList}">
-        <input class="createButton" type="submit" value="Back" />
+        <button type="submit" class="backButton">back</button>
     </form>
+
 </div>
 
+    <div class="company">trip planner</div>
+    <div class="girl"><img src="${hot}" alt="">   </div>
+</div>
+
+<div class="left">
 <table>
     <tr>
         <th>Name</th>
         <th>Address</th>
         <th>State or Region</th>
-        <th>city</th>
+        <th>City</th>
         <th>Zip or Postal</th>
         <th>Country</th>
         <th>Travel Notes</th>
@@ -50,7 +60,7 @@
             </td>
             <td>
                 <div class="row">
-                <div class="col-sm-4"></div>
+
                 <div class="col-sm-4">
                     <c:url var="formAction" value="/upload/${landmark.id}" />
                     <form method="POST" action="${formAction}" enctype="multipart/form-data">
@@ -64,21 +74,17 @@
                         <button type="submit" class="btn btn-primary">upload</button>
                     </form>
                 </div>
-                <div class="col-sm-4"></div>
+
                 </div>
             </td>
         </tr>
 
 </table>
-<style>
-    .upload {
-        width: 200px;
-    }
-    .upload img {
-        max-width: 100%;
-    }
-</style>
 
+</div>
+
+
+ <div class="right">
 <c:choose>
     <c:when test="${landmark.imageName == null}">
         <div class="upload"><img src="/img/home10.jpg" alt=""></div>
@@ -87,7 +93,7 @@
         <div class="upload"><img src="/img/uploads/${landmark.id}-image.jpg" alt=""></div>
     </c:otherwise>
 </c:choose>
-
+</div>
 
 
 
