@@ -7,12 +7,7 @@
 <c:url var="hot4" value="../../img/hot4.png" />
 <c:url var="blimp" value="../../img/blimp.png" />
 
-<div class="buttonBox">
-    <c:url var="itineraryList" value="/itinerary/list/${userName}" />
-    <form method="get" action="${itineraryList}">
-        <input class="createButton" type="submit" value="Back" />
-    </form>
-</div>
+
 
 <div class="left">
 
@@ -25,7 +20,12 @@
 
     </div>
 
-    <div class="logo"><img src="${blimp}" alt="">  </div>
+    <div class="buttonBox">
+        <c:url var="itineraryList" value="/itinerary/list/${userName}" />
+        <form method="get" action="${itineraryList}">
+            <input class="backButton" type="submit" value="Back" />
+        </form>
+    </div>
 
 </div>
 
