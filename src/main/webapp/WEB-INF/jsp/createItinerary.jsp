@@ -75,16 +75,16 @@
 <div class="hotContainer"> <img class="hot" src="${hot}" alt=""> </div>
 
 <script type="text/javascript">
-    var myelemet = document.getElementById('myimg1'),
+    var myelement = document.getElementById('myimg1'),
         myimgs =["${home1}","${start}", "${home2}", "${home3}", "${home4}", "${home5}", "${home6}", "${home7}", "${home8}", "${home9}", "${home10}", "${home11}" ];
-    function changeImg(myelemet,myimgs){
-        'use stict';
+    function changeImg(myelement,myimgs){
+
         setInterval(function(){
             var myRandomNum = Math.floor(Math.random() * myimgs.length);
-            myelemet.src = myimgs[myRandomNum];
+            myelement.src = myimgs[myRandomNum];
         }, 5000);
     }
-    changeImg(myelemet,myimgs);
+    changeImg(myelement,myimgs);
 
 </script>
 

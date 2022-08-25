@@ -128,7 +128,7 @@
     .theForm .forms-control{
         width: 90%;
         border-radius: 20px;
-        border: none;
+
         height: 60px;
         background-color: #94B49F;
         color: #FCF8E8;
@@ -136,11 +136,9 @@
         letter-spacing: 3px;
         font-size:17px;
         padding-left: 30px;
+
     }
-    .theForm .forms-control:focus{
-        background-color: #94B49F;
-        color: #FCF8E8;
-    }
+
     .theForm input[type="text"]{
         background-color: #94B49F;
         color: #FCF8E8;
@@ -149,12 +147,13 @@
     .theForm input[type="text"]:focus{
         background-color: #94B49F;
         color: #FCF8E8;
-        border:none;
+
+
     }
     .theForm .forms-control:focus{
         background-color: #94B49F;
         color: #FCF8E8;
-        border:none;
+
     }
 
 
@@ -310,6 +309,25 @@
         animation-delay: 3s;
         animation-duration: 25s;
         animation-iteration-count: infinite;
+    }
+
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        border: none;
+        background-color: #94B49F;
+        color: #FCF8E8;
+        -webkit-text-fill-color: #FCF8E8;
+        -webkit-box-shadow: 0 0 0 1000px #94B49F inset;
+        transition: background-color 5000s ease-in-out 0s;
     }
 
 
