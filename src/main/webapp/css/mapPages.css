@@ -146,6 +146,11 @@
         color: #FCF8E8;
         border:none;
     }
+    .theForm input[type="text"]:focus{
+        background-color: #94B49F;
+        color: #FCF8E8;
+        border:none;
+    }
     .theForm .forms-control:focus{
         background-color: #94B49F;
         color: #FCF8E8;
