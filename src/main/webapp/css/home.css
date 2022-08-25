@@ -3,11 +3,11 @@
 
         height: 1750px;
         background-color: #FCF8E8;
-        padding: 0px;
+        padding: 0;
         overflow-x:hidden;
     }
     html::-webkit-scrollbar {
-        width: 0px
+        width: 0;
     }
     body{
         height: 100%;
@@ -165,7 +165,8 @@
         font-size: 17px;
         position: absolute;
         bottom: 0;
-        letter-spacing: 5px;;
+        letter-spacing: 5px;
+
     }
 
 
