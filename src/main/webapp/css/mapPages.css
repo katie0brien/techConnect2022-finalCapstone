@@ -37,7 +37,7 @@
     .right{
         width: 50%;
         height: 100%;
-        background-color: rgba(148, 180, 159,.3);
+        background-color: rgba(148, 180, 159,.5);
         position: absolute;
         right: 0;
         display: flex;
@@ -99,12 +99,12 @@
 
 
     }
-  input[type="date"]{
+  .theForm input[type="date"]{
     color: #FCF8E8;
         background-color: #94B49F;
 
     }
-   input[type="text"]{
+  .theForm  input[type="text"]{
     color: #FCF8E8;
         background-color: #94B49F;
 
@@ -146,7 +146,7 @@
         color: #FCF8E8;
         border:none;
     }
-    .theForm input[type="text"]:focus{
+    .theForm .forms-control:focus{
         background-color: #94B49F;
         color: #FCF8E8;
         border:none;
