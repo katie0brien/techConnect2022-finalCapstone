@@ -24,14 +24,15 @@ public class ImageDemoController
         this.uploadProvider = uploadProvider;
     }
 
-    @RequestMapping(value="/upload/{id}", method = RequestMethod.GET)
-    public String uploadImage(@PathVariable int id)
+    @RequestMapping(value="/upload/{id}/{itineraryId}/{userName}", method = RequestMethod.GET)
+    public String uploadImage(@PathVariable int id, @PathVariable int itineraryId, @PathVariable String userName)
     {
         return "landmarkDetails";
     }
 
-    @RequestMapping(value="/upload/{id}", method = RequestMethod.POST)
-    public String uploadImage(@RequestParam(required = false) MultipartFile file, @PathVariable int id, Model model)
+    @RequestMapping(value="/upload/{id}/{itineraryId}/{userName}", method = RequestMethod.POST)
+    public String uploadImage(@RequestParam(required = false) MultipartFile file, @PathVariable int id,
+                              Model model, @PathVariable int itineraryId, @PathVariable String userName)
     {
         //save restaurant without image and get the restaurantid
 
@@ -55,7 +56,7 @@ public class ImageDemoController
             }
         }
 
-        return "redirect:/landmark/details/" + id;
+        return "redirect:/landmark/details/" + id + "/" + itineraryId + "/" + userName;
     }
 
 }

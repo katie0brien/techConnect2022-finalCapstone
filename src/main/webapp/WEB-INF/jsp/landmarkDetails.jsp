@@ -51,7 +51,7 @@
             </td>
             <td>
                 <c:out value="${landmark.travelNotes}"></c:out>
-                <form method="POST" action="/landmark/details/${landmark.id}/${itineraryId}/${userName}">
+                <form method="POST" action="/landmark/details/edit/${landmark.id}/${itineraryId}/${userName}">
                     <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
                     <label for="travelNotes">Travel Notes: </label>
                     <input type="text" id="travelNotes" name="travelNotes" placeHolder="Travel Notes" class="form-control" />
@@ -62,7 +62,7 @@
                 <div class="row">
 
                 <div class="col-sm-4">
-                    <c:url var="formAction" value="/landmark/details/${landmark.id}/${itineraryId}/${userName}" />
+                    <c:url var="formAction" value="/upload/${landmark.id}/${itineraryId}/${userName}" />
                     <form method="POST" action="${formAction}" enctype="multipart/form-data">
                         <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 

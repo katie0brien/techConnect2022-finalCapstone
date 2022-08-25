@@ -14,7 +14,12 @@
 
 
 <%--<script src="${validationJs}"></script>--%>
-
+<div class="buttonBox">
+    <c:url var="itineraryList" value="/itinerary/list/${userName}" />
+    <form method="get" action="${itineraryList}">
+        <input class="backButton" type="submit" value="Back" />
+    </form>
+</div>
 
 <c:url var="formAction" value="/itinerary/edit/${itinerary.irineraryId}" />
 <form class="theForm" method="POST" action="${formAction}">

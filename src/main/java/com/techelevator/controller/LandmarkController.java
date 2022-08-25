@@ -100,12 +100,12 @@ public class LandmarkController {
 //        return "landmarkDetails";
 //    }
 
-    @RequestMapping(path="/details/edit/{id}", method=RequestMethod.POST)
-    public String submitEditedDetails(@PathVariable int id, @RequestParam String travelNotes) {
+    @RequestMapping(path="/details/edit/{id}/{itineraryId}/{userName}", method=RequestMethod.POST)
+    public String submitEditedDetails(@PathVariable int id, @PathVariable int itineraryId, @PathVariable String userName, @RequestParam String travelNotes) {
 
         landmarkDAO.editTravelNotes(travelNotes, id);
 
-        return "redirect:/landmark/details/" + id;
+        return "redirect:/landmark/details/" + id + "/" + itineraryId + "/" + userName;
     }
 
 
