@@ -16,6 +16,14 @@
         <div class="name">${user.fname}</div>
     </div>
 </div>
+
+<div class="profile">
+    <form method="GET" action="/login">
+        <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+        <input class="delete" type="submit" value="logout" onclick = "return confirm('End Session?');" />
+    </form>
+</div>
+
 <div class="main">
     <div class="formHolder">
 
@@ -105,7 +113,12 @@
             </c:forEach>
         </table>
 
-        <p><a href="/itinerary/create/${userName}">add itinerary</a></p>
+        <p>
+        <form method="POST" action="/itinerary/create/${userName}">
+            <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+            <input class="delete" type="submit" value="Add Itinerary"/></form>
+<%--            <a href="/itinerary/create/${userName}">add itinerary</a>--%>
+        </p>
 
 
         <c:url var="home" value="../../img/home.png" />

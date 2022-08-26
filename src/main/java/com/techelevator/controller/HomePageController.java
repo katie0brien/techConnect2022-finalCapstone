@@ -22,7 +22,7 @@ public class HomePageController {
 
     @RequestMapping(path="/home/{id}", method = RequestMethod.GET)
     public String goToHomePage(@PathVariable String id, Model model) {
-        model.addAttribute("user", (User)userDao.getUserByUserName(id));
+        model.addAttribute("userName", id);
         return "homePage";
     }
 

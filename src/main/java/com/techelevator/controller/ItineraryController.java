@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,28 +49,29 @@ public class ItineraryController {
         return "itineraryList"; //todo fill in appropriate page
     }
 
-    @RequestMapping(value = "/create/{id}", method = RequestMethod.GET)
-    public String createItinerary(@PathVariable String id, Model model, @Valid @ModelAttribute Itinerary itinerary) {
+    @RequestMapping(value = "/create/{userName}", method = RequestMethod.GET)
+    public String createItinerary(@PathVariable String userName, Model model, @Valid @ModelAttribute Itinerary itinerary) {
         model.addAttribute("itinerary", itinerary);
-        model.addAttribute("userName", id);
+        model.addAttribute("userName", userName);
+
         return "createItinerary";
     }
 
-    @RequestMapping(value = "/create/{id}", method = RequestMethod.POST)
-    public String addItinerary(@PathVariable String id ,Model model ,@Valid @ModelAttribute Itinerary itinerary,BindingResult result) {
+    @RequestMapping(value = "/create/{userName}", method = RequestMethod.POST)
+    public String addItinerary(@PathVariable String userName , Model model , @Valid @ModelAttribute Itinerary itinerary, BindingResult result) {
         if (result.hasErrors()) {
             return "createItinerary";
         }
 
-        itineraryDAO.createItinerary(itinerary, id);
+        itineraryDAO.createItinerary(itinerary, userName);
 
-        return "redirect:/itinerary/list/" + id; //todo fill in appropriate page
+        return "redirect:/itinerary/list/" + userName; //todo fill in appropriate page
     }
 
     @RequestMapping(value = "/delete/{id}/{userId}", method = RequestMethod.POST)
     public  String deleteItinerary(@PathVariable int id, @PathVariable String userId) {
+        landmarkDAO.deleteItineraryAssociatedLandmarks(id, userId);
         itineraryDAO.deleteItinerary(id, userId);
-
         return "redirect:/itinerary/list/" + userId;
     }
 

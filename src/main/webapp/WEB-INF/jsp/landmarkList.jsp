@@ -16,6 +16,10 @@
     <form method="get" action="${itineraryList}">
         <input class="backButton" type="submit" value="Back" />
     </form>
+        <form method="GET" action="/login">
+            <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+            <input class="delete" type="submit" value="logout" onclick = "return confirm('End Session?');" />
+        </form>
 </div>
     <div class="company"> trip planner</div>
     <div class="holder"></div>

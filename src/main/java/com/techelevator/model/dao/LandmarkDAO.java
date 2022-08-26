@@ -22,4 +22,5 @@ public interface LandmarkDAO {
     List<Landmark> getFavorites(String userName);
     void editTravelNotes(String notes, int id);
     void addImageName(String imageName, int id);
+    void deleteItineraryAssociatedLandmarks(int itineraryId, String userName);
 }
