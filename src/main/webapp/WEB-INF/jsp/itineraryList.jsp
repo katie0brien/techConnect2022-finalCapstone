@@ -16,6 +16,14 @@
         <div class="name">${user.fname}</div>
     </div>
 </div>
+
+<div class="profile">
+    <form method="GET" action="/login">
+        <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+        <input class="delete" type="submit" value="logout" onclick = "return confirm('End Session?');" />
+    </form>
+</div>
+
 <div class="main">
     <div class="formHolder">
 

@@ -41,9 +41,11 @@
         <c:url var="profilePage" value="/itinerary/list/${userName}" />
         <form method="get" action="${profilePage}">
             <input type="image" src="${hat}" style="max-width: 100%;"  alt="Submit" />
-
         </form>
-
+        <form method="GET" action="/login">
+            <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+            <input class="delete" type="submit" value="logout" onclick = "return confirm('End Session?');" />
+        </form>
     </div>
 </div>
 <div class="pillBox">

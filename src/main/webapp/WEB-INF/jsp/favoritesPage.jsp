@@ -22,7 +22,10 @@
         <form method="get" action="${landmarkList}">
             <button type="submit" class="backButton">back</button>
         </form>
-
+        <form method="GET" action="/login">
+            <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+            <input class="delete" type="submit" value="logout" onclick = "return confirm('End Session?');" />
+        </form>
     </div>
 
     <div class="company">trip planner</div>
