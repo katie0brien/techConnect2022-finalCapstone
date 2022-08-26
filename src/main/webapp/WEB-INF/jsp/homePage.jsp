@@ -67,5 +67,6 @@
         <input class="createButton" type="submit" value="onwards" />
     </form>
 </div>
+<%--<div class="explain">profile</div>--%>
 <div class="bottom"> <p>sarah. mohamed. katie.</p> </div>
 

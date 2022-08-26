@@ -7,17 +7,17 @@
 
 
 <div class="top">
-    <div class="girl">  </div>
-    <div class="company">trip planner</div>
-    <div class="profile">
+    <div class="buttonB">
         <c:url var="profilePage" value="/itinerary/list/${userName}" />
         <form method="get" action="${profilePage}">
             <c:url var="van" value="../../img/home.png" />
-            <input type="image" src="${van}" style="max-width: 100%;"  alt="BACK" />
-
+            <input class="backButton" type="submit" value="Back" />
         </form>
 
     </div>
+    <div class="company">trip planner</div>
+
+    <div class="girl">  </div>
 </div>
 
 <%--<c:url var="validationJs" value="/js/user-validation.js" />--%>
