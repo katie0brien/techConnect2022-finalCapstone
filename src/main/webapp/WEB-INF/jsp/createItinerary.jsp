@@ -32,6 +32,7 @@
 
     </div>
 </div>
+
 <div class="left">
     <c:url var="formAction" value="/itinerary/create/${userName}" />
     <form:form class="theForm" method="POST" action="${formAction}" modelAttribute="itinerary">

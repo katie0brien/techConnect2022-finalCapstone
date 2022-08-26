@@ -38,7 +38,7 @@
 
     <c:url var="hat" value="../../img/cowboy-hat.png" />
     <div class="profile">
-        <c:url var="profilePage" value="/itinerary/list/${user.userName}" />
+        <c:url var="profilePage" value="/itinerary/list/${userName}" />
         <form method="get" action="${profilePage}">
             <input type="image" src="${hat}" style="max-width: 100%;"  alt="Submit" />
 
