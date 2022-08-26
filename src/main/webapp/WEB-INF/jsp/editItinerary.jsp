@@ -34,7 +34,7 @@
     <form class="theForm" method="POST" action="${formAction}">
         <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
         <div class="row">
-            <h1 class="titleTop">Make changes to ${itinerary.name} from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
+            <h1 class="titleTop">(${itinerary.irineraryId}) Make changes to ${itinerary.name} from ${itinerary.fromDate} to ${itinerary.toDate}?</h1>
 
             <div class="forms-group">
                 <label for="name">Trip Name: </label>
@@ -188,7 +188,7 @@
                 'CSRF_TOKEN': $("#CSRF_TOKEN").val()
             }
 
-            let url = '/landmark/itinerary/1/landmark/create'///' + landmark.landmarkName + '/' + landmark.longitude + '/' + landmark.latitude;
+            let url = '/landmark/itinerary/${itinerary.irineraryId}/landmark/create'///' + landmark.landmarkName + '/' + landmark.longitude + '/' + landmark.latitude;
 
             $.post(url, body, (data) => {
                 $('#savePinModal').modal('hide');
