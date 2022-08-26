@@ -70,8 +70,8 @@ public class ItineraryController {
 
     @RequestMapping(value = "/delete/{id}/{userId}", method = RequestMethod.POST)
     public  String deleteItinerary(@PathVariable int id, @PathVariable String userId) {
+        landmarkDAO.deleteItineraryAssociatedLandmarks(id, userId);
         itineraryDAO.deleteItinerary(id, userId);
-
         return "redirect:/itinerary/list/" + userId;
     }
 

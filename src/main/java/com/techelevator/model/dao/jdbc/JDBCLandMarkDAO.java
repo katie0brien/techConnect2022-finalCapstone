@@ -287,4 +287,34 @@ public class JDBCLandMarkDAO implements LandmarkDAO {
 
         jdbcTemplate.update(sql, imageName, id);
     }
+
+    @Override
+    public void deleteItineraryAssociatedLandmarks(int itineraryId, String userName) {
+        List<Landmark> landmarks = getLandmarkByItineraryId(itineraryId);
+
+        for(Landmark landmark : landmarks) {
+
+            int landmarkId = landmark.getId();
+
+            String landmarkItinerary = "delete\n" +
+                    "from itinerary_landmark\n" +
+                    "where  itinerary_id = ? and landmark_id = ?;";
+
+            jdbcTemplate.update(landmarkItinerary, itineraryId, landmarkId);
+
+            String userLandmark = "delete\n" +
+                    "from user_landmark\n" +
+                    "where landmark_id = ? and user_id in (select id\n" +
+                    "                                      from app_user\n" +
+                    "                                      where user_name ilike ?);";
+
+            jdbcTemplate.update(userLandmark, landmarkId, userName);
+
+            String deleteLandmark = "delete\n" +
+                    "from landmark\n" +
+                    "where id = ?;";
+
+            jdbcTemplate.update(deleteLandmark, landmarkId);
+        }
+    }
 }
